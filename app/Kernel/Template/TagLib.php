@@ -242,7 +242,7 @@ class TagLib
             switch ($vars[1]) {
                 case 'NOW':$parseStr = "date('Y-m-d g:i a',time())";
                     break;
-                case 'VERSION':$parseStr = 'THINK_VERSION';
+                case 'VERSION':$parseStr = 'KERNEL_VERSION';
                     break;
                 case 'TEMPLATE':$parseStr = 'C("TEMPLATE_NAME")';
                     break;
