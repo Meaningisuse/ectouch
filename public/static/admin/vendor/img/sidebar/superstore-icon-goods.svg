@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>商品</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="导航样式" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="一级导航样式" transform="translate(-292.000000, -251.000000)" fill-rule="nonzero" fill="#CACACA">
+            <g id="商品" transform="translate(292.000000, 251.000000)">
+                <path d="M2.70710678,10.6103414 L2.70710678,9.1961278 L8.70710678,15.1961278 L7.29289322,15.1961278 L15.2928932,7.1961278 L15,7.90323458 L15,1.90323458 L16,2.90323458 L10,2.90323458 L10.7071068,2.61034136 L2.70710678,10.6103414 Z M10,1.90323458 L16,1.90323458 L16,7.90323458 L8,15.9032346 L2,9.90323458 L10,1.90323458 Z M11,4.90323458 L13,4.90323458 L13,6.90323458 L11,6.90323458 L11,4.90323458 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>
