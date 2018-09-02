@@ -1,13 +1,20 @@
 #!/usr/bin/env php
 <?php
 
+/**
+ * ECTouch - A Modern E-Commerce Platform
+ *
+ * @package  ECTouch
+ * @homepage https://ectouch.cn
+ */
+
 require __DIR__ . '/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 
-$application = new Application();
+$app = new Application();
 
 // register commands
-$application->add(new \App\Command\CreateUserCommand());
+$app->add(new \App\Command\CreateUserCommand());
 
-$application->run();
+$app->run();
