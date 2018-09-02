@@ -20,6 +20,8 @@
         "overtrue/wechat": "^4.1",
         "phpoffice/phpspreadsheet": "^1.4",
         "sentry/sentry": "^1.9",
+        "symfony/console": "^4.1",
+        "symfony/filesystem": "^4.1",
         "workerman/phpsocket.io": "^1.1"
     },
     "autoload": {
