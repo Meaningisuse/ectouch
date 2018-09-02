@@ -1,6 +1,6 @@
 <?php
 
-namespace Org\Util;
+namespace App\Kernel\Library\Util;
 
 /**
  * ArrayList实现类
