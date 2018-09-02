@@ -27,6 +27,5 @@ define('APP_PATH', ROOT_PATH . 'app/');
 define('CONF_PATH', ROOT_PATH . 'config/');
 define('LANG_PATH', ROOT_PATH . 'resources/lang/');
 define('RUNTIME_PATH', ROOT_PATH . 'storage/framework/');
-define('HTML_PATH', RUNTIME_PATH . 'Html/');
 require CONF_PATH . 'constant.php';
 require APP_PATH . 'Kernel/Loader.php';
