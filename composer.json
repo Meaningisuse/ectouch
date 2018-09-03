@@ -27,7 +27,11 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "config/constant.php",
+            "app/Support/helpers.php"
+        ]
     },
     "config": {
         "preferred-install": "dist",
