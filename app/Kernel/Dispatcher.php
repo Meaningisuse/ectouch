@@ -68,7 +68,7 @@ class Dispatcher
                 $array = explode('/', $rule);
                 // 模块绑定
                 define('BIND_MODULE', array_shift($array));
-                // 控制器绑定         
+                // 控制器绑定
                 if (!empty($array)) {
                     $controller = array_shift($array);
                     if ($controller) {
@@ -112,7 +112,7 @@ class Dispatcher
             $_SERVER['PATH_INFO'] = '';
             define('__INFO__', '');
             define('__EXT__', '');
-            $paths = array();
+            $paths = [];
         } else {
             // URL后缀
             define('__EXT__', strtolower(pathinfo($_SERVER['PATH_INFO'], PATHINFO_EXTENSION)));
@@ -211,7 +211,7 @@ class Dispatcher
 
         if ($paths) {
             // 解析剩余的URL参数
-            $var = array();
+            $var = [];
             if (C('URL_PARAMS_BIND') && 1 == C('URL_PARAMS_BIND_TYPE')) {
                 // URL参数按顺序绑定变量
                 $var = $paths;

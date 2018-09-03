@@ -142,7 +142,7 @@ class Controller extends BaseController
      */
     protected function checkVerify($code, $id = '')
     {
-        $verify = new \Think\Verify();
+        $verify = new \App\Kernel\Verify();
         return $verify->check($code, $id);
     }
 }

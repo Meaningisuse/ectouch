@@ -19,8 +19,8 @@ const URL_COMPAT   = 3; // 兼容模式
 const EXT = '.php';
 
 // 系统常量定义
-defined('KERNEL_PATH') or define('KERNEL_PATH', __DIR__ . '/');
-defined('APP_PATH') or define('APP_PATH', dirname($_SERVER['SCRIPT_FILENAME']) . '/');
+defined('KERNEL_PATH') or define('KERNEL_PATH', str_replace('\\', '/', __DIR__) . '/');
+defined('APP_PATH') or define('APP_PATH', dirname(KERNEL_PATH) . '/');
 defined('ROOT_PATH') or define('ROOT_PATH', dirname(APP_PATH) . '/');
 defined('APP_STATUS') or define('APP_STATUS', ''); // 应用状态 加载对应的配置文件
 defined('APP_DEBUG') or define('APP_DEBUG', false); // 是否调试模式

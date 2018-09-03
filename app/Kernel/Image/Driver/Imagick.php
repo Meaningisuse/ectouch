@@ -45,12 +45,12 @@ class Imagick
         $this->img = new \Imagick(realpath($imgname));
 
         //设置图像信息
-        $this->info = array(
+        $this->info = [
             'width'  => $this->img->getImageWidth(),
             'height' => $this->img->getImageHeight(),
             'type'   => strtolower($this->img->getImageFormat()),
             'mime'   => $this->img->getImageMimeType(),
-        );
+        ];
     }
 
     /**
@@ -156,7 +156,7 @@ class Imagick
             E('没有指定图像资源');
         }
 
-        return array($this->info['width'], $this->info['height']);
+        return [$this->info['width'], $this->info['height']];
     }
 
     /**
@@ -390,7 +390,7 @@ class Imagick
 
         //创建水印图像资源
         $water = new \Imagick(realpath($source));
-        $info  = array($water->getImageWidth(), $water->getImageHeight());
+        $info  = [$water->getImageWidth(), $water->getImageHeight()];
 
         /* 设定水印位置 */
         switch ($locate) {

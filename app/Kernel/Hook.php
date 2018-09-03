@@ -8,7 +8,7 @@ namespace App\Kernel;
 class Hook
 {
 
-    private static $tags = array();
+    private static $tags = [];
 
     /**
      * 动态添加插件到某个标签
@@ -19,7 +19,7 @@ class Hook
     public static function add($tag, $name)
     {
         if (!isset(self::$tags[$tag])) {
-            self::$tags[$tag] = array();
+            self::$tags[$tag] = [];
         }
         if (is_array($name)) {
             self::$tags[$tag] = array_merge(self::$tags[$tag], $name);
@@ -43,7 +43,7 @@ class Hook
             // 合并导入
             foreach ($data as $tag => $val) {
                 if (!isset(self::$tags[$tag])) {
-                    self::$tags[$tag] = array();
+                    self::$tags[$tag] = [];
                 }
 
                 if (!empty($val['_overlay'])) {

@@ -18,10 +18,10 @@ class Memcache
     {
         $this->lifeTime = C('SESSION_EXPIRE') ? C('SESSION_EXPIRE') : $this->lifeTime;
         // $this->sessionName  = $sessName;
-        $options = array(
+        $options = [
             'timeout'    => C('SESSION_TIMEOUT') ? C('SESSION_TIMEOUT') : 1,
             'persistent' => C('SESSION_PERSISTENT') ? C('SESSION_PERSISTENT') : 0,
-        );
+        ];
         $this->handle = new \Memcache;
         $hosts        = explode(',', C('MEMCACHE_HOST'));
         $ports        = explode(',', C('MEMCACHE_PORT'));

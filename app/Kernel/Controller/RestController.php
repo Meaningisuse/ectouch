@@ -15,19 +15,19 @@ class RestController extends Controller
     // 当前请求的资源类型
     protected $_type = '';
     // REST允许的请求类型列表
-    protected $allowMethod = array('get', 'post', 'put', 'delete');
+    protected $allowMethod = ['get', 'post', 'put', 'delete'];
     // REST默认请求类型
     protected $defaultMethod = 'get';
     // REST允许请求的资源类型列表
-    protected $allowType = array('html', 'xml', 'json', 'rss');
+    protected $allowType = ['html', 'xml', 'json', 'rss'];
     // 默认的资源类型
     protected $defaultType = 'html';
     // REST允许输出的资源类型列表
-    protected $allowOutputType = array(
+    protected $allowOutputType = [
         'xml'  => 'application/xml',
         'json' => 'application/json',
         'html' => 'text/html',
-    );
+    ];
 
     /**
      * 架构函数
@@ -95,7 +95,7 @@ class RestController extends Controller
      */
     protected function getAcceptType()
     {
-        $type = array(
+        $type = [
             'html' => 'text/html,application/xhtml+xml,*/*',
             'xml'  => 'application/xml,text/xml,application/x-xml',
             'json' => 'application/json,text/x-json,application/jsonrequest,text/json',
@@ -110,7 +110,7 @@ class RestController extends Controller
             'jpg'  => 'image/jpg,image/jpeg,image/pjpeg',
             'gif'  => 'image/gif',
             'csv'  => 'text/csv',
-        );
+        ];
 
         foreach ($type as $key => $val) {
             $array = explode(',', $val);
@@ -127,7 +127,7 @@ class RestController extends Controller
     // 发送Http状态信息
     protected function sendHttpStatus($code)
     {
-        static $_status = array(
+        static $_status = [
             // Informational 1xx
             100 => 'Continue',
             101 => 'Switching Protocols',
@@ -175,7 +175,7 @@ class RestController extends Controller
             504 => 'Gateway Timeout',
             505 => 'HTTP Version Not Supported',
             509 => 'Bandwidth Limit Exceeded',
-        );
+        ];
         if (isset($_status[$code])) {
             header('HTTP/1.1 ' . $code . ' ' . $_status[$code]);
             // 确保FastCGI模式下正常

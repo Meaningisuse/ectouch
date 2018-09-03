@@ -10,20 +10,20 @@ namespace App\Kernel;
  * 2，可以同时对多条规则进行认证，并设置多条规则的关系（or或者and）
  *      $auth=new Auth();  $auth->check('规则1,规则2','用户id','and')
  *      第三个参数为and时表示，用户需要同时具有规则1和规则2的权限。 当第三个参数为or时，表示用户值需要具备其中一个条件即可。默认为or
- * 3，一个用户可以属于多个用户组(think_auth_group_access表 定义了用户所属用户组)。我们需要设置每个用户组拥有哪些规则(think_auth_group 定义了用户组权限)
+ * 3，一个用户可以属于多个用户组(pre_auth_group_access表 定义了用户所属用户组)。我们需要设置每个用户组拥有哪些规则(pre_auth_group 定义了用户组权限)
  *
  * 4，支持规则表达式。
- *      在think_auth_rule 表中定义一条规则时，如果type为1， condition字段就可以定义规则表达式。 如定义{score}>5  and {score}<100  表示用户的分数在5-100之间时这条规则才会通过。
+ *      在pre_auth_rule 表中定义一条规则时，如果type为1， condition字段就可以定义规则表达式。 如定义{score}>5  and {score}<100  表示用户的分数在5-100之间时这条规则才会通过。
  */
 
 //数据库
 /*
 -- ----------------------------
--- think_auth_rule，规则表，
+-- pre_auth_rule，规则表，
 -- id:主键，name：规则唯一标识, title：规则中文名称 status 状态：为1正常，为0禁用，condition：规则表达式，为空表示存在就验证，不为空表示按照条件验证
 -- ----------------------------
-DROP TABLE IF EXISTS `think_auth_rule`;
-CREATE TABLE `think_auth_rule` (
+DROP TABLE IF EXISTS `pre_auth_rule`;
+CREATE TABLE `pre_auth_rule` (
 `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
 `name` char(80) NOT NULL DEFAULT '',
 `title` char(20) NOT NULL DEFAULT '',
@@ -34,11 +34,11 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 -- ----------------------------
--- think_auth_group 用户组表，
+-- pre_auth_group 用户组表，
 -- id：主键， title:用户组中文名称， rules：用户组拥有的规则id， 多个规则","隔开，status 状态：为1正常，为0禁用
 -- ----------------------------
-DROP TABLE IF EXISTS `think_auth_group`;
-CREATE TABLE `think_auth_group` (
+DROP TABLE IF EXISTS `pre_auth_group`;
+CREATE TABLE `pre_auth_group` (
 `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
 `title` char(100) NOT NULL DEFAULT '',
 `status` tinyint(1) NOT NULL DEFAULT '1',
@@ -46,11 +46,11 @@ CREATE TABLE `think_auth_group` (
 PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 -- ----------------------------
--- think_auth_group_access 用户组明细表
+-- pre_auth_group_access 用户组明细表
 -- uid:用户id，group_id：用户组id
 -- ----------------------------
-DROP TABLE IF EXISTS `think_auth_group_access`;
-CREATE TABLE `think_auth_group_access` (
+DROP TABLE IF EXISTS `pre_auth_group_access`;
+CREATE TABLE `pre_auth_group_access` (
 `uid` mediumint(8) unsigned NOT NULL,
 `group_id` mediumint(8) unsigned NOT NULL,
 UNIQUE KEY `uid_group_id` (`uid`,`group_id`),
@@ -62,14 +62,14 @@ class Auth
 {
 
     //默认配置
-    protected $_config = array(
+    protected $_config = [
         'AUTH_ON'           => true, // 认证开关
         'AUTH_TYPE'         => 1, // 认证方式，1为实时认证；2为登录认证。
         'AUTH_GROUP'        => 'auth_group', // 用户组数据表名
         'AUTH_GROUP_ACCESS' => 'auth_group_access', // 用户-用户组关系表
         'AUTH_RULE'         => 'auth_rule', // 权限规则表
         'AUTH_USER'         => 'member', // 用户信息表
-    );
+    ];
 
     public function __construct()
     {
@@ -104,10 +104,10 @@ class Auth
             if (strpos($name, ',') !== false) {
                 $name = explode(',', $name);
             } else {
-                $name = array($name);
+                $name = [$name];
             }
         }
-        $list = array(); //保存验证通过的规则名
+        $list = []; //保存验证通过的规则名
         if ('url' == $mode) {
             $REQUEST = unserialize(strtolower(serialize($_REQUEST)));
         }
@@ -144,7 +144,7 @@ class Auth
      */
     public function getGroups($uid)
     {
-        static $groups = array();
+        static $groups = [];
         if (isset($groups[$uid])) {
             return $groups[$uid];
         }
@@ -154,7 +154,7 @@ class Auth
             ->where("a.uid='$uid' and g.status='1'")
             ->join($this->_config['AUTH_GROUP'] . " g on a.group_id=g.id")
             ->field('uid,group_id,title,rules')->select();
-        $groups[$uid] = $user_groups ?: array();
+        $groups[$uid] = $user_groups ?: [];
         return $groups[$uid];
     }
 
@@ -165,7 +165,7 @@ class Auth
      */
     protected function getAuthList($uid, $type)
     {
-        static $_authList = array(); //保存用户验证通过的权限列表
+        static $_authList = []; //保存用户验证通过的权限列表
         $t                = implode(',', (array) $type);
         if (isset($_authList[$uid . $t])) {
             return $_authList[$uid . $t];
@@ -176,26 +176,26 @@ class Auth
 
         //读取用户所属用户组
         $groups = $this->getGroups($uid);
-        $ids    = array(); //保存用户所属用户组设置的所有权限规则id
+        $ids    = []; //保存用户所属用户组设置的所有权限规则id
         foreach ($groups as $g) {
             $ids = array_merge($ids, explode(',', trim($g['rules'], ',')));
         }
         $ids = array_unique($ids);
         if (empty($ids)) {
-            $_authList[$uid . $t] = array();
-            return array();
+            $_authList[$uid . $t] = [];
+            return [];
         }
 
-        $map = array(
-            'id'     => array('in', $ids),
+        $map = [
+            'id'     => ['in', $ids],
             'type'   => $type,
             'status' => 1,
-        );
+        ];
         //读取用户组所有权限规则
         $rules = M()->table($this->_config['AUTH_RULE'])->where($map)->field('condition,name')->select();
 
         //循环规则，判断结果。
-        $authList = array(); //
+        $authList = []; //
         foreach ($rules as $rule) {
             if (!empty($rule['condition'])) {
                 //根据condition进行验证
@@ -225,9 +225,9 @@ class Auth
      */
     protected function getUserInfo($uid)
     {
-        static $userinfo = array();
+        static $userinfo = [];
         if (!isset($userinfo[$uid])) {
-            $userinfo[$uid] = M()->where(array('uid' => $uid))->table($this->_config['AUTH_USER'])->find();
+            $userinfo[$uid] = M()->where(['uid' => $uid])->table($this->_config['AUTH_USER'])->find();
         }
         return $userinfo[$uid];
     }

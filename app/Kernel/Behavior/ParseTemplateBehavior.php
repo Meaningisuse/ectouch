@@ -2,8 +2,8 @@
 
 namespace App\Kernel\Behavior;
 
-use App\Kernel\Storage;
 use App\Kernel\Kernel;
+use App\Kernel\Storage;
 
 /**
  * 系统行为扩展：模板解析
@@ -17,8 +17,8 @@ class ParseTemplateBehavior
         $engine          = strtolower(C('TMPL_ENGINE_TYPE'));
         $_content        = empty($_data['content']) ? $_data['file'] : $_data['content'];
         $_data['prefix'] = !empty($_data['prefix']) ? $_data['prefix'] : C('TMPL_CACHE_PREFIX');
-        if ('think' == $engine) {
-            // 采用Think模板引擎
+        if ('default' == $engine) {
+            // 采用默认模板引擎
             if ((!empty($_data['content']) && $this->checkContentCache($_data['content'], $_data['prefix']))
                 || $this->checkCache($_data['file'], $_data['prefix'])) {
                 // 缓存有效

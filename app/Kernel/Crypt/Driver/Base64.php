@@ -37,7 +37,7 @@ class Base64
         for ($i = 0; $i < $len; $i++) {
             $str .= chr(ord(substr($data, $i, 1)) + (ord(substr($char, $i, 1))) % 256);
         }
-        return str_replace(array('+', '/', '='), array('-', '_', ''), base64_encode($str));
+        return str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($str));
     }
 
     /**
@@ -49,7 +49,7 @@ class Base64
     public static function decrypt($data, $key)
     {
         $key  = md5($key);
-        $data = str_replace(array('-', '_'), array('+', '/'), $data);
+        $data = str_replace(['-', '_'], ['+', '/'], $data);
         $mod4 = strlen($data) % 4;
         if ($mod4) {
             $data .= substr('====', $mod4);

@@ -16,13 +16,13 @@ class Upyun
      */
     private $error = '';
 
-    private $config = array(
+    private $config = [
         'host'     => '', //又拍云服务器
         'username' => '', //又拍云用户
         'password' => '', //又拍云密码
         'bucket'   => '', //空间名称
         'timeout'  => 90, //超时时间
-    );
+    ];
 
     /**
      * 构造函数，用于设置上传根路径
@@ -107,7 +107,7 @@ class Upyun
         $uri = "/{$this->config['bucket']}/{$path}";
         $ch  = curl_init($this->config['host'] . $uri);
 
-        $_headers = array('Expect:');
+        $_headers = ['Expect:'];
         if (!is_null($headers) && is_array($headers)) {
             foreach ($headers as $k => $v) {
                 array_push($_headers, "{$k}: {$v}");
@@ -181,12 +181,12 @@ class Upyun
     private function response($text)
     {
         $headers = explode("\r\n", $text);
-        $items   = array();
+        $items   = [];
         foreach ($headers as $header) {
             $header = trim($header);
             if (strpos($header, 'x-upyun') !== false) {
                 list($k, $v)     = explode(':', $header);
-                $items[trim($k)] = in_array(substr($k, 8, 5), array('width', 'heigh', 'frame')) ? intval($v) : trim($v);
+                $items[trim($k)] = in_array(substr($k, 8, 5), ['width', 'heigh', 'frame']) ? intval($v) : trim($v);
             }
         }
         return $items;

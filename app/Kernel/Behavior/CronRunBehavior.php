@@ -31,7 +31,7 @@ class CronRunBehavior
         }
         if (isset($crons) && is_array($crons)) {
             $update = false;
-            $log    = array();
+            $log    = [];
             foreach ($crons as $key => $cron) {
                 if (empty($cron[2]) || $_SERVER['REQUEST_TIME'] >= $cron[2]) {
                     // 到达时间 执行cron文件

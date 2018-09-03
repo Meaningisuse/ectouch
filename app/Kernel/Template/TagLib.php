@@ -14,7 +14,7 @@ class TagLib
      * @access protected
      */
     protected $xml  = '';
-    protected $tags = array(); // 标签定义
+    protected $tags = []; // 标签定义
     /**
      * 标签库名称
      * @var string
@@ -27,14 +27,14 @@ class TagLib
      * @var string
      * @access protected
      */
-    protected $tagList = array();
+    protected $tagList = [];
 
     /**
      * 标签库分析数组
      * @var string
      * @access protected
      */
-    protected $parse = array();
+    protected $parse = [];
 
     /**
      * 标签库是否有效
@@ -50,7 +50,7 @@ class TagLib
      */
     protected $tpl;
 
-    protected $comparison = array(' nheq ' => ' !== ', ' heq ' => ' === ', ' neq ' => ' != ', ' eq ' => ' == ', ' egt ' => ' >= ', ' gt ' => ' > ', ' elt ' => ' <= ', ' lt ' => ' < ');
+    protected $comparison = [' nheq ' => ' !== ', ' heq ' => ' === ', ' neq ' => ' != ', ' eq ' => ' == ', ' egt ' => ' >= ', ' gt ' => ' > ', ' elt ' => ' <= ', ' lt ' => ' < '];
 
     /**
      * 架构函数
@@ -97,7 +97,7 @@ class TagLib
                 if (isset($item['must'])) {
                     $must = explode(',', $item['must']);
                 } else {
-                    $must = array();
+                    $must = [];
                 }
                 foreach ($attrs as $name) {
                     if (isset($array[$name])) {
@@ -109,7 +109,7 @@ class TagLib
                 return $array;
             }
         } else {
-            return array();
+            return [];
         }
     }
 
@@ -133,8 +133,8 @@ class TagLib
             default: // 自动判断数组或对象 只支持二维
                 $condition = preg_replace('/\$(\w+)\.(\w+)\s/is', '(is_array($\\1)?$\\1["\\2"]:$\\1->\\2) ', $condition);
         }
-        if (false !== strpos($condition, '$Think')) {
-            $condition = preg_replace_callback('/(\$Think.*?)\s/is', array($this, 'parseThinkVar'), $condition);
+        if (false !== strpos($condition, '$ECTouch')) {
+            $condition = preg_replace_callback('/(\$ECTouch.*?)\s/is', [$this, 'parseECTouchVar'], $condition);
         }
 
         return $condition;
@@ -148,9 +148,9 @@ class TagLib
      */
     public function autoBuildVar($name)
     {
-        if ('Think.' == substr($name, 0, 6)) {
+        if ('ECTouch.' == substr($name, 0, 8)) {
             // 特殊变量
-            return $this->parseThinkVar($name);
+            return $this->parseECTouchVar($name);
         } elseif (strpos($name, '.')) {
             $vars = explode('.', $name);
             $var  = array_shift($vars);
@@ -186,15 +186,15 @@ class TagLib
 
     /**
      * 用于标签属性里面的特殊模板变量解析
-     * 格式 以 Think. 打头的变量属于特殊模板变量
+     * 格式 以 ECTouch. 打头的变量属于特殊模板变量
      * @access public
      * @param string $varStr  变量字符串
      * @return string
      */
-    public function parseThinkVar($varStr)
+    public function parseECTouchVar($varStr)
     {
         if (is_array($varStr)) {
-//用于正则替换回调函数
+            //用于正则替换回调函数
             $varStr = $varStr[1];
         }
         $vars     = explode('.', $varStr);

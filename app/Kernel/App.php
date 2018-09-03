@@ -100,7 +100,7 @@ class App
         } catch (\ReflectionException $e) {
             // 方法调用发生异常后 引导到__call方法处理
             $method = new \ReflectionMethod($module, '__call');
-            $method->invokeArgs($module, array($action, ''));
+            $method->invokeArgs($module, [$action, '']);
         }
         return;
     }

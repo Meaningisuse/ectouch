@@ -10,11 +10,11 @@ use App\Kernel\Model;
 class MergeModel extends Model
 {
 
-    protected $modelList   = array(); //  包含的模型列表 第一个必须是主表模型
+    protected $modelList   = []; //  包含的模型列表 第一个必须是主表模型
     protected $masterModel = ''; //  主模型
     protected $joinType    = 'INNER'; //  聚合模型的查询JOIN类型
     protected $fk          = ''; //  外键名 默认为主表名_id
-    protected $mapFields   = array(); //  需要处理的模型映射字段，避免混淆 array( id => 'user.id'  )
+    protected $mapFields   = []; //  需要处理的模型映射字段，避免混淆 array( id => 'user.id'  )
 
     /**
      * 架构函数
@@ -29,7 +29,7 @@ class MergeModel extends Model
         parent::__construct($name, $tablePrefix, $connection);
         // 聚合模型的字段信息
         if (empty($this->fields) && !empty($this->modelList)) {
-            $fields = array();
+            $fields = [];
             foreach ($this->modelList as $model) {
                 // 获取模型的字段信息
                 $result  = $this->db->getFields(M($model)->getTableName());
@@ -62,7 +62,7 @@ class MergeModel extends Model
     public function getTableName()
     {
         if (empty($this->trueTableName)) {
-            $tableName = array();
+            $tableName = [];
             $models    = $this->modelList;
             foreach ($models as $model) {
                 $tableName[] = M($model)->getTableName() . ' ' . $model;
@@ -88,14 +88,14 @@ class MergeModel extends Model
      * @param boolean $replace 是否replace
      * @return mixed
      */
-    public function add($data = '', $options = array(), $replace = false)
+    public function add($data = '', $options = [], $replace = false)
     {
         if (empty($data)) {
             // 没有传递数据，获取当前数据对象的值
             if (!empty($this->data)) {
                 $data = $this->data;
                 // 重置数据
-                $this->data = array();
+                $this->data = [];
             } else {
                 $this->error = L('_DATA_TYPE_INVALID_');
                 return false;
@@ -174,7 +174,7 @@ class MergeModel extends Model
      * @param array $options 表达式
      * @return boolean
      */
-    public function save($data = '', $options = array())
+    public function save($data = '', $options = [])
     {
         // 根据主表的主键更新
         if (empty($data)) {
@@ -182,7 +182,7 @@ class MergeModel extends Model
             if (!empty($this->data)) {
                 $data = $this->data;
                 // 重置数据
-                $this->data = array();
+                $this->data = [];
             } else {
                 $this->error = L('_DATA_TYPE_INVALID_');
                 return false;
@@ -228,7 +228,7 @@ class MergeModel extends Model
      * @param mixed $options 表达式
      * @return mixed
      */
-    public function delete($options = array())
+    public function delete($options = [])
     {
         $pk = $this->pk;
         if (empty($options) && empty($this->options['where'])) {
@@ -244,11 +244,11 @@ class MergeModel extends Model
         if (is_numeric($options) || is_string($options)) {
             // 根据主键删除记录
             if (strpos($options, ',')) {
-                $where[$pk] = array('IN', $options);
+                $where[$pk] = ['IN', $options];
             } else {
                 $where[$pk] = $options;
             }
-            $options          = array();
+            $options          = [];
             $options['where'] = $where;
         }
         // 分析表达式
@@ -269,7 +269,7 @@ class MergeModel extends Model
         }
         $result = $this->db->delete($options);
         if (false !== $result) {
-            $data = array();
+            $data = [];
             if (isset($pkValue)) {
                 $data[$pk] = $pkValue;
             }
@@ -320,7 +320,7 @@ class MergeModel extends Model
     protected function checkCondition($where)
     {
         if (is_array($where)) {
-            $view = array();
+            $view = [];
             foreach ($where as $name => $value) {
                 if (array_key_exists($name, $this->mapFields)) {
                     // 需要处理映射字段
@@ -343,7 +343,7 @@ class MergeModel extends Model
     {
         if (is_string($order) && !empty($order)) {
             $orders = explode(',', $order);
-            $_order = array();
+            $_order = [];
             foreach ($orders as $order) {
                 $array = explode(' ', trim($order));
                 $field = $array[0];
@@ -369,7 +369,7 @@ class MergeModel extends Model
     {
         if (!empty($group)) {
             $groups = explode(',', $group);
-            $_group = array();
+            $_group = [];
             foreach ($groups as $field) {
                 // 解析成聚合字段
                 if (array_key_exists($field, $this->mapFields)) {
@@ -400,7 +400,7 @@ class MergeModel extends Model
         }
 
         // 解析成聚合字段
-        $array = array();
+        $array = [];
         foreach ($fields as $field) {
             if (array_key_exists($field, $this->mapFields)) {
                 // 需要处理映射字段

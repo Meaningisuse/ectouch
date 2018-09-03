@@ -9,10 +9,10 @@ class Lite
     // PDO操作实例
     protected $PDOStatement = null;
     // 当前操作所属的模型名
-    protected $model = '_think_';
+    protected $model = '_ectouch_';
     // 当前SQL指令
     protected $queryStr = '';
-    protected $modelSql = array();
+    protected $modelSql = [];
     // 最后插入ID
     protected $lastInsID = null;
     // 返回或者影响记录数
@@ -24,11 +24,11 @@ class Lite
     // 错误信息
     protected $error = '';
     // 数据库连接ID 支持多个连接
-    protected $linkID = array();
+    protected $linkID = [];
     // 当前连接ID
     protected $_linkID = null;
     // 数据库连接参数配置
-    protected $config = array(
+    protected $config = [
         'type'        => '', // 数据库类型
         'hostname'    => '127.0.0.1', // 服务器地址
         'database'    => '', // 数据库名
@@ -36,7 +36,7 @@ class Lite
         'password'    => '', // 密码
         'hostport'    => '', // 端口
         'dsn'         => '', //
-        'params'      => array(), // 数据库连接参数
+        'params'      => [], // 数据库连接参数
         'charset'     => 'utf8', // 数据库编码默认采用utf8
         'prefix'      => '', // 数据库表前缀
         'debug'       => false, // 数据库调试模式
@@ -44,9 +44,9 @@ class Lite
         'rw_separate' => false, // 数据库读写是否分离 主从式有效
         'master_num'  => 1, // 读写分离后 主服务器数量
         'slave_no'    => '', // 指定从服务器序号
-    );
+    ];
     // 数据库表达式
-    protected $comparison = array('eq' => '=', 'neq' => '<>', 'gt' => '>', 'egt' => '>=', 'lt' => '<', 'elt' => '<=', 'notlike' => 'NOT LIKE', 'like' => 'LIKE', 'in' => 'IN', 'notin' => 'NOT IN');
+    protected $comparison = ['eq' => '=', 'neq' => '<>', 'gt' => '>', 'egt' => '>=', 'lt' => '<', 'elt' => '<=', 'notlike' => 'NOT LIKE', 'like' => 'LIKE', 'in' => 'IN', 'notin' => 'NOT IN'];
     // 查询表达式
     protected $selectSql = 'SELECT%DISTINCT% %FIELD% FROM %TABLE%%JOIN%%WHERE%%GROUP%%HAVING%%ORDER%%LIMIT% %UNION%%COMMENT%';
     // 查询次数
@@ -54,12 +54,12 @@ class Lite
     // 执行次数
     protected $executeTimes = 0;
     // PDO连接参数
-    protected $options = array(
+    protected $options = [
         PDO::ATTR_CASE              => PDO::CASE_LOWER,
         PDO::ATTR_ERRMODE           => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_ORACLE_NULLS      => PDO::NULL_NATURAL,
         PDO::ATTR_STRINGIFY_FETCHES => false,
-    );
+    ];
 
     /**
      * 架构函数 读取数据库配置信息
@@ -128,7 +128,7 @@ class Lite
      * @param array $bind  参数绑定
      * @return mixed
      */
-    public function query($str, $bind = array())
+    public function query($str, $bind = [])
     {
         $this->initConnect(false);
         if (!$this->_linkID) {
@@ -179,7 +179,7 @@ class Lite
      * @param array $bind  参数绑定
      * @return integer
      */
-    public function execute($str, $bind = array())
+    public function execute($str, $bind = [])
     {
         $this->initConnect(true);
         if (!$this->_linkID) {
@@ -424,7 +424,6 @@ class Lite
                 G('queryStartTime');
             } else {
                 $this->modelSql[$this->model] = $this->queryStr;
-                //$this->model  =   '_think_';
                 // 记录操作结束时间
                 G('queryEndTime');
                 trace($this->queryStr . ' [ RunTime:' . G('queryStartTime', 'queryEndTime') . 's ]', '', 'SQL');
@@ -494,7 +493,7 @@ class Lite
             // 读写操作不区分服务器
             $r = floor(mt_rand(0, count($_config['hostname']) - 1)); // 每次随机连接的数据库
         }
-        $db_config = array(
+        $db_config = [
             'username' => isset($_config['username'][$r]) ? $_config['username'][$r] : $_config['username'][0],
             'password' => isset($_config['password'][$r]) ? $_config['password'][$r] : $_config['password'][0],
             'hostname' => isset($_config['hostname'][$r]) ? $_config['hostname'][$r] : $_config['hostname'][0],
@@ -502,7 +501,7 @@ class Lite
             'database' => isset($_config['database'][$r]) ? $_config['database'][$r] : $_config['database'][0],
             'dsn'      => isset($_config['dsn'][$r]) ? $_config['dsn'][$r] : $_config['dsn'][0],
             'charset'  => isset($_config['charset'][$r]) ? $_config['charset'][$r] : $_config['charset'][0],
-        );
+        ];
         return $this->connect($db_config, $r);
     }
 

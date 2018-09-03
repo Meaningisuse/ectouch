@@ -12,7 +12,7 @@ class View
      * @var tVar
      * @access protected
      */
-    protected $tVar = array();
+    protected $tVar = [];
 
     /**
      * 模板主题
@@ -94,7 +94,7 @@ class View
         // 网页字符编码
         header('Content-Type:' . $contentType . '; charset=' . $charset);
         header('Cache-control: ' . C('HTTP_CACHE_CONTROL')); // 页面缓存控制
-        header('X-Powered-By:ThinkPHP');
+        header('X-Powered-By: ' . APPNAME . ' ' . VERSION);
         // 输出模板文件
         echo $content;
     }
@@ -143,7 +143,7 @@ class View
             }
         } else {
             // 视图解析标签
-            $params = array('var' => $this->tVar, 'file' => $templateFile, 'content' => $content, 'prefix' => $prefix);
+            $params = ['var' => $this->tVar, 'file' => $templateFile, 'content' => $content, 'prefix' => $prefix];
             Hook::listen('view_parse', $params);
         }
         // 获取并清空缓存
@@ -152,7 +152,7 @@ class View
         Hook::listen('view_filter', $content);
         if (APP_DEBUG && C('PARSE_VAR')) {
             // debug模式时，将后台分配变量输出到浏览器控制台
-            $parseVar = empty($this->tVar) ? json_encode(array()) : json_encode($this->tVar);
+            $parseVar = empty($this->tVar) ? json_encode([]) : json_encode($this->tVar);
             $content  = $content . '<script type="text/javascript">var PARSE_VAR = ' . $parseVar . ';</script>';
         }
         // 输出模板文件
@@ -246,13 +246,13 @@ class View
                 $t = C('VAR_TEMPLATE');
                 if (isset($_GET[$t])) {
                     $theme = $_GET[$t];
-                } elseif (cookie('think_template')) {
-                    $theme = cookie('think_template');
+                } elseif (cookie('ectouch_template')) {
+                    $theme = cookie('ectouch_template');
                 }
                 if (!in_array($theme, explode(',', C('THEME_LIST')))) {
                     $theme = C('DEFAULT_THEME');
                 }
-                cookie('think_template', $theme, 864000);
+                cookie('ectouch_template', $theme, 864000);
             }
         }
         defined('THEME_NAME') || define('THEME_NAME', $theme); // 当前模板主题名称

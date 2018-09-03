@@ -33,7 +33,7 @@ class TokenBuildBehavior
         $tokenName = C('TOKEN_NAME', null, '__hash__');
         $tokenType = C('TOKEN_TYPE', null, 'md5');
         if (!isset($_SESSION[$tokenName])) {
-            $_SESSION[$tokenName] = array();
+            $_SESSION[$tokenName] = [];
         }
         // 标识当前页面唯一性
         $tokenKey = md5($_SERVER['REQUEST_URI']);
@@ -48,6 +48,6 @@ class TokenBuildBehavior
             }
             //ajax需要获得这个header并替换页面中meta中的token值
         }
-        return array($tokenName, $tokenKey, $tokenValue);
+        return [$tokenName, $tokenKey, $tokenValue];
     }
 }

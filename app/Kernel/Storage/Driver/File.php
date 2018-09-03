@@ -10,7 +10,7 @@ use App\Kernel\Storage;
 class File extends Storage
 {
 
-    private $contents = array();
+    private $contents = [];
 
     /**
      * 架构函数
@@ -122,10 +122,10 @@ class File extends Storage
             $this->contents[$filename] = file_get_contents($filename);
         }
         $content = $this->contents[$filename];
-        $info    = array(
+        $info    = [
             'mtime'   => filemtime($filename),
             'content' => $content,
-        );
+        ];
         return $info[$name];
     }
 }

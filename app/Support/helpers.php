@@ -7,7 +7,7 @@
  */
 function base_path($path = '')
 {
-    return dirname(__DIR__) . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+    return dirname(dirname(__DIR__)) . ($path ? DIRECTORY_SEPARATOR . $path : $path);
 }
 
 /**
@@ -140,4 +140,15 @@ function load_lang($files = [], $module = '')
     }
 
     $GLOBALS['_LANG'] = $_LANG;
+}
+
+/**
+ * 兼容 dump 方法
+ * @param $var
+ */
+function dd($var)
+{
+    echo '<pre>';
+    print_r($var);
+    die('</pre>');
 }

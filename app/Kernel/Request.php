@@ -292,7 +292,7 @@ class Request
 
         $ua = strtolower($ua);
 
-        $spiders = array('bot', 'crawl', 'spider', 'slurp', 'sohu-search', 'lycos', 'robozilla');
+        $spiders = ['bot', 'crawl', 'spider', 'slurp', 'sohu-search', 'lycos', 'robozilla'];
 
         foreach ($spiders as $spider) {
             if (false !== strpos($ua, $spider)) return true;
@@ -319,7 +319,7 @@ class Request
      */
     public static function clientIp($default = '0.0.0.0')
     {
-        $keys = array('HTTP_X_FORWARDED_FOR', 'HTTP_CLIENT_IP', 'REMOTE_ADDR');
+        $keys = ['HTTP_X_FORWARDED_FOR', 'HTTP_CLIENT_IP', 'REMOTE_ADDR'];
 
         foreach ($keys as $key) {
             if (empty($_SERVER[$key])) continue;

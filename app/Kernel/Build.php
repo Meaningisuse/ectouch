@@ -53,7 +53,7 @@ class [MODEL]Model extends Model
         }
 
         if (is_writeable(APP_PATH)) {
-            $dirs = array(
+            $dirs = [
                 COMMON_PATH,
                 COMMON_PATH . 'Common/',
                 CONF_PATH,
@@ -70,7 +70,7 @@ class [MODEL]Model extends Model
                 LOG_PATH . $module . '/',
                 TEMP_PATH,
                 DATA_PATH,
-            );
+            ];
             foreach ($dirs as $dir) {
                 if (!is_dir($dir)) {
                     mkdir($dir, 0755, true);
@@ -131,13 +131,13 @@ class [MODEL]Model extends Model
     public static function buildController($module, $controllers)
     {
         $list  = is_array($controllers) ? $controllers : explode(',', $controllers);
-        $hello = '$this->show(\'<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px } a,a:hover{color:blue;}</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>版本 V{$Think.version}</div><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_55e75dfae343f5a1"></thinkad><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>\',\'utf-8\');';
+        $hello = '$this->show(\'Hello ECTouch\');';
 
         foreach ($list as $controller) {
             $hello = C('DEFAULT_CONTROLLER') == $controller ? $hello : '';
             $file  = APP_PATH . $module . '/Controller/' . $controller . 'Controller' . EXT;
             if (!is_file($file)) {
-                $content = str_replace(array('[MODULE]', '[CONTROLLER]', '[CONTENT]'), array($module, $controller, $hello), self::$controller);
+                $content = str_replace(['[MODULE]', '[CONTROLLER]', '[CONTENT]'], [$module, $controller, $hello], self::$controller);
                 $dir = dirname($file);
                 if (!is_dir($dir)) {
                     mkdir($dir, 0755, true);
@@ -154,7 +154,7 @@ class [MODEL]Model extends Model
         foreach ($list as $model) {
             $file = APP_PATH . $module . '/Model/' . $model . 'Model' . EXT;
             if (!is_file($file)) {
-                $content = str_replace(array('[MODULE]', '[MODEL]'), array($module, $model), self::$model);
+                $content = str_replace(['[MODULE]', '[MODEL]'], [$module, $model], self::$model);
                 $dir = dirname($file);
                 if (!is_dir($dir)) {
                     mkdir($dir, 0755, true);
@@ -165,7 +165,7 @@ class [MODEL]Model extends Model
     }
 
     // 生成目录安全文件
-    public static function buildDirSecure($dirs = array())
+    public static function buildDirSecure($dirs = [])
     {
         // 目录安全写入（默认开启）
         defined('BUILD_DIR_SECURE') or define('BUILD_DIR_SECURE', false);

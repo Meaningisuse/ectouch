@@ -62,7 +62,7 @@ function storage($name, $value = '', $path = DATA_PATH)
 /**
  * @param $msg
  * @param int $code
- * @throws \Think\Exception
+ * @throws \App\Kernel\Exception
  */
 function exception($msg, $code = 0)
 {
@@ -93,7 +93,7 @@ function view($template = '', $layer = '')
  * @param $name
  * @param string $layer
  * @param int $level
- * @return false|\Think\Controller
+ * @return \App\Kernel\Controller|false
  */
 function action($name, $layer = '', $level = 0)
 {
@@ -101,6 +101,7 @@ function action($name, $layer = '', $level = 0)
 }
 
 /**
+ * 远程调用
  * @param $url
  * @param array $vars
  * @param string $layer
@@ -112,6 +113,7 @@ function rpc($url, $vars = array(), $layer = '')
 }
 
 /**
+ * 行为函数
  * @param $name
  * @param string $tag
  * @param null $params
@@ -138,7 +140,7 @@ function url($url = '', $vars = '', $suffix = true, $domain = false)
  * 兼容 D 方法
  * @param string $name
  * @param string $layer
- * @return \Think\Model
+ * @return \App\Kernel\Model
  */
 function model($name = '', $layer = '')
 {
@@ -150,22 +152,9 @@ function model($name = '', $layer = '')
  * @param string $name
  * @param string $tablePrefix
  * @param string $connection
- * @return \Think\Model
+ * @return \App\Kernel\Model
  */
 function dao($name = '', $tablePrefix = '', $connection = '')
 {
     return M($name, $tablePrefix, $connection);
-}
-
-/**
- * 兼容 dump 方法
- * @param $var
- * @param bool $echo
- * @param null $label
- * @param bool $strict
- * @return string|void
- */
-function dd($var, $echo = true, $label = null, $strict = true)
-{
-    return dump($var, $echo, $label, $strict);
 }

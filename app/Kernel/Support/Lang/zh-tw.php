@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     /* 核心語言變數 */
     '_MODULE_NOT_EXIST_'     => '無法載入模組',
     '_CONTROLLER_NOT_EXIST_' => '無法載入控制器',
@@ -36,4 +36,4 @@ return array(
     '_NOT_ALLOW_PHP_'        => '模板禁用PHP代碼',
     '_PARAM_ERROR_'          => '參數錯誤或者未定義',
     '_ERROR_QUERY_EXPRESS_'  => '錯誤的查詢條件',
-);
+];

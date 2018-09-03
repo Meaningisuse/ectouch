@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     /* 核心语言变量 */
     '_MODULE_NOT_EXIST_'     => '无法加载模块',
     '_CONTROLLER_NOT_EXIST_' => '无法加载控制器',
@@ -36,4 +36,4 @@ return array(
     '_NOT_ALLOW_PHP_'        => '模板禁用PHP代码',
     '_PARAM_ERROR_'          => '参数错误或者未定义',
     '_ERROR_QUERY_EXPRESS_'  => '错误的查询条件',
-);
+];

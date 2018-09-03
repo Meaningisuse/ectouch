@@ -8,22 +8,22 @@ class Upload
      * 默认上传配置
      * @var array
      */
-    private $config = array(
-        'mimes'        => array(), //允许上传的文件MiMe类型
+    private $config = [
+        'mimes'        => [], //允许上传的文件MiMe类型
         'maxSize'      => 0, //上传的文件大小限制 (0-不做限制)
-        'exts'         => array(), //允许上传的文件后缀
+        'exts'         => [], //允许上传的文件后缀
         'autoSub'      => true, //自动子目录保存文件
-        'subName'      => array('date', 'Y-m-d'), //子目录创建方式，[0]-函数名，[1]-参数，多个参数使用数组
+        'subName'      => ['date', 'Y-m-d'], //子目录创建方式，[0]-函数名，[1]-参数，多个参数使用数组
         'rootPath'     => './Uploads/', //保存根路径
         'savePath'     => '', //保存路径
-        'saveName'     => array('uniqid', ''), //上传文件命名规则，[0]-函数名，[1]-参数，多个参数使用数组
+        'saveName'     => ['uniqid', ''], //上传文件命名规则，[0]-函数名，[1]-参数，多个参数使用数组
         'saveExt'      => '', //文件保存后缀，空则使用原后缀
         'replace'      => false, //存在同名是否覆盖
         'hash'         => true, //是否生成hash编码
         'callback'     => false, //检测文件是否存在回调，如果存在返回文件信息数组
         'driver'       => '', // 文件上传驱动
-        'driverConfig' => array(), // 上传驱动配置
-    );
+        'driverConfig' => [], // 上传驱动配置
+    ];
 
     /**
      * 上传错误信息
@@ -42,7 +42,7 @@ class Upload
      * @param array  $config 配置
      * @param string $driver 要使用的上传驱动 LOCAL-本地上传驱动，FTP-FTP上传驱动
      */
-    public function __construct($config = array(), $driver = '', $driverConfig = null)
+    public function __construct($config = [], $driver = '', $driverConfig = null)
     {
         /* 获取配置 */
         $this->config = array_merge($this->config, $config);
@@ -108,7 +108,7 @@ class Upload
      */
     public function uploadOne($file)
     {
-        $info = $this->upload(array($file));
+        $info = $this->upload([$file]);
         return $info ? $info[0] : $info;
     }
 
@@ -139,7 +139,7 @@ class Upload
         }
 
         /* 逐个检测并上传文件 */
-        $info = array();
+        $info = [];
         if (function_exists('finfo_open')) {
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
         }
@@ -199,7 +199,7 @@ class Upload
 
             /* 对图像文件进行严格检测 */
             $ext = strtolower($file['ext']);
-            if (in_array($ext, array('gif', 'jpg', 'jpeg', 'bmp', 'png', 'swf'))) {
+            if (in_array($ext, ['gif', 'jpg', 'jpeg', 'bmp', 'png', 'swf'])) {
                 $imginfo = getimagesize($file['tmp_name']);
                 if (empty($imginfo) || ('gif' == $ext && empty($imginfo['bits']))) {
                     $this->error = '非法图像文件！';
@@ -229,7 +229,7 @@ class Upload
      */
     private function dealFiles($files)
     {
-        $fileArray = array();
+        $fileArray = [];
         $n         = 0;
         foreach ($files as $key => $file) {
             if (is_array($file['name'])) {

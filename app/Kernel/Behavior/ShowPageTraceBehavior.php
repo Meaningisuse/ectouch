@@ -7,7 +7,7 @@ namespace App\Kernel\Behavior;
  */
 class ShowPageTraceBehavior
 {
-    protected $tracePageTabs = array('BASE' => '基本', 'FILE' => '文件', 'INFO' => '流程', 'ERR|NOTIC' => '错误', 'SQL' => 'SQL', 'DEBUG' => '调试');
+    protected $tracePageTabs = ['BASE' => '基本', 'FILE' => '文件', 'INFO' => '流程', 'ERR|NOTIC' => '错误', 'SQL' => 'SQL', 'DEBUG' => '调试'];
 
     // 行为扩展的执行入口必须是run
     public function run(&$params)
@@ -25,12 +25,12 @@ class ShowPageTraceBehavior
     {
         // 系统默认显示信息
         $files = get_included_files();
-        $info  = array();
+        $info  = [];
         foreach ($files as $key => $file) {
             $info[] = $file . ' ( ' . number_format(filesize($file) / 1024, 2) . ' KB )';
         }
-        $trace = array();
-        $base  = array(
+        $trace = [];
+        $base  = [
             '请求信息' => date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']) . ' ' . $_SERVER['SERVER_PROTOCOL'] . ' ' . $_SERVER['REQUEST_METHOD'] . ' : ' . __SELF__,
             '运行时间' => $this->showTime(),
             '吞吐率'    => number_format(1 / G('beginTime', 'viewEndTime'), 2) . 'req/s',
@@ -40,7 +40,7 @@ class ShowPageTraceBehavior
             '缓存信息' => N('cache_read') . ' gets ' . N('cache_write') . ' writes ',
             '配置加载' => count(C()),
             '会话信息' => 'SESSION_ID=' . session_id(),
-        );
+        ];
         // 读取应用定义的Trace文件
         $traceFile = COMMON_PATH . 'Config/trace.php';
         if (is_file($traceFile)) {
@@ -61,9 +61,9 @@ class ShowPageTraceBehavior
                     if (strpos($name, '|')) {
 // 多组信息
                         $names  = explode('|', $name);
-                        $result = array();
+                        $result = [];
                         foreach ($names as $name) {
-                            $result += isset($debug[$name]) ? $debug[$name] : array();
+                            $result += isset($debug[$name]) ? $debug[$name] : [];
                         }
                         $trace[$title] = $result;
                     } else {
@@ -75,7 +75,7 @@ class ShowPageTraceBehavior
             // 保存页面Trace日志
             if (is_array($save)) { // 选择选项卡保存
                 $tabs  = C('TRACE_PAGE_TABS', null, $this->tracePageTabs);
-                $array = array();
+                $array = [];
                 foreach ($save as $tab) {
                     $array[] = $tabs[$tab];
                 }

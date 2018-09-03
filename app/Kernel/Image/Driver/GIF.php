@@ -8,13 +8,13 @@ class GIF
      * GIF帧列表
      * @var array
      */
-    private $frames = array();
+    private $frames = [];
 
     /**
      * 每帧等待时间列表
      * @var array
      */
-    private $delays = array();
+    private $delays = [];
 
     /**
      * 构造方法，用于解码GIF图片
@@ -105,18 +105,18 @@ class GIFEncoder
     private $GIF = "GIF89a"; /* GIF header 6 bytes    */
     private $VER = "GIFEncoder V2.05"; /* Encoder version        */
 
-    private $BUF = array();
+    private $BUF = [];
     private $LOP = 0;
     private $DIS = 2;
     private $COL = -1;
     private $IMG = -1;
 
-    private $ERR = array(
+    private $ERR = [
         'ERR00' => "Does not supported function for only one image!",
         'ERR01' => "Source is not a GIF image!",
         'ERR02' => "Unintelligible flag ",
         'ERR03' => "Does not make animation from animated GIF source",
-    );
+    ];
 
     /*
     :::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -332,15 +332,15 @@ class GIFEncoder
 
 class GIFDecoder
 {
-    private $GIF_buffer = array();
-    private $GIF_arrays = array();
-    private $GIF_delays = array();
+    private $GIF_buffer = [];
+    private $GIF_arrays = [];
+    private $GIF_delays = [];
     private $GIF_stream = "";
     private $GIF_string = "";
     private $GIF_bfseek = 0;
 
-    private $GIF_screen = array();
-    private $GIF_global = array();
+    private $GIF_screen = [];
+    private $GIF_global = [];
     private $GIF_sorted;
     private $GIF_colorS;
     private $GIF_colorC;
@@ -447,7 +447,7 @@ class GIFDecoder
      */
     private function GIFReadDescriptor()
     {
-        $GIF_screen = array();
+        $GIF_screen = [];
 
         $this->GIFGetByte(9);
         $GIF_screen = $this->GIF_buffer;
@@ -521,7 +521,7 @@ class GIFDecoder
      */
     private function GIFGetByte($len)
     {
-        $this->GIF_buffer = array();
+        $this->GIF_buffer = [];
 
         for ($i = 0; $i < $len; $i++) {
             if ($this->GIF_bfseek > strlen($this->GIF_stream)) {

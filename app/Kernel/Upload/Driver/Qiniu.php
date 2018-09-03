@@ -18,13 +18,13 @@ class Qiniu
      */
     private $error = '';
 
-    private $config = array(
+    private $config = [
         'secretKey' => '', //七牛服务器
         'accessKey' => '', //七牛用户
         'domain'    => '', //七牛密码
         'bucket'    => '', //空间名称
         'timeout'   => 300, //超时时间
-    );
+    ];
 
     /**
      * 构造函数，用于设置上传根路径
@@ -78,12 +78,12 @@ class Qiniu
     {
         $file['name'] = $file['savepath'] . $file['savename'];
         $key          = str_replace('/', '_', $file['name']);
-        $upfile       = array(
+        $upfile       = [
             'name'     => 'file',
             'fileName' => $key,
             'fileBody' => file_get_contents($file['tmp_name']),
-        );
-        $config      = array();
+        ];
+        $config      = [];
         $result      = $this->qiniu->upload($config, $upfile);
         $url         = $this->qiniu->downlink($key);
         $file['url'] = $url;

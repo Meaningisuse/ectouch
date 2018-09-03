@@ -10,16 +10,16 @@ use App\Kernel\Template\TagLib;
 class Html extends TagLib
 {
     // 标签定义
-    protected $tags = array(
+    protected $tags = [
         // 标签定义： attr 属性列表 close 是否闭合（0 或者1 默认1） alias 标签别名 level 嵌套层次
-        'editor'   => array('attr' => 'id,name,style,width,height,type', 'close' => 1),
-        'select'   => array('attr' => 'name,options,values,output,multiple,id,size,first,change,selected,dblclick', 'close' => 0),
-        'grid'     => array('attr' => 'id,pk,style,action,actionlist,show,datasource', 'close' => 0),
-        'list'     => array('attr' => 'id,pk,style,action,actionlist,show,datasource,checkbox', 'close' => 0),
-        'imagebtn' => array('attr' => 'id,name,value,type,style,click', 'close' => 0),
-        'checkbox' => array('attr' => 'name,checkboxes,checked,separator', 'close' => 0),
-        'radio'    => array('attr' => 'name,radios,checked,separator', 'close' => 0),
-    );
+        'editor'   => ['attr' => 'id,name,style,width,height,type', 'close' => 1],
+        'select'   => ['attr' => 'name,options,values,output,multiple,id,size,first,change,selected,dblclick', 'close' => 0],
+        'grid'     => ['attr' => 'id,pk,style,action,actionlist,show,datasource', 'close' => 0],
+        'list'     => ['attr' => 'id,pk,style,action,actionlist,show,datasource,checkbox', 'close' => 0],
+        'imagebtn' => ['attr' => 'id,name,value,type,style,click', 'close' => 0],
+        'checkbox' => ['attr' => 'name,checkboxes,checked,separator', 'close' => 0],
+        'radio'    => ['attr' => 'name,radios,checked,separator', 'close' => 0],
+    ];
 
     /**
      * editor标签解析 插入可视化编辑器
@@ -259,12 +259,12 @@ class Html extends TagLib
         }
 
         //显示开始
-        $parseStr = "<!-- Think 系统列表组件开始 -->\n";
+        $parseStr = "<!-- 系统列表组件开始 -->\n";
         $parseStr .= '<table id="' . $id . '" class="' . $style . '" cellpadding=0 cellspacing=0 >';
         $parseStr .= '<tr><td height="5" colspan="' . $colNum . '" class="topTd" ></td></tr>';
         $parseStr .= '<tr class="row" >';
         //列表需要显示的字段
-        $fields = array();
+        $fields = [];
         foreach ($show as $val) {
             $fields[] = explode(':', $val);
         }
@@ -365,7 +365,7 @@ class Html extends TagLib
             }
         }
         $parseStr .= '</tr></volist><tr><td height="5" colspan="' . $colNum . '" class="bottomTd"></td></tr></table>';
-        $parseStr .= "\n<!-- Think 系统列表组件结束 -->\n";
+        $parseStr .= "\n<!-- 系统列表组件结束 -->\n";
         return $parseStr;
     }
 
@@ -418,12 +418,12 @@ class Html extends TagLib
         }
 
         //显示开始
-        $parseStr = "<!-- Think 系统列表组件开始 -->\n";
+        $parseStr = "<!-- 系统列表组件开始 -->\n";
         $parseStr .= '<table id="' . $id . '" class="' . $style . '" cellpadding=0 cellspacing=0 >';
         $parseStr .= '<tr><td height="5" colspan="' . $colNum . '" class="topTd" ></td></tr>';
         $parseStr .= '<tr class="row" >';
         //列表需要显示的字段
-        $fields = array();
+        $fields = [];
         foreach ($show as $val) {
             $fields[] = explode(':', $val);
         }
@@ -541,7 +541,7 @@ class Html extends TagLib
             }
         }
         $parseStr .= '</tr></volist><tr><td height="5" colspan="' . $colNum . '" class="bottomTd"></td></tr></table>';
-        $parseStr .= "\n<!-- Think 系统列表组件结束 -->\n";
+        $parseStr .= "\n<!-- 系统列表组件结束 -->\n";
         return $parseStr;
     }
 }

@@ -31,7 +31,7 @@ class Validator
      *
      * @var array
      */
-    public $errors = array();
+    public $errors = [];
 
     /**
      * Check if is not empty
@@ -259,7 +259,7 @@ class Validator
     public function check($data, $rules, $ignorNotExists = false)
     {
         foreach ($rules as $key => $rule) {
-            $rule += array('required' => false, 'msg' => 'failed');
+            $rule += ['required' => false, 'msg' => 'failed'];
             // deal with not existed
             if ((!isset($data[$key])) && $rule['required'] && (!$ignorNotExists)) {
                 $this->errors[$key] = $rule['msg'];

@@ -28,7 +28,7 @@ class BuildLiteBehavior
         // 读取编译列表文件
         $filelist = is_file(CONF_PATH . 'lite.php') ?
         include CONF_PATH . 'lite.php' :
-        array(
+        [
             SUPPORT_PATH . 'functions.php',
             COMMON_PATH . 'Common/function.php',
             KERNEL_PATH . 'Kernel' . EXT,
@@ -45,7 +45,7 @@ class BuildLiteBehavior
             KERNEL_PATH . 'Exception' . EXT,
             KERNEL_PATH . 'Behavior/ParseTemplateBehavior' . EXT,
             KERNEL_PATH . 'Behavior/ContentReplaceBehavior' . EXT,
-        );
+        ];
 
         // 编译文件
         foreach ($filelist as $file) {
@@ -54,7 +54,7 @@ class BuildLiteBehavior
             }
         }
 
-        // 处理Think类的start方法
+        // 处理start方法
         $content = preg_replace('/\$runtimefile = RUNTIME_PATH(.+?)(if\(APP_STATUS)/', '\2', $content, 1);
         $content .= "\nnamespace { App\Kernel\Kernel::addMap(" . var_export(\App\Kernel\Kernel::getMap(), true) . ");";
         $content .= "\nL(" . var_export(L(), true) . ");\nC(" . var_export(C(), true) . ');App\Kernel\Hook::import(' . var_export(\App\Kernel\Hook::get(), true) . ');App\Kernel\Kernel::start();}';

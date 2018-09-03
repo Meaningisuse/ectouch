@@ -24,7 +24,7 @@ class ShowRuntimeBehavior
 
             }
         } else {
-            $content = str_replace(array('{__NORUNTIME__}', '{__RUNTIME__}'), '', $content);
+            $content = str_replace(['{__NORUNTIME__}', '{__RUNTIME__}'], '', $content);
         }
     }
 

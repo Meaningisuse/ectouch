@@ -87,7 +87,7 @@ class CheckActionRouteBehavior
     // 地址格式 操作?参数1=值1&参数2=值2...
     private function parseUrl($url)
     {
-        $var = array();
+        $var = [];
         if (false !== strpos($url, '?')) {
             // 操作?参数1=值1&参数2=值2...
             $info = parse_url($url);
@@ -117,7 +117,7 @@ class CheckActionRouteBehavior
         // 获取URL地址中的参数
         $paths = explode('/', $regx);
         // 解析路由规则
-        $matches = array();
+        $matches = [];
         $rule    = explode('/', $rule);
         foreach ($rule as $item) {
             if (0 === strpos($item, ':')) {

@@ -13,14 +13,14 @@ class ArrayList implements \IteratorAggregate
      * @var array
      * @access protected
      */
-    protected $_elements = array();
+    protected $_elements = [];
 
     /**
      * 架构函数
      * @access public
      * @param string $elements  初始化数组元素
      */
-    public function __construct($elements = array())
+    public function __construct($elements = [])
     {
         if (!empty($elements)) {
             $this->_elements = $elements;
@@ -82,7 +82,7 @@ class ArrayList implements \IteratorAggregate
      */
     public function clear()
     {
-        $this->_elements = array();
+        $this->_elements = [];
     }
 
     /**

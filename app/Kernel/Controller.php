@@ -19,7 +19,7 @@ abstract class Controller
      * @var config
      * @access protected
      */
-    protected $config = array();
+    protected $config = [];
 
     /**
      * 架构函数 取得模板对象实例
@@ -255,7 +255,7 @@ abstract class Controller
      * @param string $msg 跳转提示信息
      * @return void
      */
-    protected function redirect($url, $params = array(), $delay = 0, $msg = '')
+    protected function redirect($url, $params = [], $delay = 0, $msg = '')
     {
         $url = U($url, $params);
         redirect($url, $delay, $msg);
@@ -276,7 +276,7 @@ abstract class Controller
     {
         if (true === $ajax || IS_AJAX) {
             // AJAX提交
-            $data           = is_array($ajax) ? $ajax : array();
+            $data           = is_array($ajax) ? $ajax : [];
             $data['info']   = $message;
             $data['status'] = $status;
             $data['url']    = $jumpUrl;

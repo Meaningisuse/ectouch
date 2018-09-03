@@ -172,7 +172,7 @@ class String
             //不足以生成一定数量的不重复数字
             return false;
         }
-        $rand = array();
+        $rand = [];
         for ($i = 0; $i < $number; $i++) {
             $rand[] = self::randString($length, $mode);
         }
@@ -198,7 +198,7 @@ class String
      */
     public static function buildFormatRand($format, $number = 1)
     {
-        $str    = array();
+        $str    = [];
         $length = strlen($format);
         for ($j = 0; $j < $number; $j++) {
             $strtemp = '';

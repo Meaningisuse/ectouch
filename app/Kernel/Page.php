@@ -16,14 +16,14 @@ class Page
     private $nowPage = 1;
 
     // 分页显示定制
-    private $config = array(
+    private $config = [
         'header' => '<span class="rows">共 %TOTAL_ROW% 条记录</span>',
         'prev'   => '<<',
         'next'   => '>>',
         'first'  => '1...',
         'last'   => '...%TOTAL_PAGE%',
         'theme'  => '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%',
-    );
+    ];
 
     /**
      * 架构函数
@@ -31,7 +31,7 @@ class Page
      * @param array $listRows  每页显示记录数
      * @param array $parameter  分页跳转的参数
      */
-    public function __construct($totalRows, $listRows = 20, $parameter = array())
+    public function __construct($totalRows, $listRows = 20, $parameter = [])
     {
         C('VAR_PAGE') && $this->p = C('VAR_PAGE'); //设置分页参数名称
         /* 基础设置 */
@@ -134,8 +134,8 @@ class Page
 
         //替换分页内容
         $page_str = str_replace(
-            array('%HEADER%', '%NOW_PAGE%', '%UP_PAGE%', '%DOWN_PAGE%', '%FIRST%', '%LINK_PAGE%', '%END%', '%TOTAL_ROW%', '%TOTAL_PAGE%'),
-            array($this->config['header'], $this->nowPage, $up_page, $down_page, $the_first, $link_page, $the_end, $this->totalRows, $this->totalPages),
+            ['%HEADER%', '%NOW_PAGE%', '%UP_PAGE%', '%DOWN_PAGE%', '%FIRST%', '%LINK_PAGE%', '%END%', '%TOTAL_ROW%', '%TOTAL_PAGE%'],
+            [$this->config['header'], $this->nowPage, $up_page, $down_page, $the_first, $link_page, $the_end, $this->totalRows, $this->totalPages],
             $this->config['theme']);
         return "<div>{$page_str}</div>";
     }

@@ -13,7 +13,7 @@ class Route
      * @param  array $paths path_info数组
      * @return boolean
      */
-    public static function check($paths = array())
+    public static function check($paths = [])
     {
         $rules = self::ruleCache();
         if (!empty($paths)) {
@@ -66,7 +66,7 @@ class Route
                         }
                         // 路由参数关联$matches
                         if ('/' == substr($rule, 0, 1)) {
-                            $rule_params = array();
+                            $rule_params = [];
                             foreach($route[1] as $param_key => $param)
                             {
                                 list($param_name,$param_value) = explode('=', $param,2);
@@ -139,7 +139,7 @@ class Route
         if (isset($_rules[1][$path])) {
             foreach ($_rules[1][$path] as $rule => $route) {
                 $args = array_pop($route);
-                $array = array();
+                $array = [];
                 if (isset($route[2])) {
                     // 路由参数检查
                     if (!self::checkOption($route[2], $suffix)) {
@@ -237,7 +237,7 @@ class Route
      */
     public static function ruleCache($update = false)
     {
-        $result = array();
+        $result = [];
         $module = defined('MODULE_NAME') ? '_' . MODULE_NAME : '';
         if (APP_DEBUG || $update || !$result = S('url_route_rules' . $module)) {
             // 静态路由
@@ -245,14 +245,14 @@ class Route
             if (!empty($result[0])) {
                 foreach ($result[0] as $rule => $route) {
                     if (!is_array($route)) {
-                        $route = array($route);
+                        $route = [$route];
                     }
                     if (strpos($route[0], '?')) {
                         // 分离参数
                         list($route[0], $args) = explode('?', $route[0], 2);
                         parse_str($args, $args);
                     } else {
-                        $args = array();
+                        $args = [];
                     }
                     if (!empty($route[1]) && is_string($route[1])) {
                         // 额外参数
@@ -267,13 +267,13 @@ class Route
             if (!empty($result[1])) {
                 foreach ($result[1] as $rule => $route) {
                     if (!is_array($route)) {
-                        $route = array($route);
+                        $route = [$route];
                     } elseif (is_numeric($rule)) {
                         // 支持 array('rule','adddress',...) 定义路由
                         $rule = array_shift($route);
                     }
                     if (!empty($route)) {
-                        $args = array();
+                        $args = [];
                         if (is_string($route[0])) {
                             if (0 === strpos($route[0], '/') || 0 === strpos($route[0], 'http')) {
                                 // 重定向
@@ -293,7 +293,7 @@ class Route
                                             if (0 === strpos($val, ':')) {
                                                 // 动态参数
                                                 $val = substr($val, 1);
-                                                $args[$key] = strpos($val, '|') ? explode('|', $val, 2) : array($val);
+                                                $args[$key] = strpos($val, '|') ? explode('|', $val, 2) : [$val];
                                             } else {
                                                 $route[1][$key] = $val;
                                             }
@@ -334,7 +334,7 @@ class Route
                                         $item = substr($item, 1);
                                     }
                                 }
-                                $args[$item] = array($type, $fun, $filter);
+                                $args[$item] = [$type, $fun, $filter];
                             }
                         }
                         $route[] = $args;
@@ -391,7 +391,7 @@ class Route
      */
     private static function checkUrlMatch(&$rule, &$args, &$regx)
     {
-        $params = array();
+        $params = [];
         if ('/' == substr($rule, 0, 1)) {
             // 正则路由
             if (preg_match($rule, $regx, $matches)) {
@@ -463,11 +463,11 @@ class Route
      * @param  array $var 传给闭包的参数
      * @return boolean
      */
-    private static function invoke($closure, $var = array())
+    private static function invoke($closure, $var = [])
     {
         $reflect = new \ReflectionFunction($closure);
         $params = $reflect->getParameters();
-        $args = array();
+        $args = [];
         foreach ($params as $i => $param) {
             $name = $param->getName();
             if (isset($var[$name])) {

@@ -22,13 +22,13 @@ class Ftp
      */
     private $link;
 
-    private $config = array(
+    private $config = [
         'host'     => '', //服务器
         'port'     => 21, //端口
         'timeout'  => 90, //超时时间
         'username' => '', //用户名
         'password' => '', //密码
-    );
+    ];
 
     /**
      * 构造函数，用于设置上传根路径

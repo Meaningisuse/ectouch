@@ -17,23 +17,23 @@ class Http
      *
      * @var array
      */
-    public $opts = array(
+    public $opts = [
         CURLOPT_TIMEOUT => 15,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
-    );
+    ];
 
-    protected $_maps = array(
+    protected $_maps = [
         'timeout' => CURLOPT_TIMEOUT,
         'ssl' => CURLOPT_SSL_VERIFYPEER,
         'headers' => CURLOPT_HTTPHEADER
-    );
+    ];
 
     public $rps;
 
-    public $info = array();
+    public $info = [];
 
-    public function __construct($url, $opts = array())
+    public function __construct($url, $opts = [])
     {
         $this->url = $url;
         foreach ($opts as $key => $val) {
@@ -45,13 +45,13 @@ class Http
         }
     }
 
-    public static function getUrl($url, $params = array(), $opts = array())
+    public static function getUrl($url, $params = [], $opts = [])
     {
         $http = new self($url, $opts);
         return $http->get($params);
     }
 
-    public static function postUrl($url, $data = array(), $opts = array())
+    public static function postUrl($url, $data = [], $opts = [])
     {
         $http = new self($url, $opts);
         return $http->post($data);
@@ -65,7 +65,7 @@ class Http
      * @param array $params
      * @return string
      */
-    public function get($params = array())
+    public function get($params = [])
     {
         $url = $this->url;
         if ($params) {
@@ -112,7 +112,7 @@ class Http
         $this->response = curl_exec($curl);
         $errno = curl_errno($curl);
         $error = curl_error($curl);
-        $this->info = curl_getinfo($curl) + array('errno' => $errno, 'error' => $error);
+        $this->info = curl_getinfo($curl) + ['errno' => $errno, 'error' => $error];
         if (0 !== $errno) {
             throw new Exception($error, $errno);
         }

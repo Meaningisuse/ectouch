@@ -20,7 +20,7 @@ class Cache
      * @var integer
      * @access protected
      */
-    protected $options = array();
+    protected $options = [];
 
     /**
      * 连接缓存
@@ -29,7 +29,7 @@ class Cache
      * @param array $options  配置数组
      * @return object
      */
-    public function connect($type = '', $options = array())
+    public function connect($type = '', $options = [])
     {
         if (empty($type)) {
             $type = C('DATA_CACHE_TYPE');
@@ -51,9 +51,9 @@ class Cache
      * @access public
      * @return mixed
      */
-    public static function getInstance($type = '', $options = array())
+    public static function getInstance($type = '', $options = [])
     {
-        static $_instance = array();
+        static $_instance = [];
         $guid             = $type . to_guid_string($options);
         if (!isset($_instance[$guid])) {
             $obj              = new Cache();
@@ -95,17 +95,17 @@ class Cache
     //
     protected function queue($key)
     {
-        static $_handler = array(
-            'file'   => array('F', 'F'),
-            'xcache' => array('xcache_get', 'xcache_set'),
-            'apc'    => array('apc_fetch', 'apc_store'),
-        );
+        static $_handler = [
+            'file'   => ['F', 'F'],
+            'xcache' => ['xcache_get', 'xcache_set'],
+            'apc'    => ['apc_fetch', 'apc_store'],
+        ];
         $queue      = isset($this->options['queue']) ? $this->options['queue'] : 'file';
         $fun        = isset($_handler[$queue]) ? $_handler[$queue] : $_handler['file'];
-        $queue_name = isset($this->options['queue_name']) ? $this->options['queue_name'] : 'think_queue';
+        $queue_name = isset($this->options['queue_name']) ? $this->options['queue_name'] : 'ectouch_queue';
         $value      = $fun[0]($queue_name);
         if (!$value) {
-            $value = array();
+            $value = [];
         }
         // 进列
         if (false === array_search($key, $value)) {
@@ -129,7 +129,7 @@ class Cache
     {
         //调用缓存类型自己的方法
         if (method_exists($this->handler, $method)) {
-            return call_user_func_array(array($this->handler, $method), $args);
+            return call_user_func_array([$this->handler, $method], $args);
         } else {
             E(__CLASS__ . ':' . $method . L('_METHOD_NOT_EXIST_'));
             return;

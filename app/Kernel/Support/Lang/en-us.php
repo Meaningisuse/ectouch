@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     /* core language package */
     '_MODULE_NOT_EXIST_'     => "Module can't be loaded",
     '_CONTROLLER_NOT_EXIST_' => "Controller can't be loaded",
@@ -36,4 +36,4 @@ return array(
     '_NOT_ALLOW_PHP_'        => 'PHP codes are not allowed in the template',
     '_PARAM_ERROR_'          => 'Parameter error or undefined',
     '_ERROR_QUERY_EXPRESS_'  => 'Query express error',
-);
+];

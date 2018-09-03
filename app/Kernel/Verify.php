@@ -4,7 +4,7 @@ namespace App\Kernel;
 
 class Verify
 {
-    protected $config = array(
+    protected $config = [
         'seKey'    => 'ECTouch.CN', // 验证码加密密钥
         'codeSet'  => '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY', // 验证码字符集合
         'expire'   => 1800, // 验证码过期时间（s）
@@ -18,9 +18,9 @@ class Verify
         'imageW'   => 0, // 验证码图片宽度
         'length'   => 5, // 验证码位数
         'fontttf'  => '', // 验证码字体，不设置随机获取
-        'bg'       => array(243, 251, 254), // 背景颜色
+        'bg'       => [243, 251, 254], // 背景颜色
         'reset'    => true, // 验证成功后是否重置
-    );
+    ];
 
     private $_image = null; // 验证码图片实例
     private $_color = null; // 验证码字体颜色
@@ -30,7 +30,7 @@ class Verify
      * @access public
      * @param  array $config 配置参数
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         $this->config = array_merge($this->config, $config);
     }
@@ -125,7 +125,7 @@ class Verify
 
         if (empty($this->fontttf)) {
             $dir  = dir($ttfPath);
-            $ttfs = array();
+            $ttfs = [];
             while (false !== ($file = $dir->read())) {
                 if ('.' != $file[0] && substr($file, -4) == '.ttf') {
                     $ttfs[] = $file;
@@ -150,7 +150,7 @@ class Verify
         }
 
         // 绘验证码
-        $code   = array(); // 验证码
+        $code   = []; // 验证码
         $codeNX = 0; // 验证码第N个字符的左边距
         if ($this->useZh) {
             // 中文验证码
@@ -169,7 +169,7 @@ class Verify
         // 保存验证码
         $key                   = $this->authcode($this->seKey);
         $code                  = $this->authcode(strtoupper(implode('', $code)));
-        $secode                = array();
+        $secode                = [];
         $secode['verify_code'] = $code; // 把校验码保存到session
         $secode['verify_time'] = NOW_TIME; // 验证码创建时间
         session($key . $id, $secode);
@@ -268,7 +268,7 @@ class Verify
         $path = dirname(__FILE__) . '/Verify/bgs/';
         $dir  = dir($path);
 
-        $bgs = array();
+        $bgs = [];
         while (false !== ($file = $dir->read())) {
             if ('.' != $file[0] && substr($file, -4) == '.jpg') {
                 $bgs[] = $path . $file;

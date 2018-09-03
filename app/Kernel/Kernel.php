@@ -9,10 +9,10 @@ class Kernel
 {
 
     // 类映射
-    private static $_map = array();
+    private static $_map = [];
 
     // 实例化对象
-    private static $_instance = array();
+    private static $_instance = [];
 
     /**
      * 应用程序初始化
@@ -155,7 +155,7 @@ class Kernel
             if (class_exists($class)) {
                 $o = new $class();
                 if (!empty($method) && method_exists($o, $method)) {
-                    self::$_instance[$identify] = call_user_func(array(&$o, $method));
+                    self::$_instance[$identify] = call_user_func([&$o, $method]);
                 } else {
                     self::$_instance[$identify] = $o;
                 }
@@ -175,7 +175,7 @@ class Kernel
      */
     public static function appException($e)
     {
-        $error            = array();
+        $error            = [];
         $error['message'] = $e->getMessage();
         $trace            = $e->getTrace();
         if ('E' == $trace[0]['function']) {
@@ -250,7 +250,7 @@ class Kernel
      */
     public static function halt($error)
     {
-        $e = array();
+        $e = [];
         if (APP_DEBUG || IS_CLI) {
             //调试模式下输出错误信息
             if (!is_array($error)) {
@@ -278,7 +278,7 @@ class Kernel
             }
         }
         // 包含异常页面模板
-        $exceptionFile = C('TMPL_EXCEPTION_FILE', null, KERNEL_PATH . 'View/think_exception.tpl');
+        $exceptionFile = C('TMPL_EXCEPTION_FILE', null, KERNEL_PATH . 'View/exception.tpl');
         include $exceptionFile;
         exit;
     }
@@ -291,10 +291,10 @@ class Kernel
      * @param boolean $record 是否记录日志
      * @return void|array
      */
-    public static function trace($value = '[think]', $label = '', $level = 'DEBUG', $record = false)
+    public static function trace($value = '[ectouch]', $label = '', $level = 'DEBUG', $record = false)
     {
-        static $_trace = array();
-        if ('[think]' === $value) {
+        static $_trace = [];
+        if ('[ectouch]' === $value) {
             // 获取trace信息
             return $_trace;
         } else {
@@ -305,7 +305,7 @@ class Kernel
                 Log::record($info, $level, $record);
             } else {
                 if (!isset($_trace[$level]) || count($_trace[$level]) > C('TRACE_MAX_RECORD')) {
-                    $_trace[$level] = array();
+                    $_trace[$level] = [];
                 }
                 $_trace[$level][] = $info;
             }

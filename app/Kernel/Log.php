@@ -20,13 +20,13 @@ class Log
     const SQL    = 'SQL'; // SQL：SQL语句 注意只在调试模式开启时有效
 
     // 日志信息
-    protected static $log = array();
+    protected static $log = [];
 
     // 日志存储
     protected static $storage = null;
 
     // 日志初始化
-    public static function init($config = array())
+    public static function init($config = [])
     {
         $type  = isset($config['type']) ? $config['type'] : 'File';
         $class = strpos($type, '\\') ? $type : 'App\\Kernel\\Log\\Driver\\' . ucwords(strtolower($type));
@@ -75,7 +75,7 @@ class Log
         $message = implode('', self::$log);
         self::$storage->write($message, $destination);
         // 保存后清空日志缓存
-        self::$log = array();
+        self::$log = [];
     }
 
     /**

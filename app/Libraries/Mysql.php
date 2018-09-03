@@ -13,9 +13,7 @@ class Mysql extends Model
 {
     /**
      * @param string $sql
-     * @return int|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
+     * @return false|int|mixed
      */
     public function query($sql)
     {
@@ -47,8 +45,6 @@ class Mysql extends Model
 
     /**
      * @return bool|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
      */
     public function version()
     {
@@ -57,8 +53,6 @@ class Mysql extends Model
 
     /**
      * @return bool|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
      */
     public function insert_id()
     {
@@ -69,9 +63,7 @@ class Mysql extends Model
      * @param $sql
      * @param $num
      * @param int $start
-     * @return int|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
+     * @return false|int|mixed
      */
     public function selectLimit($sql, $num, $start = 0)
     {
@@ -88,8 +80,6 @@ class Mysql extends Model
      * @param $sql
      * @param bool $limited
      * @return bool|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
      */
     public function getOne($sql, $limited = false)
     {
@@ -108,8 +98,6 @@ class Mysql extends Model
     /**
      * @param $sql
      * @return bool|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
      */
     public function getOneCached($sql)
     {
@@ -128,9 +116,7 @@ class Mysql extends Model
 
     /**
      * @param $sql
-     * @return int|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
+     * @return false|int|mixed
      */
     public function getAll($sql)
     {
@@ -139,9 +125,7 @@ class Mysql extends Model
 
     /**
      * @param $sql
-     * @return int|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
+     * @return false|int|mixed
      */
     public function getAllCached($sql)
     {
@@ -161,8 +145,6 @@ class Mysql extends Model
      * @param $sql
      * @param bool $limited
      * @return array|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
      */
     public function getRow($sql, $limited = false)
     {
@@ -181,8 +163,6 @@ class Mysql extends Model
     /**
      * @param $sql
      * @return array|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
      */
     public function getRowCached($sql)
     {
@@ -203,8 +183,6 @@ class Mysql extends Model
     /**
      * @param $sql
      * @return array
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
      */
     public function getCol($sql)
     {
@@ -224,8 +202,6 @@ class Mysql extends Model
     /**
      * @param $sql
      * @return array|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
      */
     public function getColCached($sql)
     {
@@ -246,9 +222,7 @@ class Mysql extends Model
      * @param $field_values
      * @param string $mode
      * @param string $where
-     * @return bool|int|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
+     * @return bool|false|int|mixed
      */
     public function autoExecute($table, $field_values, $mode = 'INSERT', $where = '')
     {
@@ -291,9 +265,7 @@ class Mysql extends Model
      * @param $table
      * @param $field_values
      * @param $update_values
-     * @return bool|int|mixed
-     * @throws \think\db\exception\BindParamException
-     * @throws \think\exception\PDOException
+     * @return bool|false|int|mixed
      */
     public function autoReplace($table, $field_values, $update_values)
     {

@@ -4,7 +4,7 @@ namespace App\Kernel\Session\Driver;
 
 /**
  * 数据库方式Session驱动
- *    CREATE TABLE think_session (
+ *    CREATE TABLE pre_session (
  *      session_id varchar(255) NOT NULL,
  *      session_expire int(11) NOT NULL,
  *      session_data blob,
@@ -27,7 +27,7 @@ class Mysqli
     /**
      * 数据库句柄
      */
-    protected $hander = array();
+    protected $hander = [];
 
     /**
      * 打开Session

@@ -9,10 +9,10 @@ abstract class Driver
     // PDO操作实例
     protected $PDOStatement = null;
     // 当前操作所属的模型名
-    protected $model = '_think_';
+    protected $model = '_ectouch_';
     // 当前SQL指令
     protected $queryStr = '';
-    protected $modelSql = array();
+    protected $modelSql = [];
     // 最后插入ID
     protected $lastInsID = null;
     // 返回或者影响记录数
@@ -24,11 +24,11 @@ abstract class Driver
     // 错误信息
     protected $error = '';
     // 数据库连接ID 支持多个连接
-    protected $linkID = array();
+    protected $linkID = [];
     // 当前连接ID
     protected $_linkID = null;
     // 数据库连接参数配置
-    protected $config = array(
+    protected $config = [
         'type'           => '', // 数据库类型
         'hostname'       => '127.0.0.1', // 服务器地址
         'database'       => '', // 数据库名
@@ -36,7 +36,7 @@ abstract class Driver
         'password'       => '', // 密码
         'hostport'       => '', // 端口
         'dsn'            => '', //
-        'params'         => array(), // 数据库连接参数
+        'params'         => [], // 数据库连接参数
         'charset'        => 'utf8', // 数据库编码默认采用utf8
         'prefix'         => '', // 数据库表前缀
         'debug'          => false, // 数据库调试模式
@@ -45,9 +45,9 @@ abstract class Driver
         'master_num'     => 1, // 读写分离后 主服务器数量
         'slave_no'       => '', // 指定从服务器序号
         'db_like_fields' => '',
-    );
+    ];
     // 数据库表达式
-    protected $exp = array('eq' => '=', 'neq' => '<>', 'gt' => '>', 'egt' => '>=', 'lt' => '<', 'elt' => '<=', 'notlike' => 'NOT LIKE', 'like' => 'LIKE', 'in' => 'IN', 'notin' => 'NOT IN', 'not in' => 'NOT IN', 'between' => 'BETWEEN', 'not between' => 'NOT BETWEEN', 'notbetween' => 'NOT BETWEEN');
+    protected $exp = ['eq' => '=', 'neq' => '<>', 'gt' => '>', 'egt' => '>=', 'lt' => '<', 'elt' => '<=', 'notlike' => 'NOT LIKE', 'like' => 'LIKE', 'in' => 'IN', 'notin' => 'NOT IN', 'not in' => 'NOT IN', 'between' => 'BETWEEN', 'not between' => 'NOT BETWEEN', 'notbetween' => 'NOT BETWEEN'];
     // 查询表达式
     protected $selectSql = 'SELECT%DISTINCT% %FIELD% FROM %TABLE%%FORCE%%JOIN%%WHERE%%GROUP%%HAVING%%ORDER%%LIMIT% %UNION%%LOCK%%COMMENT%';
     // 查询次数
@@ -55,13 +55,13 @@ abstract class Driver
     // 执行次数
     protected $executeTimes = 0;
     // PDO连接参数
-    protected $options = array(
+    protected $options = [
         PDO::ATTR_CASE              => PDO::CASE_LOWER,
         PDO::ATTR_ERRMODE           => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_ORACLE_NULLS      => PDO::NULL_NATURAL,
         PDO::ATTR_STRINGIFY_FETCHES => false,
-    );
-    protected $bind = array(); // 参数绑定
+    ];
+    protected $bind = []; // 参数绑定
 
     /**
      * 架构函数 读取数据库配置信息
@@ -172,7 +172,7 @@ abstract class Driver
                 $this->PDOStatement->bindValue($key, $val);
             }
         }
-        $this->bind = array();
+        $this->bind = [];
         try {
             $result = $this->PDOStatement->execute();
             // 调试结束
@@ -232,7 +232,7 @@ abstract class Driver
                 $this->PDOStatement->bindValue($key, $val);
             }
         }
-        $this->bind = array();
+        $this->bind = [];
         try {
             $result = $this->PDOStatement->execute();
             // 调试结束
@@ -460,7 +460,7 @@ abstract class Driver
         } elseif (isset($value[0]) && is_string($value[0]) && strtolower($value[0]) == 'exp') {
             $value = $this->escapeString($value[1]);
         } elseif (is_array($value)) {
-            $value = array_map(array($this, 'parseValue'), $value);
+            $value = array_map([$this, 'parseValue'], $value);
         } elseif (is_bool($value)) {
             $value = $value ? '1' : '0';
         } elseif (is_null($value)) {
@@ -483,7 +483,7 @@ abstract class Driver
         if (is_array($fields)) {
             // 完善数组方式传字段名的支持
             // 支持 'field1'=>'field2' 这样的字段别名定义
-            $array = array();
+            $array = [];
             foreach ($fields as $key => $field) {
                 if (!is_numeric($key)) {
                     $array[] = $this->parseKey($key) . ' AS ' . $this->parseKey($field);
@@ -510,7 +510,7 @@ abstract class Driver
     {
         if (is_array($tables)) {
             // 支持别名定义
-            $array = array();
+            $array = [];
             foreach ($tables as $table => $alias) {
                 if (!is_numeric($table)) {
                     $array[] = $this->parseKey($table) . ' ' . $this->parseKey($alias);
@@ -521,7 +521,7 @@ abstract class Driver
             }
             $tables = $array;
         } elseif (is_string($tables)) {
-            $tables = array_map(array($this, 'parseKey'), explode(',', $tables));
+            $tables = array_map([$this, 'parseKey'], explode(',', $tables));
         }
         return implode(',', $tables);
     }
@@ -541,7 +541,7 @@ abstract class Driver
         } else {
             // 使用数组表达式
             $operate = isset($where['_logic']) ? strtoupper($where['_logic']) : '';
-            if (in_array($operate, array('AND', 'OR', 'XOR'))) {
+            if (in_array($operate, ['AND', 'OR', 'XOR'])) {
                 // 定义逻辑运算规则 例如 OR XOR AND NOT
                 $operate = ' ' . $operate . ' ';
                 unset($where['_logic']);
@@ -555,7 +555,7 @@ abstract class Driver
                 }
                 if (0 === strpos($key, '_')) {
                     // 解析特殊条件表达式
-                    $whereStr .= $this->parseThinkWhere($key, $val);
+                    $whereStr .= $this->parseECTouchWhere($key, $val);
                 } else {
                     // 查询字段的安全过滤
                     // if(!preg_match('/^[A-Z_\|\&\-.a-z0-9\(\)\,]+$/',trim($key))){
@@ -567,7 +567,7 @@ abstract class Driver
                     if (strpos($key, '|')) {
                         // 支持 name|title|nickname 方式定义查询字段
                         $array = explode('|', $key);
-                        $str   = array();
+                        $str   = [];
                         foreach ($array as $m => $k) {
                             $v     = $multi ? $val[$m] : $val;
                             $str[] = $this->parseWhereItem($this->parseKey($k), $v);
@@ -575,7 +575,7 @@ abstract class Driver
                         $whereStr .= '( ' . implode(' OR ', $str) . ' )';
                     } elseif (strpos($key, '&')) {
                         $array = explode('&', $key);
-                        $str   = array();
+                        $str   = [];
                         foreach ($array as $m => $k) {
                             $v     = $multi ? $val[$m] : $val;
                             $str[] = '(' . $this->parseWhereItem($this->parseKey($k), $v) . ')';
@@ -606,8 +606,8 @@ abstract class Driver
                     // 模糊查找
                     if (is_array($val[1])) {
                         $likeLogic = isset($val[2]) ? strtoupper($val[2]) : 'OR';
-                        if (in_array($likeLogic, array('AND', 'OR', 'XOR'))) {
-                            $like = array();
+                        if (in_array($likeLogic, ['AND', 'OR', 'XOR'])) {
+                            $like = [];
                             foreach ($val[1] as $item) {
                                 $like[] = $key . ' ' . $this->exp[$exp] . ' ' . $this->parseValue($item);
                             }
@@ -643,7 +643,7 @@ abstract class Driver
             } else {
                 $count = count($val);
                 $rule  = isset($val[$count - 1]) ? (is_array($val[$count - 1]) ? strtoupper($val[$count - 1][0]) : strtoupper($val[$count - 1])) : '';
-                if (in_array($rule, array('AND', 'OR', 'XOR'))) {
+                if (in_array($rule, ['AND', 'OR', 'XOR'])) {
                     $count = $count - 1;
                 } else {
                     $rule = 'AND';
@@ -677,7 +677,7 @@ abstract class Driver
      * @param mixed $val
      * @return string
      */
-    protected function parseThinkWhere($key, $val)
+    protected function parseECTouchWhere($key, $val)
     {
         $whereStr = '';
         switch ($key) {
@@ -698,7 +698,7 @@ abstract class Driver
                 } else {
                     $op = ' AND ';
                 }
-                $array = array();
+                $array = [];
                 foreach ($where as $field => $data) {
                     $array[] = $this->parseKey($field) . ' = ' . $this->parseValue($data);
                 }
@@ -746,7 +746,7 @@ abstract class Driver
         if (empty($order)) {
             return '';
         }
-        $array = array();
+        $array = [];
         if (is_array($order)) {
             foreach ($order as $key => $val) {
                 if (is_numeric($key)) {
@@ -754,7 +754,7 @@ abstract class Driver
                         $array[] = $this->parseKey($val);
                     }
                 } else {
-                    $sort    = in_array(strtolower($val), array('asc', 'desc')) ? ' ' . $val : '';
+                    $sort    = in_array(strtolower($val), ['asc', 'desc']) ? ' ' . $val : '';
                     $array[] = $this->parseKey($key, true) . $sort;
                 }
             }
@@ -891,11 +891,11 @@ abstract class Driver
      * @param boolean $replace 是否replace
      * @return false | integer
      */
-    public function insert($data, $options = array(), $replace = false)
+    public function insert($data, $options = [], $replace = false)
     {
-        $values      = $fields      = array();
+        $values      = $fields      = [];
         $this->model = $options['model'];
-        $this->parseBind(!empty($options['bind']) ? $options['bind'] : array());
+        $this->parseBind(!empty($options['bind']) ? $options['bind'] : []);
         foreach ($data as $key => $val) {
             if (isset($val[0]) && 'exp' == $val[0]) {
                 $fields[] = $this->parseKey($key);
@@ -930,18 +930,18 @@ abstract class Driver
      * @param boolean $replace 是否replace
      * @return false | integer
      */
-    public function insertAll($dataSet, $options = array(), $replace = false)
+    public function insertAll($dataSet, $options = [], $replace = false)
     {
-        $values      = array();
+        $values      = [];
         $this->model = $options['model'];
         if (!is_array($dataSet[0])) {
             return false;
         }
 
-        $this->parseBind(!empty($options['bind']) ? $options['bind'] : array());
-        $fields = array_map(array($this, 'parseKey'), array_keys($dataSet[0]));
+        $this->parseBind(!empty($options['bind']) ? $options['bind'] : []);
+        $fields = array_map([$this, 'parseKey'], array_keys($dataSet[0]));
         foreach ($dataSet as $data) {
-            $value = array();
+            $value = [];
             foreach ($data as $key => $val) {
                 if (is_array($val) && 'exp' == $val[0]) {
                     $value[] = $val[1];
@@ -972,15 +972,15 @@ abstract class Driver
      * @param array $option  查询数据参数
      * @return false | integer
      */
-    public function selectInsert($fields, $table, $options = array())
+    public function selectInsert($fields, $table, $options = [])
     {
         $this->model = $options['model'];
-        $this->parseBind(!empty($options['bind']) ? $options['bind'] : array());
+        $this->parseBind(!empty($options['bind']) ? $options['bind'] : []);
         if (is_string($fields)) {
             $fields = explode(',', $fields);
         }
 
-        $fields = array_map(array($this, 'parseKey'), $fields);
+        $fields = array_map([$this, 'parseKey'], $fields);
         $sql    = 'INSERT INTO ' . $this->parseTable($table) . ' (' . implode(',', $fields) . ') ';
         $sql .= $this->buildSelectSql($options);
         return $this->execute($sql, !empty($options['fetch_sql']) ? true : false);
@@ -996,7 +996,7 @@ abstract class Driver
     public function update($data, $options)
     {
         $this->model = $options['model'];
-        $this->parseBind(!empty($options['bind']) ? $options['bind'] : array());
+        $this->parseBind(!empty($options['bind']) ? $options['bind'] : []);
         $table = $this->parseTable($options['table']);
         $sql   = 'UPDATE ' . $table . $this->parseSet($data);
         if (strpos($table, ',')) {
@@ -1019,10 +1019,10 @@ abstract class Driver
      * @param array $options 表达式
      * @return false | integer
      */
-    public function delete($options = array())
+    public function delete($options = [])
     {
         $this->model = $options['model'];
-        $this->parseBind(!empty($options['bind']) ? $options['bind'] : array());
+        $this->parseBind(!empty($options['bind']) ? $options['bind'] : []);
         $table = $this->parseTable($options['table']);
         $sql   = 'DELETE FROM ' . $table;
         if (strpos($table, ',')) {
@@ -1048,10 +1048,10 @@ abstract class Driver
      * @param array $options 表达式
      * @return mixed
      */
-    public function select($options = array())
+    public function select($options = [])
     {
         $this->model = $options['model'];
-        $this->parseBind(!empty($options['bind']) ? $options['bind'] : array());
+        $this->parseBind(!empty($options['bind']) ? $options['bind'] : []);
         $sql    = $this->buildSelectSql($options);
         $result = $this->query($sql, !empty($options['fetch_sql']) ? true : false, !empty($options['master']) ? true : false);
         return $result;
@@ -1063,7 +1063,7 @@ abstract class Driver
      * @param array $options 表达式
      * @return string
      */
-    public function buildSelectSql($options = array())
+    public function buildSelectSql($options = [])
     {
         if (isset($options['page'])) {
             // 根据页数计算limit
@@ -1083,11 +1083,11 @@ abstract class Driver
      * @param array $options 表达式
      * @return string
      */
-    public function parseSql($sql, $options = array())
+    public function parseSql($sql, $options = [])
     {
         $sql = str_replace(
-            array('%TABLE%', '%DISTINCT%', '%FIELD%', '%JOIN%', '%WHERE%', '%GROUP%', '%HAVING%', '%ORDER%', '%LIMIT%', '%UNION%', '%LOCK%', '%COMMENT%', '%FORCE%'),
-            array(
+            ['%TABLE%', '%DISTINCT%', '%FIELD%', '%JOIN%', '%WHERE%', '%GROUP%', '%HAVING%', '%ORDER%', '%LIMIT%', '%UNION%', '%LOCK%', '%COMMENT%', '%FORCE%'],
+            [
                 $this->parseTable($options['table']),
                 $this->parseDistinct(isset($options['distinct']) ? $options['distinct'] : false),
                 $this->parseField(!empty($options['field']) ? $options['field'] : '*'),
@@ -1101,7 +1101,7 @@ abstract class Driver
                 $this->parseLock(isset($options['lock']) ? $options['lock'] : false),
                 $this->parseComment(!empty($options['comment']) ? $options['comment'] : ''),
                 $this->parseForce(!empty($options['force']) ? $options['force'] : ''),
-            ), $sql);
+            ], $sql);
         return $sql;
     }
 
@@ -1171,7 +1171,6 @@ abstract class Driver
                 G('queryStartTime');
             } else {
                 $this->modelSql[$this->model] = $this->queryStr;
-                //$this->model  =   '_think_';
                 // 记录操作结束时间
                 G('queryEndTime');
                 trace($this->queryStr . ' [ RunTime:' . G('queryStartTime', 'queryEndTime') . 's ]', '', 'SQL');
@@ -1244,7 +1243,7 @@ abstract class Driver
         }
 
         if ($m != $r) {
-            $db_master = array(
+            $db_master = [
                 'username' => isset($_config['username'][$m]) ? $_config['username'][$m] : $_config['username'][0],
                 'password' => isset($_config['password'][$m]) ? $_config['password'][$m] : $_config['password'][0],
                 'hostname' => isset($_config['hostname'][$m]) ? $_config['hostname'][$m] : $_config['hostname'][0],
@@ -1252,9 +1251,9 @@ abstract class Driver
                 'database' => isset($_config['database'][$m]) ? $_config['database'][$m] : $_config['database'][0],
                 'dsn'      => isset($_config['dsn'][$m]) ? $_config['dsn'][$m] : $_config['dsn'][0],
                 'charset'  => isset($_config['charset'][$m]) ? $_config['charset'][$m] : $_config['charset'][0],
-            );
+            ];
         }
-        $db_config = array(
+        $db_config = [
             'username' => isset($_config['username'][$r]) ? $_config['username'][$r] : $_config['username'][0],
             'password' => isset($_config['password'][$r]) ? $_config['password'][$r] : $_config['password'][0],
             'hostname' => isset($_config['hostname'][$r]) ? $_config['hostname'][$r] : $_config['hostname'][0],
@@ -1262,7 +1261,7 @@ abstract class Driver
             'database' => isset($_config['database'][$r]) ? $_config['database'][$r] : $_config['database'][0],
             'dsn'      => isset($_config['dsn'][$r]) ? $_config['dsn'][$r] : $_config['dsn'][0],
             'charset'  => isset($_config['charset'][$r]) ? $_config['charset'][$r] : $_config['charset'][0],
-        );
+        ];
         return $this->connect($db_config, $r, $r == $m ? false : $db_master);
     }
 

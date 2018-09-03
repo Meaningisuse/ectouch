@@ -23,7 +23,7 @@ class ContentReplaceBehavior
     protected function templateContentReplace($content)
     {
         // 系统默认的特殊变量替换
-        $replace = array(
+        $replace = [
             '__ROOT__'       => __ROOT__, // 当前网站地址
             '__APP__'        => __APP__, // 当前应用地址
             '__MODULE__'     => __MODULE__,
@@ -32,7 +32,7 @@ class ContentReplaceBehavior
             '__CONTROLLER__' => __CONTROLLER__,
             '__URL__'        => __CONTROLLER__,
             '__PUBLIC__'     => __ROOT__ . '/Public', // 站点公共目录
-        );
+        ];
         // 允许用户自定义模板的字符串替换
         if (is_array(C('TMPL_PARSE_STRING'))) {
             $replace = array_merge($replace, C('TMPL_PARSE_STRING'));

@@ -1,13 +1,13 @@
 <?php
 
-return array(
+return [
     /* 应用设定 */
     'APP_SUB_DOMAIN_DEPLOY'  => false, // 是否开启子域名部署
-    'APP_SUB_DOMAIN_RULES'   => array(), // 子域名部署规则
+    'APP_SUB_DOMAIN_RULES'   => [], // 子域名部署规则
     'APP_DOMAIN_SUFFIX'      => '', // 域名后缀 如果是com.cn net.cn 之类的后缀必须设置
     'ACTION_SUFFIX'          => '', // 操作方法后缀
     'MULTI_MODULE'           => true, // 是否允许多模块 如果为false 则必须设置 DEFAULT_MODULE
-    'MODULE_DENY_LIST'       => array('Common', 'Runtime'),
+    'MODULE_DENY_LIST'       => ['Common', 'Runtime'],
     'CONTROLLER_LEVEL'       => 1,
 
     /* Cookie设置 */
@@ -41,7 +41,7 @@ return array(
     'DB_PWD'                 => '', // 密码
     'DB_PORT'                => '', // 端口
     'DB_PREFIX'              => '', // 数据库表前缀
-    'DB_PARAMS'              => array(), // 数据库连接参数
+    'DB_PARAMS'              => [], // 数据库连接参数
     'DB_DEBUG'               => true, // 数据库调试模式 开启后可以记录SQL日志
     'DB_FIELDS_CACHE'        => true, // 启用字段缓存
     'DB_CHARSET'             => 'utf8', // 数据库编码默认采用utf8
@@ -76,7 +76,7 @@ return array(
 
     /* SESSION设置 */
     'SESSION_AUTO_START'     => true, // 是否自动开启Session
-    'SESSION_OPTIONS'        => array(), // session 配置数组 支持type name id path expire domain 等参数
+    'SESSION_OPTIONS'        => [], // session 配置数组 支持type name id path expire domain 等参数
     'SESSION_TYPE'           => '', // session handler类型 默认无需设置 除非扩展了session handler驱动
     'SESSION_PREFIX'         => '', // session 前缀
     //'VAR_SESSION_ID'      =>  'session_id',     //sessionID的提交变量
@@ -85,12 +85,12 @@ return array(
     'TMPL_CONTENT_TYPE'      => 'text/html', // 默认模板输出类型
     'TMPL_ACTION_ERROR'      => KERNEL_PATH . 'View/dispatch_jump.tpl', // 默认错误跳转对应的模板文件
     'TMPL_ACTION_SUCCESS'    => KERNEL_PATH . 'View/dispatch_jump.tpl', // 默认成功跳转对应的模板文件
-    'TMPL_EXCEPTION_FILE'    => KERNEL_PATH . 'View/think_exception.tpl', // 异常页面的模板文件
+    'TMPL_EXCEPTION_FILE'    => KERNEL_PATH . 'View/exception.tpl', // 异常页面的模板文件
     'TMPL_DETECT_THEME'      => false, // 自动侦测模板主题
     'TMPL_TEMPLATE_SUFFIX'   => '.html', // 默认模板文件后缀
     'TMPL_FILE_DEPR'         => '/', //模板文件CONTROLLER_NAME与ACTION_NAME之间的分割符
     // 布局设置
-    'TMPL_ENGINE_TYPE'       => 'Think', // 默认模板引擎 以下设置仅对使用Think模板引擎有效
+    'TMPL_ENGINE_TYPE'       => 'default', // 默认模板引擎 以下设置仅对使用默认模板引擎有效
     'TMPL_CACHFILE_SUFFIX'   => '.php', // 默认模板缓存后缀
     'TMPL_DENY_FUNC_LIST'    => 'echo,exit', // 模板引擎禁用函数
     'TMPL_DENY_PHP'          => false, // 默认模板引擎是否禁用PHP原生代码
@@ -105,7 +105,7 @@ return array(
     'LAYOUT_ON'              => false, // 是否启用布局
     'LAYOUT_NAME'            => 'layout', // 当前布局名称 默认为layout
 
-    // Think模板引擎标签库相关设定
+    // 默认模板引擎标签库相关设定
     'TAGLIB_BEGIN'           => '<', // 标签库标签开始标记
     'TAGLIB_END'             => '>', // 标签库标签结束标记
     'TAGLIB_LOAD'            => true, // 是否使用内置标签库之外的其它标签库，默认自动检测
@@ -126,8 +126,8 @@ return array(
     'URL_PARAMS_FILTER'      => false, // URL变量绑定过滤
     'URL_PARAMS_FILTER_TYPE' => '', // URL变量绑定过滤方法 如果为空 调用DEFAULT_FILTER
     'URL_ROUTER_ON'          => false, // 是否开启URL路由
-    'URL_ROUTE_RULES'        => array(), // 默认路由规则 针对模块
-    'URL_MAP_RULES'          => array(), // URL映射定义规则
+    'URL_ROUTE_RULES'        => [], // 默认路由规则 针对模块
+    'URL_MAP_RULES'          => [], // URL映射定义规则
 
     /* 系统变量名称设置 */
     'VAR_MODULE'             => 'm', // 默认模块获取变量
@@ -145,4 +145,4 @@ return array(
     'FILE_UPLOAD_TYPE'       => 'Local', // 文件上传方式
     'DATA_CRYPT_TYPE'        => 'Base64', // 数据加密方式
 
-);
+];

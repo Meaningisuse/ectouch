@@ -2,8 +2,8 @@
 
 namespace App\Kernel\Cache\Driver;
 
-use Memcached as MemcachedResource;
 use App\Kernel\Cache;
+use Memcached as MemcachedResource;
 
 /**
  * Memcached缓存驱动
@@ -15,16 +15,16 @@ class Memcached extends Cache
      *
      * @param array $options
      */
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if (!extension_loaded('memcached')) {
             E(L('_NOT_SUPPORT_') . ':memcached');
         }
 
-        $options = array_merge(array(
+        $options = array_merge([
             'servers'     => C('MEMCACHED_SERVER') ?: null,
             'lib_options' => C('MEMCACHED_LIB') ?: null,
-        ), $options);
+        ], $options);
 
         $this->options           = $options;
         $this->options['expire'] = isset($options['expire']) ? $options['expire'] : C('DATA_CACHE_TIME');

@@ -3,6 +3,7 @@
 namespace App\Kernel\Model;
 
 use App\Kernel\Model;
+use App\Kernel\Exception;
 
 /**
  * 高级模型扩展
@@ -11,12 +12,12 @@ class AdvModel extends Model
 {
     protected $optimLock      = 'lock_version';
     protected $returnType     = 'array';
-    protected $blobFields     = array();
+    protected $blobFields     = [];
     protected $blobValues     = null;
-    protected $serializeField = array();
-    protected $readonlyField  = array();
-    protected $_filter        = array();
-    protected $partition      = array();
+    protected $serializeField = [];
+    protected $readonlyField  = [];
+    protected $_filter        = [];
+    protected $partition      = [];
 
     public function __construct($name = '', $tablePrefix = '', $connection = '')
     {
@@ -42,7 +43,7 @@ class AdvModel extends Model
             // 获取前N条记录
             $count = substr($method, 3);
             array_unshift($args, $count);
-            return call_user_func_array(array(&$this, 'topN'), $args);
+            return call_user_func_array([&$this, 'topN'], $args);
         } else {
             return parent::__call($method, $args);
         }
@@ -207,7 +208,7 @@ class AdvModel extends Model
      * @param array $options 查询表达式
      * @return array
      */
-    public function topN($count, $options = array())
+    public function topN($count, $options = [])
     {
         $options['limit'] = $count;
         return $this->select($options);
@@ -221,7 +222,7 @@ class AdvModel extends Model
      * @param array $options 查询表达式
      * @return mixed
      */
-    public function getN($position = 0, $options = array())
+    public function getN($position = 0, $options = [])
     {
         if ($position >= 0) {
             // 正向查找
@@ -241,7 +242,7 @@ class AdvModel extends Model
      * @param array $options 查询表达式
      * @return mixed
      */
-    public function first($options = array())
+    public function first($options = [])
     {
         return $this->getN(0, $options);
     }
@@ -252,7 +253,7 @@ class AdvModel extends Model
      * @param array $options 查询表达式
      * @return mixed
      */
-    public function last($options = array())
+    public function last($options = [])
     {
         return $this->getN(-1, $options);
     }
@@ -482,7 +483,7 @@ class AdvModel extends Model
             // 定义方式  $this->serializeField = array('ser'=>array('name','email'));
             foreach ($this->serializeField as $key => $val) {
                 if (empty($data[$key])) {
-                    $serialize = array();
+                    $serialize = [];
                     foreach ($val as $name) {
                         if (isset($data[$name])) {
                             $serialize[$name] = $data[$name];
@@ -565,7 +566,7 @@ class AdvModel extends Model
      * @param array $sql  SQL批处理指令
      * @return boolean
      */
-    public function patchQuery($sql = array())
+    public function patchQuery($sql = [])
     {
         if (!is_array($sql)) {
             return false;
@@ -584,7 +585,7 @@ class AdvModel extends Model
             }
             // 提交事务
             $this->commit();
-        } catch (ThinkException $e) {
+        } catch (Exception $e) {
             $this->rollback();
         }
         return true;
@@ -596,7 +597,7 @@ class AdvModel extends Model
      * @param array $data 操作的数据
      * @return string
      */
-    public function getPartitionTableName($data = array())
+    public function getPartitionTableName($data = [])
     {
         // 对数据表进行分区
         if (isset($data[$this->partition['field']])) {
@@ -636,7 +637,7 @@ class AdvModel extends Model
         } else {
             // 当设置的分表字段不在查询条件或者数据中
             // 进行联合查询，必须设定 partition['num']
-            $tableName = array();
+            $tableName = [];
             for ($i = 0; $i < $this->partition['num']; $i++) {
                 $tableName[] = 'SELECT * FROM ' . $this->getTableName() . '_' . ($i + 1);
             }

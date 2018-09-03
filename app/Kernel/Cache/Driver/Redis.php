@@ -15,18 +15,18 @@ class Redis extends Cache
      * @param array $options 缓存参数
      * @access public
      */
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if (!extension_loaded('redis')) {
             E(L('_NOT_SUPPORT_') . ':redis');
         }
-        $options = array_merge(array(
+        $options = array_merge([
             'host'       => C('REDIS_HOST') ?: '127.0.0.1',
             'port'       => C('REDIS_PORT') ?: 6379,
             'password'   => C('REDIS_PASSWORD') ?: '',
             'timeout'    => C('DATA_CACHE_TIMEOUT') ?: false,
             'persistent' => false,
-        ), $options);
+        ], $options);
 
         $this->options           = $options;
         $this->options['expire'] = isset($options['expire']) ? $options['expire'] : C('DATA_CACHE_TIME');

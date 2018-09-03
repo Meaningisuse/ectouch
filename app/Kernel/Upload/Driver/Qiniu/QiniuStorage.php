@@ -51,7 +51,7 @@ class QiniuStorage
     {
         $param['deadline'] = 0 == $param['Expires'] ? 3600 : $param['Expires'];
         $param['deadline'] += time();
-        $data = array('scope' => $this->bucket, 'deadline' => $param['deadline']);
+        $data = ['scope' => $this->bucket, 'deadline' => $param['deadline']];
         if (!empty($param['CallbackUrl'])) {
             $data['callbackUrl'] = $param['CallbackUrl'];
         }
@@ -80,15 +80,15 @@ class QiniuStorage
 
         $url          = "{$this->QINIU_UP_HOST}";
         $mimeBoundary = md5(microtime());
-        $header       = array('Content-Type' => 'multipart/form-data;boundary=' . $mimeBoundary);
-        $data         = array();
+        $header       = ['Content-Type' => 'multipart/form-data;boundary=' . $mimeBoundary];
+        $data         = [];
 
-        $fields = array(
+        $fields = [
             'token' => $uploadToken,
             'key'   => $config['saveName'] ?: $file['fileName'],
-        );
+        ];
 
-        if (is_array($config['custom_fields']) && array() !== $config['custom_fields']) {
+        if (is_array($config['custom_fields']) && [] !== $config['custom_fields']) {
             $fields = array_merge($fields, $config['custom_fields']);
         }
 
@@ -174,12 +174,12 @@ class QiniuStorage
     }
 
     //获取某个路径下的文件列表
-    public function getList($query = array(), $path = '')
+    public function getList($query = [], $path = '')
     {
-        $query       = array_merge(array('bucket' => $this->bucket), $query);
+        $query       = array_merge(['bucket' => $this->bucket], $query);
         $url         = "{$this->QINIU_RSF_HOST}/list?" . http_build_query($query);
         $accessToken = $this->accessToken($url);
-        $response    = $this->request($url, 'POST', array('Authorization' => "QBox $accessToken"));
+        $response    = $this->request($url, 'POST', ['Authorization' => "QBox $accessToken"]);
         return $response;
     }
 
@@ -189,9 +189,9 @@ class QiniuStorage
         $key         = trim($key);
         $url         = "{$this->QINIU_RS_HOST}/stat/" . self::qiniuEncode("{$this->bucket}:{$key}");
         $accessToken = $this->accessToken($url);
-        $response    = $this->request($url, 'POST', array(
+        $response    = $this->request($url, 'POST', [
             'Authorization' => "QBox $accessToken",
-        ));
+        ]);
         return $response;
     }
 
@@ -211,7 +211,7 @@ class QiniuStorage
         $url = "{$this->QINIU_RS_HOST}/move/" . self::qiniuEncode("{$this->bucket}:{$key}") . '/' . self::qiniuEncode("{$this->bucket}:{$new_file}");
         trace($url);
         $accessToken = $this->accessToken($url);
-        $response    = $this->request($url, 'POST', array('Authorization' => "QBox $accessToken"));
+        $response    = $this->request($url, 'POST', ['Authorization' => "QBox $accessToken"]);
         return $response;
     }
 
@@ -221,7 +221,7 @@ class QiniuStorage
         $key         = trim($file);
         $url         = "{$this->QINIU_RS_HOST}/delete/" . self::qiniuEncode("{$this->bucket}:{$key}");
         $accessToken = $this->accessToken($url);
-        $response    = $this->request($url, 'POST', array('Authorization' => "QBox $accessToken"));
+        $response    = $this->request($url, 'POST', ['Authorization' => "QBox $accessToken"]);
         return $response;
     }
 
@@ -229,7 +229,7 @@ class QiniuStorage
     public function delBatch($files)
     {
         $url = $this->QINIU_RS_HOST . '/batch';
-        $ops = array();
+        $ops = [];
         foreach ($files as $file) {
             $ops[] = "/delete/" . self::qiniuEncode("{$this->bucket}:{$file}");
         }
@@ -237,22 +237,22 @@ class QiniuStorage
         $url .= '?' . $params;
         trace($url);
         $accessToken = $this->accessToken($url);
-        $response    = $this->request($url, 'POST', array('Authorization' => "QBox $accessToken"));
+        $response    = $this->request($url, 'POST', ['Authorization' => "QBox $accessToken"]);
         return $response;
     }
 
     public static function qiniuEncode($str)
     {
 // URLSafeBase64Encode
-        $find    = array('+', '/');
-        $replace = array('-', '_');
+        $find    = ['+', '/'];
+        $replace = ['-', '_'];
         return str_replace($find, $replace, base64_encode($str));
     }
 
     public static function qiniuEscapequotes($str)
     {
-        $find    = array("\\", "\"");
-        $replace = array("\\\\", "\\\"");
+        $find    = ["\\", "\""];
+        $replace = ["\\\\", "\\\""];
         return str_replace($find, $replace, $str);
     }
 
@@ -268,7 +268,7 @@ class QiniuStorage
     {
         $ch = curl_init($path);
 
-        $_headers = array('Expect:');
+        $_headers = ['Expect:'];
         if (!is_null($headers) && is_array($headers)) {
             foreach ($headers as $k => $v) {
                 array_push($_headers, "{$k}: {$v}");
@@ -340,7 +340,7 @@ class QiniuStorage
     private function response($text)
     {
         $headers = explode(PHP_EOL, $text);
-        $items   = array();
+        $items   = [];
         foreach ($headers as $header) {
             $header = trim($header);
             if (strpos($header, '{') !== false) {

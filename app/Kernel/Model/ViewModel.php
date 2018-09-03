@@ -10,7 +10,7 @@ use App\Kernel\Model;
 class ViewModel extends Model
 {
 
-    protected $viewFields = array();
+    protected $viewFields = [];
 
     /**
      * 自动检测数据表信息
@@ -109,7 +109,7 @@ class ViewModel extends Model
     protected function checkCondition($where)
     {
         if (is_array($where)) {
-            $fields = $field_map_table = array();
+            $fields = $field_map_table = [];
             foreach ($this->viewFields as $key => $val) {
                 $table_alias = isset($val['_as']) ? $val['_as'] : $key;
                 $val         = $this->_checkFields($key, $val);
@@ -138,7 +138,7 @@ class ViewModel extends Model
      */
     private function _parseWhere($where, $fields, $field_map_table)
     {
-        $view = array();
+        $view = [];
         foreach ($where as $name => $val) {
             if ('_complex' == $name) {
                 //复合查询
@@ -194,7 +194,7 @@ class ViewModel extends Model
     {
         if (is_string($order) && !empty($order)) {
             $orders = explode(',', $order);
-            $_order = array();
+            $_order = [];
             foreach ($orders as $order) {
                 $array = explode(' ', trim($order));
                 $field = $array[0];
@@ -226,7 +226,7 @@ class ViewModel extends Model
     {
         if (!empty($group)) {
             $groups = explode(',', $group);
-            $_group = array();
+            $_group = [];
             foreach ($groups as $field) {
                 // 解析成视图字段
                 foreach ($this->viewFields as $name => $val) {
@@ -255,7 +255,7 @@ class ViewModel extends Model
     {
         if (empty($fields) || '*' == $fields) {
             // 获取全部视图字段
-            $fields = array();
+            $fields = [];
             foreach ($this->viewFields as $name => $val) {
                 $k   = isset($val['_as']) ? $val['_as'] : $name;
                 $val = $this->_checkFields($name, $val);
@@ -280,7 +280,7 @@ class ViewModel extends Model
             }
 
             // 解析成视图字段
-            $array = array();
+            $array = [];
             foreach ($fields as $key => $field) {
                 if (strpos($field, '(') || strpos(strtolower($field), ' as ')) {
                     // 使用了函数或者别名
