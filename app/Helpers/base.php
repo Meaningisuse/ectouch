@@ -26,9 +26,9 @@ function sub_str($str, $length = 0, $append = true)
     }
 
     if (function_exists('mb_substr')) {
-        $newstr = mb_substr($str, 0, $length, EC_CHARSET);
+        $newstr = mb_substr($str, 0, $length, CHARSET);
     } elseif (function_exists('iconv_substr')) {
-        $newstr = iconv_substr($str, 0, $length, EC_CHARSET);
+        $newstr = iconv_substr($str, 0, $length, CHARSET);
     } else {
         //$newstr = trim_right(substr($str, 0, $length));
         $newstr = substr($str, 0, $length);
@@ -146,12 +146,12 @@ function get_crlf()
  */
 function send_mail($name, $email, $subject, $content, $type = 0, $notification = false)
 {
-    /* 如果邮件编码不是EC_CHARSET，创建字符集转换对象，转换编码 */
-    if ($GLOBALS['_CFG']['mail_charset'] != EC_CHARSET) {
-        $name = ecs_iconv(EC_CHARSET, $GLOBALS['_CFG']['mail_charset'], $name);
-        $subject = ecs_iconv(EC_CHARSET, $GLOBALS['_CFG']['mail_charset'], $subject);
-        $content = ecs_iconv(EC_CHARSET, $GLOBALS['_CFG']['mail_charset'], $content);
-        $shop_name = ecs_iconv(EC_CHARSET, $GLOBALS['_CFG']['mail_charset'], $GLOBALS['_CFG']['shop_name']);
+    /* 如果邮件编码不是CHARSET，创建字符集转换对象，转换编码 */
+    if ($GLOBALS['_CFG']['mail_charset'] != CHARSET) {
+        $name = ecs_iconv(CHARSET, $GLOBALS['_CFG']['mail_charset'], $name);
+        $subject = ecs_iconv(CHARSET, $GLOBALS['_CFG']['mail_charset'], $subject);
+        $content = ecs_iconv(CHARSET, $GLOBALS['_CFG']['mail_charset'], $content);
+        $shop_name = ecs_iconv(CHARSET, $GLOBALS['_CFG']['mail_charset'], $GLOBALS['_CFG']['shop_name']);
     }
     $charset = $GLOBALS['_CFG']['mail_charset'];
     /**
@@ -850,9 +850,9 @@ function move_upload_file($file_name, $target_name = '')
  */
 function json_str_iconv($str)
 {
-    if (EC_CHARSET != 'utf-8') {
+    if (CHARSET != 'utf-8') {
         if (is_string($str)) {
-            return addslashes(stripslashes(ecs_iconv('utf-8', EC_CHARSET, $str)));
+            return addslashes(stripslashes(ecs_iconv('utf-8', CHARSET, $str)));
         } elseif (is_array($str)) {
             foreach ($str as $key => $value) {
                 $str[$key] = json_str_iconv($value);
@@ -878,9 +878,9 @@ function json_str_iconv($str)
  */
 function to_utf8_iconv($str)
 {
-    if (EC_CHARSET != 'utf-8') {
+    if (CHARSET != 'utf-8') {
         if (is_string($str)) {
-            return ecs_iconv(EC_CHARSET, 'utf-8', $str);
+            return ecs_iconv(CHARSET, 'utf-8', $str);
         } elseif (is_array($str)) {
             foreach ($str as $key => $value) {
                 $str[$key] = to_utf8_iconv($value);

@@ -62,10 +62,10 @@ class Alipay
      */
     public function get_code($order, $payment)
     {
-        if (!defined('EC_CHARSET')) {
+        if (!defined('CHARSET')) {
             $charset = 'utf-8';
         } else {
-            $charset = EC_CHARSET;
+            $charset = CHARSET;
         }
 
         $real_method = $payment['alipay_pay_method'];

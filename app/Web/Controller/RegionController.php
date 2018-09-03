@@ -12,7 +12,7 @@ class RegionController extends InitController
 {
     public function index()
     {
-        header('Content-type: text/html; charset=' . EC_CHARSET);
+        header('Content-type: text/html; charset=' . CHARSET);
 
         $type = !empty($_REQUEST['type']) ? intval($_REQUEST['type']) : 0;
         $parent = !empty($_REQUEST['parent']) ? intval($_REQUEST['parent']) : 0;

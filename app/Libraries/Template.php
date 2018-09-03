@@ -34,8 +34,8 @@ class Template
     {
         $this->_errorlevel = error_reporting();
         $this->_nowtime = time();
-        if (defined('EC_CHARSET')) {
-            $charset = EC_CHARSET;
+        if (defined('CHARSET')) {
+            $charset = CHARSET;
         } else {
             $charset = 'utf-8';
         }
@@ -519,8 +519,8 @@ class Template
                         } elseif ($s[1] == 'quotes') {
                             $p = 'addslashes(' . $p . ')';
                         } elseif ($s[1] == 'u8_url') {
-                            if (EC_CHARSET != 'utf-8') {
-                                $p = 'urlencode(ecs_iconv("' . EC_CHARSET . '", "utf-8",' . $p . '))';
+                            if (CHARSET != 'utf-8') {
+                                $p = 'urlencode(ecs_iconv("' . CHARSET . '", "utf-8",' . $p . '))';
                             } else {
                                 $p = 'urlencode(' . $p . ')';
                             }
@@ -963,7 +963,7 @@ class Template
             $source = preg_replace('/(<script\s(?:type|language)=["|\']text\/javascript["|\']\ssrc=["|\'])(?:\.\/|\.\.\/)?(js\/[a-z0-9A-Z_\-\.]+\.(?:js|vbs)["|\']><\/script>)/', '\1' . $tmp_dir . '\2', $source);
 
             /* 更换编译模板的编码类型 */
-            $source = preg_replace('/<meta\shttp-equiv=["|\']Content-Type["|\']\scontent=["|\']text\/html;\scharset=(?:.*?)["|\'][^>]*?>\r?\n?/i', '<meta http-equiv="Content-Type" content="text/html; charset=' . EC_CHARSET . '" />' . "\n", $source);
+            $source = preg_replace('/<meta\shttp-equiv=["|\']Content-Type["|\']\scontent=["|\']text\/html;\scharset=(?:.*?)["|\'][^>]*?>\r?\n?/i', '<meta http-equiv="Content-Type" content="text/html; charset=' . CHARSET . '" />' . "\n", $source);
         } elseif ($file_type == '.lbi') {
             /* 去除meta */
             $source = preg_replace('/<meta\shttp-equiv=["|\']Content-Type["|\']\scontent=["|\']text\/html;\scharset=(?:.*?)["|\']>\r?\n?/i', '', $source);

@@ -93,7 +93,7 @@ class SmsController extends InitController
                         $data['passwd'] = $GLOBALS['_CFG']['ent_ac'];
 
                         $content_t = $content_y = trim($_POST['sms_sign']);
-                        if (EC_CHARSET != 'utf-8') {
+                        if (CHARSET != 'utf-8') {
                             $content_t = iconv('gb2312', 'utf-8', $content_y);
                         }
 
@@ -122,7 +122,7 @@ class SmsController extends InitController
                             return sys_msg($GLOBALS['_LANG']['insert_succ'], 1, [], false);
                         } else {
                             $error_smg = $result['data'];
-                            if (EC_CHARSET != 'utf-8') {
+                            if (CHARSET != 'utf-8') {
                                 $error_smg = iconv('utf-8', 'gb2312', $error_smg);
                             }
                             return sys_msg($error_smg, 1, [], false);
@@ -162,7 +162,7 @@ class SmsController extends InitController
                         if (!isset($sms_sign[$GLOBALS['_CFG'][ent_id]][$extend_no]) || empty($extend_no)) {
                             return sys_msg($GLOBALS['_LANG']['error_smg'], 1, [], false);
                         }
-                        if (EC_CHARSET != 'utf-8') {
+                        if (CHARSET != 'utf-8') {
                             $content_t = iconv('gb2312', 'utf-8', $content_y);
                             $new_content_t = iconv('gb2312', 'utf-8', $new_content_y);
                         }
@@ -196,7 +196,7 @@ class SmsController extends InitController
                             return sys_msg($GLOBALS['_LANG']['edit_succ'], 1, [], false);
                         } else {
                             $error_smg = $result['data'];
-                            if (EC_CHARSET != 'utf-8') {
+                            if (CHARSET != 'utf-8') {
                                 $error_smg = iconv('utf-8', 'gb2312', $error_smg);
                             }
                             return sys_msg($error_smg, 1, [], false);

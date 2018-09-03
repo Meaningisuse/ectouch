@@ -28,7 +28,7 @@ if (version_compare(PHP_VERSION, '7.1.3', '<')) {
 define('APPNAME', 'ECTouch');
 define('VERSION', 'v3.0.0');
 define('RELEASE', '20180808');
-define('EC_CHARSET', 'utf-8');
+define('CHARSET', 'utf-8');
 
 define('ADMIN_PATH', 'admin');
 define('AUTH_KEY', 'this is a key');

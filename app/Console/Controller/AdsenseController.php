@@ -74,7 +74,7 @@ class AdsenseController extends InitController
                 foreach ($res as $row) {
                     $data .= "$row[ad_name]\t$row[referer]\t$row[clicks]\t$row[order_confirm]\t$row[order_num]\n";
                 }
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $data);
+                echo ecs_iconv(CHARSET, 'GB2312', $data);
             }
             $this->smarty->assign('goods_stats', $goods_stats);
 

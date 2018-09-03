@@ -16,7 +16,7 @@ class CloudController extends InitController
         $data['patch'] = file_get_contents(storage_path('patch_num'));
         $data['ecs_lang'] = $GLOBALS['_CFG']['lang'];
         $data['release'] = RELEASE;
-        $data['charset'] = strtoupper(EC_CHARSET);
+        $data['charset'] = strtoupper(CHARSET);
         $data['certificate_id'] = $GLOBALS['_CFG']['certificate_id'];
         $data['token'] = md5($GLOBALS['_CFG']['token']);
         $data['certi'] = $GLOBALS['_CFG']['certi'];

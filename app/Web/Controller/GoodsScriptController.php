@@ -9,7 +9,7 @@ class GoodsScriptController extends InitController
 {
     public function index()
     {
-        $charset = empty($_GET['charset']) ? EC_CHARSET : $_GET['charset'];
+        $charset = empty($_GET['charset']) ? CHARSET : $_GET['charset'];
         $type = empty($_GET['type']) ? '' : 'collection';
         if (strtolower($charset) == 'gb2312') {
             $charset = 'gbk';
@@ -71,14 +71,14 @@ class GoodsScriptController extends InitController
             foreach ($res as $goods) {
                 // 转换编码
                 $goods['goods_price'] = price_format($goods['goods_price']);
-                if ($charset != EC_CHARSET) {
-                    if (EC_CHARSET == 'gbk') {
+                if ($charset != CHARSET) {
+                    if (CHARSET == 'gbk') {
                         $tmp_goods_name = htmlentities($goods['goods_name'], ENT_QUOTES, 'gb2312');
                     } else {
-                        $tmp_goods_name = htmlentities($goods['goods_name'], ENT_QUOTES, EC_CHARSET);
+                        $tmp_goods_name = htmlentities($goods['goods_name'], ENT_QUOTES, CHARSET);
                     }
-                    $goods['goods_name'] = ecs_iconv(EC_CHARSET, $charset, $tmp_goods_name);
-                    $goods['goods_price'] = ecs_iconv(EC_CHARSET, $charset, $goods['goods_price']);
+                    $goods['goods_name'] = ecs_iconv(CHARSET, $charset, $tmp_goods_name);
+                    $goods['goods_price'] = ecs_iconv(CHARSET, $charset, $goods['goods_price']);
                 }
                 $goods['goods_name'] = $GLOBALS['_CFG']['goods_name_length'] > 0 ? sub_str($goods['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $goods['goods_name'];
                 $goods['goods_thumb'] = get_image_path($goods['goods_id'], $goods['goods_thumb'], true);

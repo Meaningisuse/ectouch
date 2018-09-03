@@ -533,7 +533,7 @@ class BonusController extends InitController
 
             /* 文件名称 */
             $bonus_filename = $type_name . '_bonus_list';
-            if (EC_CHARSET != 'gbk') {
+            if (CHARSET != 'gbk') {
                 $bonus_filename = ecs_iconv('UTF8', 'GB2312', $bonus_filename);
             }
 
@@ -541,7 +541,7 @@ class BonusController extends InitController
             header("Content-Disposition: attachment; filename=$bonus_filename.xls");
 
             /* 文件标题 */
-            if (EC_CHARSET != 'gbk') {
+            if (CHARSET != 'gbk') {
                 echo ecs_iconv('UTF8', 'GB2312', $GLOBALS['_LANG']['bonus_excel_file']) . "\t\n";
                 /* 红包序列号, 红包金额, 类型名称(红包名称), 使用结束日期 */
                 echo ecs_iconv('UTF8', 'GB2312', $GLOBALS['_LANG']['bonus_sn']) . "\t";
@@ -568,7 +568,7 @@ class BonusController extends InitController
                 echo $val['bonus_sn'] . "\t";
                 echo $val['type_money'] . "\t";
                 if (!isset($code_table[$val['type_name']])) {
-                    if (EC_CHARSET != 'gbk') {
+                    if (CHARSET != 'gbk') {
                         $code_table[$val['type_name']] = ecs_iconv('UTF8', 'GB2312', $val['type_name']);
                     } else {
                         $code_table[$val['type_name']] = $val['type_name'];

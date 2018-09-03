@@ -1472,7 +1472,7 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 
         $uri .= '.html';
     }
-    if (($rewrite == 2) && (strpos(strtolower(EC_CHARSET), 'utf') !== 0)) {
+    if (($rewrite == 2) && (strpos(strtolower(CHARSET), 'utf') !== 0)) {
         $uri = urlencode($uri);
     }
     return $uri;

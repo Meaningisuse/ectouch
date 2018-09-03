@@ -313,7 +313,7 @@ class BrandController extends InitController
 
             /* 查询记录 */
             if (isset($_POST['brand_name'])) {
-                if (strtoupper(EC_CHARSET) == 'GBK') {
+                if (strtoupper(CHARSET) == 'GBK') {
                     $keyword = iconv("UTF-8", "gb2312", $_POST['brand_name']);
                 } else {
                     $keyword = $_POST['brand_name'];

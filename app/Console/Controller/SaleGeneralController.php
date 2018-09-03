@@ -115,17 +115,17 @@ class SaleGeneralController extends InitController
             header("Content-Disposition: attachment; filename=$filename.xls");
 
             /* 文件标题 */
-            echo ecs_iconv(EC_CHARSET, 'GB2312', $filename . $GLOBALS['_LANG']['sales_statistics']) . "\t\n";
+            echo ecs_iconv(CHARSET, 'GB2312', $filename . $GLOBALS['_LANG']['sales_statistics']) . "\t\n";
 
             /* 订单数量, 销售出商品数量, 销售金额 */
-            echo ecs_iconv(EC_CHARSET, 'GB2312', $GLOBALS['_LANG']['period']) . "\t";
-            echo ecs_iconv(EC_CHARSET, 'GB2312', $GLOBALS['_LANG']['order_count_trend']) . "\t";
-            echo ecs_iconv(EC_CHARSET, 'GB2312', $GLOBALS['_LANG']['order_amount_trend']) . "\t\n";
+            echo ecs_iconv(CHARSET, 'GB2312', $GLOBALS['_LANG']['period']) . "\t";
+            echo ecs_iconv(CHARSET, 'GB2312', $GLOBALS['_LANG']['order_count_trend']) . "\t";
+            echo ecs_iconv(CHARSET, 'GB2312', $GLOBALS['_LANG']['order_amount_trend']) . "\t\n";
 
             foreach ($data_list as $data) {
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $data['period']) . "\t";
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $data['order_count']) . "\t";
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $data['order_amount']) . "\t";
+                echo ecs_iconv(CHARSET, 'GB2312', $data['period']) . "\t";
+                echo ecs_iconv(CHARSET, 'GB2312', $data['order_count']) . "\t";
+                echo ecs_iconv(CHARSET, 'GB2312', $data['order_amount']) . "\t";
                 echo "\n";
             }
         }

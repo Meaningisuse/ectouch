@@ -193,7 +193,7 @@ class ShopConfigController extends InitController
             $spt .= "&qq={$GLOBALS['_CFG'][qq]}&ww={$GLOBALS['_CFG'][ww]}&ym={$GLOBALS['_CFG'][ym]}&msn={$GLOBALS['_CFG'][msn]}";
             $spt .= "&email={$GLOBALS['_CFG'][service_email]}&phone={$GLOBALS['_CFG'][service_phone]}&icp=" . urlencode($GLOBALS['_CFG']['icp_number']);
             $spt .= "&version=" . VERSION . "&language={$GLOBALS['_CFG'][lang]}&php_ver=" . PHP_VERSION . "&mysql_ver=" . $GLOBALS['db']->version();
-            $spt .= "&charset=" . EC_CHARSET;
+            $spt .= "&charset=" . CHARSET;
             $spt .= '"></script>';
 
             if ($type == 'mail_setting') {

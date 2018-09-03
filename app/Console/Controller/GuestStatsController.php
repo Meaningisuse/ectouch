@@ -61,7 +61,7 @@ class GuestStatsController extends InitController
 
             $_GET['flag'] = isset($_GET['flag']) ? 'download' : '';
             if ($_GET['flag'] == 'download') {
-                $filename = ecs_iconv(EC_CHARSET, 'GB2312', $GLOBALS['_LANG']['guest_statistics']);
+                $filename = ecs_iconv(CHARSET, 'GB2312', $GLOBALS['_LANG']['guest_statistics']);
 
                 header("Content-type: application/vnd.ms-excel; charset=utf-8");
                 header("Content-Disposition: attachment; filename=$filename.xls");
@@ -94,7 +94,7 @@ class GuestStatsController extends InitController
                 $data .= price_format($guest_all_order['turnover']) . "\t" . $guest_all_order['order_num'] . "\t" .
                     $order_num;
 
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $data) . "\t";
+                echo ecs_iconv(CHARSET, 'GB2312', $data) . "\t";
             }
 
             /* 赋值到模板 */

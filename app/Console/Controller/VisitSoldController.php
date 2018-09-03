@@ -45,7 +45,7 @@ class VisitSoldController extends InitController
                     $order_by = $k + 1;
                     $data .= "$order_by\t$row[goods_name]\t$row[click_count]\t$row[sold_times]\t$row[scale]\n";
                 }
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $data);
+                echo ecs_iconv(CHARSET, 'GB2312', $data);
             }
 
             /* 赋值到模板 */

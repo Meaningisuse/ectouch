@@ -30,21 +30,21 @@ class SaleListController extends InitController
                 header("Content-Disposition: attachment; filename=$file_name.xls");
 
                 /* 文件标题 */
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $_REQUEST['start_date'] . $GLOBALS['_LANG']['to'] . $_REQUEST['end_date'] . $GLOBALS['_LANG']['sales_list']) . "\t\n";
+                echo ecs_iconv(CHARSET, 'GB2312', $_REQUEST['start_date'] . $GLOBALS['_LANG']['to'] . $_REQUEST['end_date'] . $GLOBALS['_LANG']['sales_list']) . "\t\n";
 
                 /* 商品名称,订单号,商品数量,销售价格,销售日期 */
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $GLOBALS['_LANG']['goods_name']) . "\t";
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $GLOBALS['_LANG']['order_sn']) . "\t";
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $GLOBALS['_LANG']['amount']) . "\t";
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $GLOBALS['_LANG']['sell_price']) . "\t";
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $GLOBALS['_LANG']['sell_date']) . "\t\n";
+                echo ecs_iconv(CHARSET, 'GB2312', $GLOBALS['_LANG']['goods_name']) . "\t";
+                echo ecs_iconv(CHARSET, 'GB2312', $GLOBALS['_LANG']['order_sn']) . "\t";
+                echo ecs_iconv(CHARSET, 'GB2312', $GLOBALS['_LANG']['amount']) . "\t";
+                echo ecs_iconv(CHARSET, 'GB2312', $GLOBALS['_LANG']['sell_price']) . "\t";
+                echo ecs_iconv(CHARSET, 'GB2312', $GLOBALS['_LANG']['sell_date']) . "\t\n";
 
                 foreach ($goods_sales_list['sale_list_data'] as $key => $value) {
-                    echo ecs_iconv(EC_CHARSET, 'GB2312', $value['goods_name']) . "\t";
-                    echo ecs_iconv(EC_CHARSET, 'GB2312', '[ ' . $value['order_sn'] . ' ]') . "\t";
-                    echo ecs_iconv(EC_CHARSET, 'GB2312', $value['goods_num']) . "\t";
-                    echo ecs_iconv(EC_CHARSET, 'GB2312', $value['sales_price']) . "\t";
-                    echo ecs_iconv(EC_CHARSET, 'GB2312', $value['sales_time']) . "\t";
+                    echo ecs_iconv(CHARSET, 'GB2312', $value['goods_name']) . "\t";
+                    echo ecs_iconv(CHARSET, 'GB2312', '[ ' . $value['order_sn'] . ' ]') . "\t";
+                    echo ecs_iconv(CHARSET, 'GB2312', $value['goods_num']) . "\t";
+                    echo ecs_iconv(CHARSET, 'GB2312', $value['sales_price']) . "\t";
+                    echo ecs_iconv(CHARSET, 'GB2312', $value['sales_time']) . "\t";
                     echo "\n";
                 }
             }

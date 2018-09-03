@@ -765,8 +765,8 @@ class IntegrateController extends InitController
             $app_type = 'ECTouch';
             $app_name = $GLOBALS['db']->getOne('SELECT value FROM ' . $GLOBALS['ecs']->table('shop_config') . " WHERE code = 'shop_name'");
             $app_url = $GLOBALS['ecs']->url();
-            $app_charset = EC_CHARSET;
-            $app_dbcharset = strtolower((str_replace('-', '', EC_CHARSET)));
+            $app_charset = CHARSET;
+            $app_dbcharset = strtolower((str_replace('-', '', CHARSET)));
             $ucapi = !empty($_POST['ucapi']) ? trim($_POST['ucapi']) : '';
             $ucip = !empty($_POST['ucip']) ? trim($_POST['ucip']) : '';
             $dns_error = false;

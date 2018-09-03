@@ -319,7 +319,7 @@ class OrderStatsController extends InitController
                 $data .= $val['order_num'] . "\t";
             }
 
-            echo ecs_iconv(EC_CHARSET, 'GB2312', $data) . "\t";
+            echo ecs_iconv(CHARSET, 'GB2312', $data) . "\t";
         }
     }
 

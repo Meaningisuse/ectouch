@@ -124,7 +124,7 @@ class WholesaleController extends InitController
 
             header("Content-type: application/vnd.ms-excel; charset=utf-8");
             header("Content-Disposition: attachment; filename=price_list.xls");
-            if (EC_CHARSET == 'utf-8') {
+            if (CHARSET == 'utf-8') {
                 echo ecs_iconv('UTF8', 'GB2312', $data);
             } else {
                 echo $data;

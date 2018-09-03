@@ -76,7 +76,7 @@ class GoodsBatchController extends InitController
                     }
 
                     // 转换编码
-                    if (($_POST['charset'] != 'UTF8') && (strpos(strtolower(EC_CHARSET), 'utf') === 0)) {
+                    if (($_POST['charset'] != 'UTF8') && (strpos(strtolower(CHARSET), 'utf') === 0)) {
                         $line = ecs_iconv($_POST['charset'], 'UTF8', $line);
                     }
 
@@ -601,7 +601,7 @@ class GoodsBatchController extends InitController
                 /* 创建字符集转换对象 */
                 if ($_GET['charset'] == 'zh_cn' || $_GET['charset'] == 'zh_tw') {
                     $to_charset = $_GET['charset'] == 'zh_cn' ? 'GB2312' : 'BIG5';
-                    echo ecs_iconv(EC_CHARSET, $to_charset, join(',', $GLOBALS['_LANG']['upload_goods']));
+                    echo ecs_iconv(CHARSET, $to_charset, join(',', $GLOBALS['_LANG']['upload_goods']));
                 } else {
                     echo join(',', $GLOBALS['_LANG']['upload_goods']);
                 }

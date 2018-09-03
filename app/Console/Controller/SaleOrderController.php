@@ -39,8 +39,8 @@ class SaleOrderController extends InitController
                     $data .= "$order_by\t$row[goods_name]\t$row[goods_sn]\t$row[goods_num]\t$row[turnover]\t$row[wvera_price]\n";
                 }
 
-                if (EC_CHARSET == 'utf-8') {
-                    echo ecs_iconv(EC_CHARSET, 'GB2312', $data);
+                if (CHARSET == 'utf-8') {
+                    echo ecs_iconv(CHARSET, 'GB2312', $data);
                 } else {
                     echo $data;
                 }

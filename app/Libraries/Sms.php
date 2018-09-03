@@ -289,7 +289,7 @@ class Sms
         }
         if (!empty($phone)) {
             foreach ($phone as $phone_key => $val) {
-                if (EC_CHARSET != 'utf-8') {
+                if (CHARSET != 'utf-8') {
                     $phone_array[$phone_key]['phones'] = implode(',', $val);
                     $phone_array[$phone_key]['content'] = iconv('gb2312', 'utf-8', $msg);
                 } else {

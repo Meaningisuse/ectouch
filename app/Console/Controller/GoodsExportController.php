@@ -87,8 +87,8 @@ class GoodsExportController extends InitController
                 }
             }
 
-            if (EC_CHARSET != 'utf-8') {
-                $content = ecs_iconv(EC_CHARSET, 'utf-8', $content);
+            if (CHARSET != 'utf-8') {
+                $content = ecs_iconv(CHARSET, 'utf-8', $content);
             }
             $zip->add_file("\xFF\xFE" . $this->utf82u2($content), 'goods_list.csv');
 
@@ -157,8 +157,8 @@ class GoodsExportController extends InitController
                     $zip->add_file(file_get_contents(ROOT_PATH . $row['goods_img']), $row['goods_img']);
                 }
             }
-            if (EC_CHARSET != 'utf-8') {
-                $content = ecs_iconv(EC_CHARSET, 'utf-8', $content);
+            if (CHARSET != 'utf-8') {
+                $content = ecs_iconv(CHARSET, 'utf-8', $content);
             }
             $zip->add_file("\xFF\xFE" . $this->utf82u2($content), 'goods_list.csv');
 
@@ -247,7 +247,7 @@ class GoodsExportController extends InitController
             }
             $charset = empty($_POST['charset']) ? 'UTF8' : trim($_POST['charset']);
 
-            $zip->add_file(ecs_iconv(EC_CHARSET, $charset, $content), 'goods_list.csv');
+            $zip->add_file(ecs_iconv(CHARSET, $charset, $content), 'goods_list.csv');
 
             header("Content-Disposition: attachment; filename=goods_list.zip");
             header("Content-Type: application/unknown");
@@ -358,7 +358,7 @@ class GoodsExportController extends InitController
                 }
             }
 
-            if (EC_CHARSET == 'utf-8') {
+            if (CHARSET == 'utf-8') {
                 $zip->add_file(ecs_iconv('UTF8', 'GB2312', $content), 'goods_list.csv');
             } else {
                 $zip->add_file($content, 'goods_list.csv');
@@ -465,7 +465,7 @@ class GoodsExportController extends InitController
                 }
             }
 
-            if (EC_CHARSET == 'utf-8') {
+            if (CHARSET == 'utf-8') {
                 $zip->add_file(ecs_iconv('UTF8', 'GB2312', $content), 'goods_list.csv');
             } else {
                 $zip->add_file($content, 'goods_list.csv');
@@ -558,7 +558,7 @@ class GoodsExportController extends InitController
                 }
             }
             $charset = empty($_POST['charset_custom']) ? 'UTF8' : trim($_POST['charset_custom']);
-            $zip->add_file(ecs_iconv(EC_CHARSET, $charset, $content), 'goods_list.csv');
+            $zip->add_file(ecs_iconv(CHARSET, $charset, $content), 'goods_list.csv');
 
             header("Content-Disposition: attachment; filename=goods_list.zip");
             header("Content-Type: application/unknown");
@@ -646,8 +646,8 @@ class GoodsExportController extends InitController
 
                 $content .= implode("\t", $goods_value) . "\n";
             }
-            if (EC_CHARSET != 'utf-8') {
-                $content = ecs_iconv(EC_CHARSET, 'utf-8', $content);
+            if (CHARSET != 'utf-8') {
+                $content = ecs_iconv(CHARSET, 'utf-8', $content);
             }
             $zip->add_file("\xFF\xFE" . $this->utf82u2($content), 'goods_list.csv');
 

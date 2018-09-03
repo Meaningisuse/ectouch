@@ -86,7 +86,7 @@ class SqlDump
         $tmp_sql = substr($tmp_sql, 0, strrpos($tmp_sql, ")") + 1); //去除行尾定义。
 
         if ($this->db->version() >= '4.1') {
-            $table_df .= $tmp_sql . " ENGINE=MyISAM DEFAULT CHARSET=" . str_replace('-', '', EC_CHARSET) . ";\r\n";
+            $table_df .= $tmp_sql . " ENGINE=MyISAM DEFAULT CHARSET=" . str_replace('-', '', CHARSET) . ";\r\n";
         } else {
             $table_df .= $tmp_sql . " TYPE=MyISAM;\r\n";
         }

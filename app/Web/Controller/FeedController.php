@@ -13,7 +13,7 @@ class FeedController extends InitController
 {
     public function index()
     {
-        header('Content-Type: application/xml; charset=' . EC_CHARSET);
+        header('Content-Type: application/xml; charset=' . CHARSET);
         header('Cache-Control: no-cache, must-revalidate');
         header('Expires: Fri, 14 Mar 1980 20:53:00 GMT');
         header('Last-Modified: ' . date('r'));
@@ -25,7 +25,7 @@ class FeedController extends InitController
 
         $uri = $GLOBALS['ecs']->url();
 
-        $rss = new RSSBuilder(EC_CHARSET, $uri, htmlspecialchars($GLOBALS['_CFG']['shop_name']), htmlspecialchars($GLOBALS['_CFG']['shop_desc']), $uri . 'animated_favicon.gif');
+        $rss = new RSSBuilder(CHARSET, $uri, htmlspecialchars($GLOBALS['_CFG']['shop_name']), htmlspecialchars($GLOBALS['_CFG']['shop_desc']), $uri . 'animated_favicon.gif');
         $rss->addDCdata('', 'http://www.ectouch.cn', date('r'));
 
         if (isset($_REQUEST['type'])) {

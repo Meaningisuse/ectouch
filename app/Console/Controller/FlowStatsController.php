@@ -340,8 +340,8 @@ class FlowStatsController extends InitController
                 $data .= ($val['referer_domain'] == "" ? $GLOBALS['_LANG']['input_url'] : $val['referer_domain']) . "\t";
                 $data .= $val['access_count'] . "\t\n";
             }
-            if (EC_CHARSET != 'gbk') {
-                echo ecs_iconv(EC_CHARSET, 'gbk', $data) . "\t";
+            if (CHARSET != 'gbk') {
+                echo ecs_iconv(CHARSET, 'gbk', $data) . "\t";
             } else {
                 echo $data . "\t";
             }

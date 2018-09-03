@@ -35,7 +35,7 @@ class UsersOrderController extends InitController
                     $order_by = $k + 1;
                     $data .= "$order_by\t$row[user_name]\t$row[order_num]\t$row[turnover]\n";
                 }
-                echo ecs_iconv(EC_CHARSET, 'GB2312', $data);
+                echo ecs_iconv(CHARSET, 'GB2312', $data);
             }
             $user_orderinfo = $this->get_user_orderinfo();
             $this->smarty->assign('filter', $user_orderinfo['filter']);

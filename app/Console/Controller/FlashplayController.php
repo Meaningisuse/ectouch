@@ -636,7 +636,7 @@ class FlashplayController extends InitController
     public function put_flash_xml($flashdb)
     {
         if (!empty($flashdb)) {
-            $xml = '<?xml version="1.0" encoding="' . EC_CHARSET . '"?><bcaster>';
+            $xml = '<?xml version="1.0" encoding="' . CHARSET . '"?><bcaster>';
             foreach ($flashdb as $key => $val) {
                 $xml .= '<item item_url="' . $val['src'] . '" link="' . $val['url'] . '" text="' . $val['text'] . '" sort="' . $val['sort'] . '"/>';
             }
@@ -768,7 +768,7 @@ class FlashplayController extends InitController
     public function set_flash_uproll($tplname, $flashdata)
     {
         $data_file = ROOT_PATH . DATA_DIR . '/flashdata/' . $tplname . '/data.xml';
-        $xmldata = '<?xml version="1.0" encoding="' . EC_CHARSET . '"?><myMenu>';
+        $xmldata = '<?xml version="1.0" encoding="' . CHARSET . '"?><myMenu>';
         foreach ($flashdata as $data) {
             $xmldata .= '<myItem pic="' . $data['src'] . '" url="' . $data['url'] . '" />';
         }
@@ -803,7 +803,7 @@ class FlashplayController extends InitController
     public function set_flash_default($tplname, $flashdata)
     {
         $data_file = ROOT_PATH . DATA_DIR . '/flashdata/' . $tplname . '/data.xml';
-        $xmldata = '<?xml version="1.0" encoding="' . EC_CHARSET . '"?><bcaster>';
+        $xmldata = '<?xml version="1.0" encoding="' . CHARSET . '"?><bcaster>';
         foreach ($flashdata as $data) {
             $xmldata .= '<item item_url="' . $data['src'] . '" link="' . $data['url'] . '" />';
         }

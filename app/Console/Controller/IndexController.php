@@ -61,7 +61,7 @@ class IndexController extends InitController
             $this->smarty->assign('menus', $menus);
             $this->smarty->assign('no_help', $GLOBALS['_LANG']['no_help']);
             $this->smarty->assign('help_lang', $GLOBALS['_CFG']['lang']);
-            $this->smarty->assign('charset', EC_CHARSET);
+            $this->smarty->assign('charset', CHARSET);
             $this->smarty->assign('admin_id', session('admin_id'));
             $this->smarty->assign('shop_url', urlencode($GLOBALS['ecs']->url()));
             return $this->smarty->display('index.htm');
@@ -153,7 +153,7 @@ class IndexController extends InitController
             $this->smarty->assign('menus', $menus);
             $this->smarty->assign('no_help', $GLOBALS['_LANG']['no_help']);
             $this->smarty->assign('help_lang', $GLOBALS['_CFG']['lang']);
-            $this->smarty->assign('charset', EC_CHARSET);
+            $this->smarty->assign('charset', CHARSET);
             $this->smarty->assign('admin_id', session('admin_id'));
             return $this->smarty->display('menu.htm');
         }
@@ -397,7 +397,7 @@ class IndexController extends InitController
             $this->smarty->assign('ecs_version', VERSION);
             $this->smarty->assign('ecs_release', RELEASE);
             $this->smarty->assign('ecs_lang', $GLOBALS['_CFG']['lang']);
-            $this->smarty->assign('ecs_charset', strtoupper(EC_CHARSET));
+            $this->smarty->assign('ecs_charset', strtoupper(CHARSET));
             $this->smarty->assign('install_date', local_date($GLOBALS['_CFG']['date_format'], $GLOBALS['_CFG']['install_date']));
             return $this->smarty->display('start.htm');
         }
@@ -418,7 +418,7 @@ class IndexController extends InitController
                 $goods['total'] = $GLOBALS['db']->getOne('SELECT COUNT(*) FROM ' . $GLOBALS['ecs']->table('goods') .
                     ' WHERE is_delete = 0 AND is_alone_sale = 1 AND is_real = 1');
                 $gcount = $goods['total'];
-                $ecs_charset = strtoupper(EC_CHARSET);
+                $ecs_charset = strtoupper(CHARSET);
                 $ecs_user = $GLOBALS['db']->getOne('SELECT COUNT(*) FROM ' . $GLOBALS['ecs']->table('users'));
                 $ecs_template = $GLOBALS['db']->getOne('SELECT value FROM ' . $GLOBALS['ecs']->table('shop_config') . ' WHERE code = \'template\'');
                 $style = $GLOBALS['db']->getOne('SELECT value FROM ' . $GLOBALS['ecs']->table('shop_config') . ' WHERE code = \'stylename\'');

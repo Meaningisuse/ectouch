@@ -1026,10 +1026,10 @@ function save_searchengine_keyword($domain, $path)
 
     if (!empty($keywords)) {
         $gb_search = ['YAHOO CHINA', 'TOM', 'ZHONGSOU', 'NETEASE', 'SOGOU', 'SOSO', 'IASK', 'CT114', 'BAIDU'];
-        if (EC_CHARSET == 'utf-8' && in_array($searchengine, $gb_search)) {
+        if (CHARSET == 'utf-8' && in_array($searchengine, $gb_search)) {
             $keywords = ecs_iconv('GBK', 'UTF8', $keywords);
         }
-        if (EC_CHARSET == 'gbk' && !in_array($searchengine, $gb_search)) {
+        if (CHARSET == 'gbk' && !in_array($searchengine, $gb_search)) {
             $keywords = ecs_iconv('UTF8', 'GBK', $keywords);
         }
 

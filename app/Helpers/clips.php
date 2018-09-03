@@ -631,7 +631,7 @@ function color_tag(&$tags)
         $tags[$key]['size'] = $tagmark[$lvl]['size'];
         $tags[$key]['bold'] = $tagmark[$lvl]['ifbold'];
         if ($rewrite) {
-            if (strtolower(EC_CHARSET) !== 'utf-8') {
+            if (strtolower(CHARSET) !== 'utf-8') {
                 $tags[$key]['url'] = 'tag-' . urlencode(urlencode($val['tag_words'])) . '.html';
             } else {
                 $tags[$key]['url'] = 'tag-' . urlencode($val['tag_words']) . '.html';

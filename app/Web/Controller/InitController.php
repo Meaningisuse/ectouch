@@ -45,7 +45,7 @@ class InitController extends Controller
 
         if ($GLOBALS['_CFG']['shop_closed'] == 1) {
             /* 商店关闭了，输出关闭的消息 */
-            header('Content-type: text/html; charset=' . EC_CHARSET);
+            header('Content-type: text/html; charset=' . CHARSET);
 
             die('<div style="margin: 150px; text-align: center; font-size: 14px"><p>' . $GLOBALS['_LANG']['shop_closed'] . '</p><p>' . $GLOBALS['_CFG']['close_comment'] . '</p></div>');
         }
@@ -75,7 +75,7 @@ class InitController extends Controller
         }
         if (!defined('INIT_NO_SMARTY')) {
             header('Cache-control: private');
-            header('Content-type: text/html; charset=' . EC_CHARSET);
+            header('Content-type: text/html; charset=' . CHARSET);
 
             /* 创建 Smarty 对象。*/
             $GLOBALS['smarty'] = $this->smarty = new Template();
@@ -94,7 +94,7 @@ class InitController extends Controller
             }
 
             $this->smarty->assign('lang', $GLOBALS['_LANG']);
-            $this->smarty->assign('ecs_charset', EC_CHARSET);
+            $this->smarty->assign('ecs_charset', CHARSET);
             if (!empty($GLOBALS['_CFG']['stylename'])) {
                 $this->smarty->assign('css_path', 'themes/' . $GLOBALS['_CFG']['template'] . '/style_' . $GLOBALS['_CFG']['stylename'] . '.css');
             } else {
