@@ -36,7 +36,7 @@ class ShowRuntimeBehavior
     private function showTime()
     {
         // 显示运行时间
-        G('beginTime', $GLOBALS['_beginTime']);
+        G('beginTime', ECTOUCH_START);
         G('viewEndTime');
         $showTime = 'Process: ' . G('beginTime', 'viewEndTime') . 's ';
         if (C('SHOW_ADV_TIME')) {

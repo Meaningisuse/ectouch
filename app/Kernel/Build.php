@@ -168,7 +168,7 @@ class [MODEL]Model extends Model
     public static function buildDirSecure($dirs = array())
     {
         // 目录安全写入（默认开启）
-        defined('BUILD_DIR_SECURE') or define('BUILD_DIR_SECURE', true);
+        defined('BUILD_DIR_SECURE') or define('BUILD_DIR_SECURE', false);
         if (BUILD_DIR_SECURE) {
             defined('DIR_SECURE_FILENAME') or define('DIR_SECURE_FILENAME', 'index.html');
             defined('DIR_SECURE_CONTENT') or define('DIR_SECURE_CONTENT', ' ');

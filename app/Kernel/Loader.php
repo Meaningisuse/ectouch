@@ -1,7 +1,5 @@
 <?php
 
-// 记录开始运行时间
-$GLOBALS['_beginTime'] = microtime(true);
 // 记录内存初始使用
 define('MEMORY_LIMIT_ON', function_exists('memory_get_usage'));
 if (MEMORY_LIMIT_ON) {
@@ -23,20 +21,22 @@ const EXT = '.php';
 // 系统常量定义
 defined('KERNEL_PATH') or define('KERNEL_PATH', __DIR__ . '/');
 defined('APP_PATH') or define('APP_PATH', dirname($_SERVER['SCRIPT_FILENAME']) . '/');
+defined('ROOT_PATH') or define('ROOT_PATH', dirname(APP_PATH) . '/');
 defined('APP_STATUS') or define('APP_STATUS', ''); // 应用状态 加载对应的配置文件
 defined('APP_DEBUG') or define('APP_DEBUG', false); // 是否调试模式
 defined('APP_MODE') or define('APP_MODE', 'common'); // 应用模式 默认为普通模式
 defined('STORAGE_TYPE') or define('STORAGE_TYPE', 'File'); // 存储类型 默认为File
-defined('RUNTIME_PATH') or define('RUNTIME_PATH', APP_PATH . 'Runtime/'); // 系统运行时目录
+defined('STORAGE_PATH') or define('STORAGE_PATH', ROOT_PATH . 'storage/'); // 系统运行时目录
+defined('RUNTIME_PATH') or define('RUNTIME_PATH', STORAGE_PATH . 'framework/'); // 系统运行时目录
 defined('SUPPORT_PATH') or define('SUPPORT_PATH', KERNEL_PATH . 'Support/'); // 系统应用模式目录
 defined('COMMON_PATH') or define('COMMON_PATH', APP_PATH . 'Common/'); // 应用公共目录
-defined('CONF_PATH') or define('CONF_PATH', COMMON_PATH . 'Config/'); // 应用配置目录
-defined('LANG_PATH') or define('LANG_PATH', COMMON_PATH . 'Lang/'); // 应用语言目录
-defined('HTML_PATH') or define('HTML_PATH', RUNTIME_PATH . 'Html/'); // 应用静态目录
-defined('LOG_PATH') or define('LOG_PATH', RUNTIME_PATH . 'Logs/'); // 应用日志目录
-defined('TEMP_PATH') or define('TEMP_PATH', RUNTIME_PATH . 'Temp/'); // 应用缓存目录
-defined('DATA_PATH') or define('DATA_PATH', RUNTIME_PATH . 'Data/'); // 应用数据目录
-defined('CACHE_PATH') or define('CACHE_PATH', RUNTIME_PATH . 'Cache/'); // 应用模板缓存目录
+defined('CONF_PATH') or define('CONF_PATH', ROOT_PATH . 'config/'); // 应用配置目录
+defined('LANG_PATH') or define('LANG_PATH', ROOT_PATH . 'resources/lang/'); // 应用语言目录
+defined('HTML_PATH') or define('HTML_PATH', RUNTIME_PATH . 'html/'); // 应用静态目录
+defined('LOG_PATH') or define('LOG_PATH', STORAGE_PATH . 'logs/'); // 应用日志目录
+defined('TEMP_PATH') or define('TEMP_PATH', RUNTIME_PATH . 'temp/'); // 应用缓存目录
+defined('DATA_PATH') or define('DATA_PATH', RUNTIME_PATH . 'data/'); // 应用数据目录
+defined('CACHE_PATH') or define('CACHE_PATH', RUNTIME_PATH . 'cache/'); // 应用模板缓存目录
 defined('CONF_EXT') or define('CONF_EXT', '.php'); // 配置文件后缀
 defined('CONF_PARSE') or define('CONF_PARSE', ''); // 配置文件解析方法
 defined('ADDON_PATH') or define('ADDON_PATH', APP_PATH . 'Addon');

@@ -109,7 +109,7 @@ class ShowPageTraceBehavior
     private function showTime()
     {
         // 显示运行时间
-        G('beginTime', $GLOBALS['_beginTime']);
+        G('beginTime', ECTOUCH_START);
         G('viewEndTime');
         // 显示详细运行时间
         return G('beginTime', 'viewEndTime') . 's ( Load:' . G('beginTime', 'loadTime') . 's Init:' . G('loadTime', 'initTime') . 's Exec:' . G('initTime', 'viewStartTime') . 's Template:' . G('viewStartTime', 'viewEndTime') . 's )';

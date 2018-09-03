@@ -16,7 +16,7 @@ class BuildLiteBehavior
         }
 
         $defs    = get_defined_constants(true);
-        $content = 'namespace {$GLOBALS[\'_beginTime\'] = microtime(TRUE);';
+        $content = 'namespace {';
         if (MEMORY_LIMIT_ON) {
             $content .= '$GLOBALS[\'_startUseMems\'] = memory_get_usage();';
         }
