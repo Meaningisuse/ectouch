@@ -8,13 +8,13 @@
  * @homepage https://ectouch.cn
  */
 
-require __DIR__ . '/vendor/autoload.php';
+namespace think;
 
-use Symfony\Component\Console\Application;
+// 加载基础文件
+require __DIR__ . '/app/kernel/base.php';
 
-$app = new Application();
+// 应用初始化
+Container::get('app')->path(__DIR__ . '/app/')->initialize();
 
-// register commands
-$app->add(new \App\Command\CreateUserCommand());
-
-$app->run();
+// 控制台初始化
+Console::init();

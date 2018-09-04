@@ -50,4 +50,4 @@ require __DIR__ . '/../bootstrap/app.php';
 |
 */
 
-App::start();
+$app->send();

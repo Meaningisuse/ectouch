@@ -22,6 +22,7 @@
         "sentry/sentry": "^1.9",
         "symfony/console": "^4.1",
         "symfony/filesystem": "^4.1",
+        "topthink/framework": "5.1.*",
         "workerman/phpsocket.io": "^1.1"
     },
     "autoload": {
@@ -30,8 +31,11 @@
         },
         "files": [
             "config/constant.php",
-            "app/Support/helpers.php"
+            "app/support/helpers.php"
         ]
+    },
+    "extra": {
+        "think-path": "app/kernel"
     },
     "config": {
         "preferred-install": "dist",
