@@ -55,4 +55,4 @@ if (!in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
 |
 */
 
-return think\Container::get('app')->run();
+return think\Container::get('app')->path(dirname(__DIR__) . '/app/');

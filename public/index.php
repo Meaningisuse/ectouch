@@ -8,7 +8,6 @@
  */
 
 // define('APP_DEBUG', true);
-define('ECTOUCH_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +21,7 @@ define('ECTOUCH_START', microtime(true));
 |
 */
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../app/kernel/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -50,4 +49,4 @@ require __DIR__ . '/../bootstrap/app.php';
 |
 */
 
-$app->send();
+$app->run()->send();

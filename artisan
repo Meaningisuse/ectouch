@@ -8,13 +8,44 @@
  * @homepage https://ectouch.cn
  */
 
-namespace think;
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for our application. We just need to utilize it! We'll require it
+| into the script here so that we do not have to worry about the
+| loading of any our classes "manually". Feels great to relax.
+|
+*/
 
-// 加载基础文件
-require __DIR__ . '/app/kernel/base.php';
+require __DIR__ . '/app/kernel/autoload.php';
 
-// 应用初始化
-Container::get('app')->path(__DIR__ . '/app/')->initialize();
+$app = require_once __DIR__ . '/bootstrap/app.php';
 
-// 控制台初始化
-Console::init();
+/*
+|--------------------------------------------------------------------------
+| Run The Artisan Application
+|--------------------------------------------------------------------------
+|
+| When we run the console application, the current CLI command will be
+| executed in this console and the response sent back to a terminal
+| or another output device for the developers. Here goes nothing!
+|
+*/
+
+$app->initialize();
+
+/*
+|--------------------------------------------------------------------------
+| Shutdown The Application
+|--------------------------------------------------------------------------
+|
+| Once Artisan has finished running, we will fire off the shutdown events
+| so that any final work may be done by the application before we shut
+| down the process. This is the last thing to happen to the request.
+|
+*/
+
+think\Console::init();

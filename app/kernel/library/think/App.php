@@ -267,6 +267,14 @@ class App extends Container
         } elseif (is_file($this->runtimePath . $module . 'init.php')) {
             include $this->runtimePath . $module . 'init.php';
         } else {
+            // 加载应用行为扩展文件
+            if (is_file($this->configPath . 'tags.php')) {
+                $tags = include $this->configPath . 'tags.php';
+                if (is_array($tags)) {
+                    $this->hook->import($tags);
+                }
+            }
+
             // 加载行为扩展文件
             if (is_file($path . 'tags.php')) {
                 $tags = include $path . 'tags.php';
@@ -283,6 +291,10 @@ class App extends Container
             if ('' == $module) {
                 // 加载系统助手函数
                 include $this->thinkPath . 'helper.php';
+                // 加载应用助手函数
+                if (is_file($path . 'support/helpers.php')) {
+                    include_once $path . 'support/helpers.php';
+                }
             }
 
             // 加载中间件
