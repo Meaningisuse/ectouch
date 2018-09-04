@@ -422,7 +422,7 @@ class AuctionController extends InitController
             $auction['formated_start_price'] = price_format($auction['start_price']);
             $auction['formated_end_price'] = price_format($auction['end_price']);
             $auction['formated_deposit'] = price_format($auction['deposit']);
-            $auction['goods_thumb'] = get_image_path($row['goods_id'], $row['goods_thumb'], true);
+            $auction['goods_thumb'] = get_image_path($row['goods_thumb']);
             $auction['url'] = build_uri('auction', ['auid' => $auction['act_id']]);
 
             if ($auction['status_no'] < 2) {

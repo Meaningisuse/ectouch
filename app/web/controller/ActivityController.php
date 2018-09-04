@@ -77,7 +77,7 @@ class ActivityController extends InitController
                     $row['gift'] = unserialize($row['gift']);
                     if (is_array($row['gift'])) {
                         foreach ($row['gift'] as $k => $v) {
-                            $row['gift'][$k]['thumb'] = get_image_path($v['id'], $GLOBALS['db']->getOne("SELECT goods_thumb FROM " . $GLOBALS['ecs']->table('goods') . " WHERE goods_id = '" . $v['id'] . "'"), true);
+                            $row['gift'][$k]['thumb'] = get_image_path($GLOBALS['db']->getOne("SELECT goods_thumb FROM " . $GLOBALS['ecs']->table('goods') . " WHERE goods_id = '" . $v['id'] . "'"));
                         }
                     }
                     break;

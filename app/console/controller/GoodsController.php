@@ -339,8 +339,8 @@ class GoodsController extends InitController
 
                 /* 商品图片路径 */
                 if (isset($GLOBALS['shop_id']) && ($GLOBALS['shop_id'] > 10) && !empty($goods['original_img'])) {
-                    $goods['goods_img'] = get_image_path($_REQUEST['goods_id'], $goods['goods_img']);
-                    $goods['goods_thumb'] = get_image_path($_REQUEST['goods_id'], $goods['goods_thumb'], true);
+                    $goods['goods_img'] = get_image_path($goods['goods_img']);
+                    $goods['goods_thumb'] = get_image_path($goods['goods_thumb']);
                 }
 
                 /* 图片列表 */
@@ -350,8 +350,8 @@ class GoodsController extends InitController
                 /* 格式化相册图片路径 */
                 if (isset($GLOBALS['shop_id']) && ($GLOBALS['shop_id'] > 0)) {
                     foreach ($img_list as $key => $gallery_img) {
-                        $gallery_img[$key]['img_url'] = get_image_path($gallery_img['goods_id'], $gallery_img['img_original'], false, 'gallery');
-                        $gallery_img[$key]['thumb_url'] = get_image_path($gallery_img['goods_id'], $gallery_img['img_original'], true, 'gallery');
+                        $gallery_img[$key]['img_url'] = get_image_path($gallery_img['img_original']);
+                        $gallery_img[$key]['thumb_url'] = get_image_path($gallery_img['img_original']);
                     }
                 } else {
                     foreach ($img_list as $key => $gallery_img) {
@@ -530,8 +530,8 @@ class GoodsController extends InitController
                     }
                     /* 清除原来商品图片 */
                     if ($proc_thumb === false) {
-                        get_image_path($_REQUEST[goods_id], $row['goods_img'], false, 'goods', true);
-                        get_image_path($_REQUEST[goods_id], $row['goods_thumb'], true, 'goods', true);
+                        get_image_path($row['goods_img']);
+                        get_image_path($row['goods_thumb']);
                     }
                 }
 

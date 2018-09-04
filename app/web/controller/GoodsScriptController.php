@@ -81,7 +81,7 @@ class GoodsScriptController extends InitController
                     $goods['goods_price'] = ecs_iconv(CHARSET, $charset, $goods['goods_price']);
                 }
                 $goods['goods_name'] = $GLOBALS['_CFG']['goods_name_length'] > 0 ? sub_str($goods['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $goods['goods_name'];
-                $goods['goods_thumb'] = get_image_path($goods['goods_id'], $goods['goods_thumb'], true);
+                $goods['goods_thumb'] = get_image_path($goods['goods_thumb']);
                 $goods_list[] = $goods;
             }
 

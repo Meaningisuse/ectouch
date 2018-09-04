@@ -421,10 +421,10 @@ class PictureBatchController extends InitController
 
             foreach ($res as $row) {
                 if ($thumb) {
-                    get_image_path($row['goods_id'], '', true, 'goods', true);
+                    get_image_path('');
                 }
                 if ($watermark) {
-                    get_image_path($row['goods_id'], '', false, 'goods', true);
+                    get_image_path('');
                 }
             }
         } else {
@@ -433,10 +433,10 @@ class PictureBatchController extends InitController
 
             foreach ($res as $row) {
                 if ($thumb) {
-                    get_image_path($row['goods_id'], $row['img_original'], true, 'gallery', true);
+                    get_image_path($row['img_original']);
                 }
                 if ($watermark) {
-                    get_image_path($row['goods_id'], $row['img_original'], false, 'gallery', true);
+                    get_image_path($row['img_original']);
                 }
             }
         }
