@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Plugins\Integrate;
+namespace app\plugins\integrate;
 
 /* 模块的基本信息 */
 if (isset($set_modules) && $set_modules == true) {

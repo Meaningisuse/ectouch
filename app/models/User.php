@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace app\models;
 
-use App\Kernel\Model;
+use think\Model;
 
 class User extends Model
 {

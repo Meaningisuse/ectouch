@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
 /**
  * 商品相册
  * Class GalleryController
- * @package App\Web\Controller
+ * @package app\web\controller
  */
 class GalleryController extends InitController
 {

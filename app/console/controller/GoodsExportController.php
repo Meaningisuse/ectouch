@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
-use App\Libraries\PHPZip;
+use app\libraries\PHPZip;
 
 class GoodsExportController extends InitController
 {

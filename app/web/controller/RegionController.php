@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
 
 /**
  * 地区切换程序
  * Class RegionController
- * @package App\Web\Controller
+ * @package app\web\controller
  */
 class RegionController extends InitController
 {

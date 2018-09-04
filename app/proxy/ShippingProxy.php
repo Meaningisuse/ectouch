@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Proxy;
+namespace app\proxy;
 
 use GuzzleHttp\Client;
 

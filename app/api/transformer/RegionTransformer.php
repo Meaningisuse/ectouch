@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Api\Transformer;
+namespace app\api\transformer;
 
 /**
  * Class RegionTransformer
- * @package App\Api\Transformer
+ * @package app\api\transformer
  */
 class RegionTransformer extends Transformer
 {

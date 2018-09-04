@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports;
+namespace app\exports;
 
 class OrderExport
 {

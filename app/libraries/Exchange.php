@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libraries;
+namespace app\libraries;
 
 /*------------------------------------------------------ */
 //-- 该类用于与数据库数据进行交换

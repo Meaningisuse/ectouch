@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
 /**
  * 活动列表
  * Class ActivityController
- * @package App\Web\Controller
+ * @package app\web\controller
  */
 class ActivityController extends InitController
 {

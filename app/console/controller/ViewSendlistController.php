@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
 class ViewSendlistController extends InitController
 {

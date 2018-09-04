@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
 /**
  * 首页文件
  * Class IndexController
- * @package App\Web\Controller
+ * @package app\web\controller
  */
 class IndexController extends InitController
 {
@@ -108,7 +108,7 @@ class IndexController extends InitController
         $all = $GLOBALS['db']->getAll($sql);
 
         foreach ($all as $key => $row) {
-            $shipping_code = 'App\\Plugins\\Shipping\\' . $row['shipping_code'];
+            $shipping_code = 'app\\plugins\\shipping\\' . $row['shipping_code'];
             if (class_exists($shipping_code)) {
                 $shipping = new $shipping_code;
                 $all[$key]['invoice_no'] = $shipping->query((string)$row['invoice_no']);

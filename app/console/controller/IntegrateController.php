@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
-use App\Libraries\Mysql;
-use App\Libraries\Transport;
+use app\libraries\Mysql;
+use app\libraries\Transport;
 
 /**
  *  第三方程序会员数据整合插件管理程序
@@ -703,7 +703,7 @@ class IntegrateController extends InitController
                 }
                 die(json_encode($result));
             } elseif ($task_sync['start'] < $task_sync['total']) {
-                $code = 'App\\Plugins\\Integrate\\' . session('code');
+                $code = 'app\\plugins\\integrate\\' . session('code');
                 $cls_user = new $code(session('cfg'));
                 $cls_user->need_sync = false;
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
-use App\Libraries\Sms;
-use App\Libraries\Captcha;
+use app\libraries\Sms;
+use app\libraries\Captcha;
 
 /**
  * 购物流程
  * Class FlowController
- * @package App\Web\Controller
+ * @package app\web\controller
  */
 class FlowController extends InitController
 {

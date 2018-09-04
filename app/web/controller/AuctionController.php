@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
 /**
  * 拍卖前台文件
  * Class AuctionController
- * @package App\Web\Controller
+ * @package app\web\controller
  */
 class AuctionController extends InitController
 {

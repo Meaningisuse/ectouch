@@ -1,5 +1,5 @@
 <?php
-namespace App\Libraries;
+namespace app\libraries;
 
 /**
  *  RSS 类

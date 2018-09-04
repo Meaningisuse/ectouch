@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
-use App\Libraries\Exchange;
+use app\libraries\Exchange;
 
 /**
  *  超值礼包管理程序

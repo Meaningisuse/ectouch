@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Plugins\Convert;
+namespace app\plugins\convert;
 
 class ECTouch
 {

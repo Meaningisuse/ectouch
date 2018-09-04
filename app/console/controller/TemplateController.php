@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
-use App\Libraries\PHPZip;
+use app\libraries\PHPZip;
 
 /**
  *  管理中心模版管理程序

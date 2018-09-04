@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
 /**
  *  邮件列表管理

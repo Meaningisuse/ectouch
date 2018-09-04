@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Common\Controller;
+namespace app\http\controllers;
 
 use Firebase\JWT\JWT;
-use App\Kernel\Controller\RestController as BaseController;
+use think\Controller as BaseController;
 
 class Controller extends BaseController
 {

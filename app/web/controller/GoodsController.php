@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
 
 /**
  * 商品详情
  * Class GoodsController
- * @package App\Web\Controller
+ * @package app\web\controller
  */
 class GoodsController extends InitController
 {

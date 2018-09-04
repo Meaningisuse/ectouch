@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Custom\Demo\Model;
+namespace app\custom\demo\model;
 
-use App\Kernel\Model;
+use think\Model;
 
 class User extends Model
 {

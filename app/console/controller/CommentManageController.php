@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
 /**
  *  用户评论管理程序

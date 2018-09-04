@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
-use App\Libraries\Image;
+use app\libraries\Image;
 
 /**
  *  图片批量处理程序

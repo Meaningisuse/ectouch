@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
-use App\Libraries\Sitemap;
+use app\libraries\Sitemap;
 
 /**
  * google sitemap 文件
  * Class SitemapsController
- * @package App\Web\Controller
+ * @package app\web\controller
  */
 class SitemapsController extends InitController
 {

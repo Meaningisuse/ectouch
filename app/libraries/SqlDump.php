@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libraries;
+namespace app\libraries;
 
 /**
  *  数据库导出类

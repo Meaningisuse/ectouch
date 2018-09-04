@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
 /**
  * 生成商品列表

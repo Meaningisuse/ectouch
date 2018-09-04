@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Libraries;
+namespace app\libraries;
 
-use App\Kernel\Model;
+use think\Model;
 
 /**
  * MYSQL 公用类库
  * Class Mysql
- * @package App\Libraries
+ * @package app\libraries
  */
 class Mysql extends Model
 {

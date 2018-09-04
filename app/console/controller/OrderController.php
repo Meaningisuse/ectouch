@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
-use App\Libraries\Sms;
+use app\libraries\Sms;
 
 /**
  *  订单管理

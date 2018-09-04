@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Plugins\OAuth;
+namespace app\plugins\oauth;
 
 class Wechat
 {

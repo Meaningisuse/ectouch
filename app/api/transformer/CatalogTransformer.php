@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Api\Transformer;
+namespace app\api\transformer;
 
 /**
  * Class CatalogTransformer
- * @package App\Api\Transformer
+ * @package app\api\transformer
  */
 class CatalogTransformer extends Transformer
 {

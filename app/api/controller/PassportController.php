@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Api\Controller;
+namespace app\api\controller;
 
-use App\Common\Controller\Controller;
+use app\http\controllers\Controller;
 
 class PassportController extends Controller
 {

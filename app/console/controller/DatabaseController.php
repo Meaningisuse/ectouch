@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
-use App\Libraries\SqlDump;
+use app\libraries\SqlDump;
 
 /**
  *  数据库管理

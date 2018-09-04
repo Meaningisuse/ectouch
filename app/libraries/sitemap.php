@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Libraries;
+namespace app\libraries;
 
 /**
  * Class Sitemap
- * @package App\Libraries
+ * @package app\libraries
  */
 class Sitemap
 {

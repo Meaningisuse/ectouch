@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libraries;
+namespace app\libraries;
 
 /**
  *  短信模块 之 模型（类库）

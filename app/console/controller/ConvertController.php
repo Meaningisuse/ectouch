@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
-use App\Libraries\Mysql;
+use app\libraries\Mysql;
 
 /**
  *  转换程序

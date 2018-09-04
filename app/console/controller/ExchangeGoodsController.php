@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
-use App\Libraries\Exchange;
+use app\libraries\Exchange;
 
 /**
  *  管理中心积分兑换商品程序文件

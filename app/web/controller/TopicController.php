@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
 /**
  * 专题前台
  * Class TopicController
- * @package App\Web\Controller
+ * @package app\web\controller
  */
 class TopicController extends InitController
 {

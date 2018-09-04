@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Web\Controller;
+namespace app\web\controller;
 
 /**
  * 搜索程序
  * Class SearchController
- * @package App\Web\Controller
+ * @package app\web\controller
  */
 class SearchController extends InitController
 {

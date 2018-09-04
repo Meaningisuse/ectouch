@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Console\Controller;
+namespace app\console\controller;
 
-use App\Libraries\Image;
-use App\Libraries\Exchange;
+use app\libraries\Image;
+use app\libraries\Exchange;
 
 /**
  *  管理中心文章处理程序文件
