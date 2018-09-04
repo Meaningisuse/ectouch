@@ -1,6 +1,6 @@
 <?php
 
-namespace app\plugins\integrate;
+namespace app\modules\integrate;
 
 use app\libraries\Mysql;
 

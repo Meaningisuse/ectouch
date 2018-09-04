@@ -1,7 +1,8 @@
 <?php
 
-namespace app\plugins\convert;
+namespace app\modules\convert;
 
-class ECTouch
+class Ecshop
 {
+
 }

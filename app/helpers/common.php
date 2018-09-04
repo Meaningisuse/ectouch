@@ -143,7 +143,7 @@ function &init_users()
         return $cls;
     }
 
-    $integrate_code = 'app\\plugins\\integrate\\' . ucfirst($GLOBALS['_CFG']['integrate_code']);
+    $integrate_code = 'app\\modules\\integrate\\' . ucfirst($GLOBALS['_CFG']['integrate_code']);
     $cfg = unserialize($GLOBALS['_CFG']['integrate_config']);
     $cls = new $integrate_code($cfg);
 
@@ -1785,10 +1785,10 @@ function exception_handler($errno, $errstr, $errfile, $errline)
  *
  * @return string   $url
  */
-function get_image_path($goods_id, $image = '', $thumb = false, $call = 'goods', $del = false)
+function get_image_path($image = '')
 {
     $url = empty($image) ? $GLOBALS['_CFG']['no_picture'] : $image;
-    return $url;
+    return asset('storage/' . $url);
 }
 
 /**
@@ -2038,12 +2038,12 @@ function get_package_info($id)
 
     $sql = "SELECT pg.package_id, pg.goods_id, pg.goods_number, pg.admin_id, " .
         " g.goods_sn, g.goods_name, g.market_price, g.goods_thumb, g.is_real, " .
-        " IFNULL(mp.user_price, g.shop_price * '". session('discount') ."') AS rank_price " .
+        " IFNULL(mp.user_price, g.shop_price * '" . session('discount') . "') AS rank_price " .
         " FROM " . $GLOBALS['ecs']->table('package_goods') . " AS pg " .
         "   LEFT JOIN " . $GLOBALS['ecs']->table('goods') . " AS g " .
         "   ON g.goods_id = pg.goods_id " .
         " LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp " .
-        "ON mp.goods_id = g.goods_id AND mp.user_rank = '". session('user_rank') ."' " .
+        "ON mp.goods_id = g.goods_id AND mp.user_rank = '" . session('user_rank') . "' " .
         " WHERE pg.package_id = " . $id . " " .
         " ORDER BY pg.package_id, pg.goods_id";
 
@@ -2095,7 +2095,7 @@ function get_package_goods($package_id)
                 LEFT JOIN " . $GLOBALS['ecs']->table('products') . " AS p ON pg.product_id = p.product_id
             WHERE pg.package_id = '$package_id'";
     if ($package_id == 0) {
-        $sql .= " AND pg.admin_id = '". session('admin_id') ."'";
+        $sql .= " AND pg.admin_id = '" . session('admin_id') . "'";
     }
     $resource = $GLOBALS['db']->query($sql);
     if (!$resource) {

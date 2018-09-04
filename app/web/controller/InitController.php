@@ -20,9 +20,9 @@ class InitController extends Controller
     protected $user;
     protected $smarty;
 
-    protected function _initialize()
+    protected function initialize()
     {
-        define('PHP_SELF', parse_name(CONTROLLER_NAME) . '.php');
+        define('PHP_SELF', parse_name(request()->controller()) . '.php');
 
         load_helper(['time', 'base', 'common', 'main', 'insert', 'goods', 'article']);
 
@@ -96,10 +96,11 @@ class InitController extends Controller
             $this->smarty->assign('lang', $GLOBALS['_LANG']);
             $this->smarty->assign('ecs_charset', CHARSET);
             if (!empty($GLOBALS['_CFG']['stylename'])) {
-                $this->smarty->assign('css_path', 'themes/' . $GLOBALS['_CFG']['template'] . '/style_' . $GLOBALS['_CFG']['stylename'] . '.css');
+                $css_path = 'themes/' . $GLOBALS['_CFG']['template'] . '/style_' . $GLOBALS['_CFG']['stylename'] . '.css';
             } else {
-                $this->smarty->assign('css_path', 'themes/' . $GLOBALS['_CFG']['template'] . '/style.css');
+                $css_path = 'themes/' . $GLOBALS['_CFG']['template'] . '/style.css';
             }
+            $this->smarty->assign('css_path', asset($css_path));
         }
 
         if (!defined('INIT_NO_USERS')) {

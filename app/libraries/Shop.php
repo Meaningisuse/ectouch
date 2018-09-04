@@ -15,8 +15,8 @@ class Shop
      */
     public function __construct()
     {
-        $this->db_name = config('DB_NAME');
-        $this->prefix = config('DB_PREFIX');
+        $this->db_name = config('database.database');
+        $this->prefix = config('database.prefix');
     }
 
     /**
@@ -63,7 +63,7 @@ class Shop
      */
     public function url()
     {
-        $root = __ROOT__;
+        $root = request()->rootDomain();
 
         if (substr($root, -1) != '/') {
             $root .= '/';

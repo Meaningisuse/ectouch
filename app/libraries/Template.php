@@ -205,6 +205,10 @@ class Template
             $this->_current_file = $filename;
             $source = $this->fetch_str(file_get_contents($filename));
 
+            if (!is_dir(dirname($name))) {
+                mkdir(dirname($name));
+            }
+
             if (file_put_contents($name, $source, LOCK_EX) === false) {
                 trigger_error('can\'t write:' . $name);
             }

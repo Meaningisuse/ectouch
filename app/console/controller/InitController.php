@@ -24,10 +24,10 @@ class InitController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|null
      * @throws \Exception
      */
-    protected function _initialize()
+    protected function initialize()
     {
         define('ECT_ADMIN', true);
-        define('PHP_SELF', parse_name(CONTROLLER_NAME) . '.php');
+        define('PHP_SELF', parse_name(request()->controller()) . '.php');
 
         $_REQUEST['act'] = isset($_REQUEST['act']) ? $_REQUEST['act'] : '';
 

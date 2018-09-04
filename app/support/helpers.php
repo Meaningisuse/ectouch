@@ -77,7 +77,7 @@ function storage_path($path = '')
  */
 function plugin_path($path = '')
 {
-    return app_path('Plugins' . ($path ? DIRECTORY_SEPARATOR . $path : $path));
+    return app_path('modules' . ($path ? DIRECTORY_SEPARATOR . $path : $path));
 }
 
 /**
@@ -89,7 +89,7 @@ function asset($path = null)
 {
     $path = is_null($path) ? '' : trim($path, '/');
 
-    return __ROOT__ . '/' . $path;
+    return request()->rootUrl() . '/' . $path;
 }
 
 /**
