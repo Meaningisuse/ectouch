@@ -1,4 +1,5 @@
 <?php
+
 namespace think\console\output;
 
 use think\console\output\formatter\Stack as StyleStack;

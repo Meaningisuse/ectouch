@@ -1,4 +1,5 @@
 <?php
+
 namespace think\console\command\optimize;
 
 use think\console\Command;

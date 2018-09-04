@@ -1,4 +1,5 @@
 <?php
+
 namespace think\console\command;
 
 use think\console\Command;

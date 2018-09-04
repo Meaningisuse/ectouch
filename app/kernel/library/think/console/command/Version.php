@@ -1,4 +1,5 @@
 <?php
+
 namespace think\console\command;
 
 use think\console\Command;
@@ -17,7 +18,7 @@ class Version extends Command
 
     protected function execute(Input $input, Output $output)
     {
-        $output->writeln('v' . App::version());
+        $output->writeln(VERSION);
     }
 
 }
