@@ -57,7 +57,7 @@ class VoteController extends InitController
      * @param   string $ip_address
      * @return  boolean
      */
-    public function vote_already_submited($vote_id, $ip_address)
+    protected function vote_already_submited($vote_id, $ip_address)
     {
         $sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('vote_log') . " " .
             "WHERE ip_address = '$ip_address' AND vote_id = '$vote_id' ";
@@ -74,7 +74,7 @@ class VoteController extends InitController
      * @param   string $option_id
      * @return  void
      */
-    public function save_vote($vote_id, $ip_address, $option_id)
+    protected function save_vote($vote_id, $ip_address, $option_id)
     {
         $sql = "INSERT INTO " . $GLOBALS['ecs']->table('vote_log') . " (vote_id, ip_address, vote_time) " .
             "VALUES ('$vote_id', '$ip_address', " . gmtime() . ")";

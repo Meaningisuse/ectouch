@@ -44,7 +44,7 @@ class CatalogController extends InitController
      *
      * @return void
      */
-    public function calculate_goods_num($cat_list, $cat_id)
+    protected function calculate_goods_num($cat_list, $cat_id)
     {
         $goods_num = 0;
 

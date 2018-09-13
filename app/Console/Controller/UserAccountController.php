@@ -369,7 +369,7 @@ class UserAccountController extends InitController
      * @param   int $user_id 会员ID
      * @return  int
      */
-    public function get_user_surplus($user_id)
+    protected function get_user_surplus($user_id)
     {
         $sql = "SELECT SUM(user_money) FROM " . $GLOBALS['ecs']->table('account_log') .
             " WHERE user_id = '$user_id'";
@@ -388,7 +388,7 @@ class UserAccountController extends InitController
      *
      * @return  int
      */
-    public function update_user_account($id, $amount, $admin_note, $is_paid)
+    protected function update_user_account($id, $amount, $admin_note, $is_paid)
     {
         $sql = "UPDATE " . $GLOBALS['ecs']->table('user_account') . " SET " .
             "admin_user  = '" . session('admin_name') . "', " .
@@ -407,7 +407,7 @@ class UserAccountController extends InitController
      *
      * @return void
      */
-    public function account_list()
+    protected function account_list()
     {
         $result = get_filter();
         if ($result === false) {

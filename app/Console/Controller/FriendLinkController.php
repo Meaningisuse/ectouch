@@ -309,7 +309,7 @@ class FriendLinkController extends InitController
     }
 
     /* 获取友情链接数据列表 */
-    public function get_links_list()
+    protected function get_links_list()
     {
         $result = get_filter();
         if ($result === false) {

@@ -121,7 +121,7 @@ class ArticleAutoController extends InitController
         }
     }
 
-    public function get_auto_goods()
+    protected function get_auto_goods()
     {
         $where = '';
         if (!empty($_POST['goods_name'])) {

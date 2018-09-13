@@ -128,7 +128,7 @@ class FilecheckController extends InitController
      * @param  int $sub //是否检查子目录
      * @param  string $skip //不检查的目录或文件
      */
-    public function checkfiles($currentdir, $ext = '', $sub = 1, $skip = '')
+    protected function checkfiles($currentdir, $ext = '', $sub = 1, $skip = '')
     {
         $currentdir = ROOT_PATH . str_replace(ROOT_PATH, '', $currentdir);
         $dir = @opendir($currentdir);

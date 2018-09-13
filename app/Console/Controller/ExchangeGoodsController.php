@@ -274,7 +274,7 @@ class ExchangeGoodsController extends InitController
     }
 
     /* 获得商品列表 */
-    public function get_exchange_goodslist()
+    protected function get_exchange_goodslist()
     {
         $result = get_filter();
         if ($result === false) {

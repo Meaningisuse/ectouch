@@ -418,7 +418,7 @@ class ShippingController extends InitController
      * @access  private
      * @return  Bool
      */
-    public function get_site_root_url()
+    protected function get_site_root_url()
     {
         return 'http://' . $_SERVER['HTTP_HOST'] . str_replace('/' . ADMIN_PATH . '/shipping.php', '', PHP_SELF);
     }
@@ -431,7 +431,7 @@ class ShippingController extends InitController
      *
      * @return  Bool
      */
-    public function is_print_bg_default($print_bg)
+    protected function is_print_bg_default($print_bg)
     {
         $_bg = basename($print_bg);
 

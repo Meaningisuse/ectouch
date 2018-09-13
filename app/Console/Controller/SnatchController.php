@@ -334,7 +334,7 @@ class SnatchController extends InitController
      *
      * @return void
      */
-    public function get_snatchlist()
+    protected function get_snatchlist()
     {
         $result = get_filter();
         if ($result === false) {
@@ -394,7 +394,7 @@ class SnatchController extends InitController
      *
      * @return array       array(snatch_id, snatch_name, goods_id,start_time, end_time, min_price, integral)
      */
-    public function get_snatch_info($id)
+    protected function get_snatch_info($id)
     {
         $sql = "SELECT act_id, act_name AS snatch_name, goods_id, product_id, goods_name, start_time, end_time, act_desc, ext_info" .
             " FROM " . $GLOBALS['ecs']->table('goods_activity') .
@@ -423,7 +423,7 @@ class SnatchController extends InitController
      *
      * @return array
      */
-    public function get_snatch_detail()
+    protected function get_snatch_detail()
     {
         $filter['snatch_id'] = empty($_REQUEST['snatch_id']) ? 0 : intval($_REQUEST['snatch_id']);
         $filter['sort_by'] = empty($_REQUEST['sort_by']) ? 'bid_time' : trim($_REQUEST['sort_by']);

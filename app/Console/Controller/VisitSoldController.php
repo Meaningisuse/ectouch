@@ -74,7 +74,7 @@ class VisitSoldController extends InitController
      * @param   int $show_num 显示个数
      * @return  array           $click_sold_info  访问购买比例数据
      */
-    public function click_sold_info($cat_id, $brand_id, $show_num)
+    protected function click_sold_info($cat_id, $brand_id, $show_num)
     {
         $where = " WHERE o.order_id = og.order_id AND g.goods_id = og.goods_id " . order_query_sql('finished', 'o.');
         $limit = " LIMIT " . $show_num;

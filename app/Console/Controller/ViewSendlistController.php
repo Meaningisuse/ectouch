@@ -192,7 +192,7 @@ class ViewSendlistController extends InitController
         }
     }
 
-    public function get_sendlist()
+    protected function get_sendlist()
     {
         $result = get_filter();
         if ($result === false) {

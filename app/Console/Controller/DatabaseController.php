@@ -501,7 +501,7 @@ class DatabaseController extends InitController
      *
      * @return void
      */
-    public function sql_import($sql_file)
+    protected function sql_import($sql_file)
     {
         $db_ver = $GLOBALS['db']->version();
 
@@ -546,7 +546,7 @@ class DatabaseController extends InitController
      *
      * @return void
      */
-    public function num_bitunit($num)
+    protected function num_bitunit($num)
     {
         $bitunit = [' B', ' KB', ' MB', ' GB'];
         for ($key = 0, $count = count($bitunit); $key < $count; $key++) {
@@ -565,7 +565,7 @@ class DatabaseController extends InitController
      * @param
      * @return  void
      */
-    public function remove_comment($var)
+    protected function remove_comment($var)
     {
         return (substr($var, 0, 2) != '--');
     }

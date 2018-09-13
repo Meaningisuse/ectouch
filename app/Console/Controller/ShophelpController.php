@@ -285,7 +285,7 @@ class ShophelpController extends InitController
     }
 
     /* 获得网店帮助文章分类 */
-    public function get_shophelp_list()
+    protected function get_shophelp_list()
     {
         $list = [];
         $sql = 'SELECT cat_id, cat_name, sort_order' .
@@ -303,7 +303,7 @@ class ShophelpController extends InitController
     }
 
     /* 获得网店帮助某分类下的文章 */
-    public function shophelp_article_list($cat_id)
+    protected function shophelp_article_list($cat_id)
     {
         $list = [];
         $sql = 'SELECT article_id, title, article_type , add_time' .

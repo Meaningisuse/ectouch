@@ -293,7 +293,7 @@ class BrandController extends InitController
      * @access  public
      * @return  array
      */
-    public function get_brandlist()
+    protected function get_brandlist()
     {
         $result = get_filter();
         if ($result === false) {

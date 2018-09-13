@@ -123,7 +123,7 @@ class GoodsAutoController extends InitController
         }
     }
 
-    public function get_auto_goods()
+    protected function get_auto_goods()
     {
         $where = ' WHERE g.is_delete <> 1 ';
         if (!empty($_POST['goods_name'])) {

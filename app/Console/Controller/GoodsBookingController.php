@@ -135,7 +135,7 @@ class GoodsBookingController extends InitController
      *
      * @return array
      */
-    public function get_bookinglist()
+    protected function get_bookinglist()
     {
         /* 查询条件 */
         $filter['keywords'] = empty($_REQUEST['keywords']) ? '' : trim($_REQUEST['keywords']);
@@ -181,7 +181,7 @@ class GoodsBookingController extends InitController
      *
      * @return  array
      */
-    public function get_booking_info($id)
+    protected function get_booking_info($id)
     {
         $sql = "SELECT bg.rec_id, bg.user_id, IFNULL(u.user_name, '{$GLOBALS['_LANG'][guest_user]}') AS user_name, " .
             "bg.link_man, g.goods_name, bg.goods_id, bg.goods_number, " .

@@ -172,7 +172,7 @@ class ShopinfoController extends InitController
     }
 
     /* 获取网店信息文章数据 */
-    public function shopinfo_article_list()
+    protected function shopinfo_article_list()
     {
         $list = [];
         $sql = 'SELECT article_id, title ,add_time' .

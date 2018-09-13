@@ -67,7 +67,7 @@ class QuotationController extends InitController
         return $this->smarty->display('quotation.dwt');
     }
 
-    public function get_quotation_where($filter)
+    protected function get_quotation_where($filter)
     {
         load_helper('main');
         $_filter = new \stdClass();
@@ -79,7 +79,7 @@ class QuotationController extends InitController
         return $where;
     }
 
-    public function calc_user_rank($rank, $rank_point)
+    protected function calc_user_rank($rank, $rank_point)
     {
         $_tmprank = [];
         foreach ($rank as $_rank) {
@@ -96,7 +96,7 @@ class QuotationController extends InitController
         return $_tmprank;
     }
 
-    public function serve_user($goods_list)
+    protected function serve_user($goods_list)
     {
         foreach ($goods_list as $key => $all_list) {
             $goods_id = $all_list['goods_id'];
@@ -119,7 +119,7 @@ class QuotationController extends InitController
         return $arr_list;
     }
 
-    public function product_info($goods_attr, $goods_id)
+    protected function product_info($goods_attr, $goods_id)
     {
         $goods_attr = str_replace('|', ' OR goods_attr_id=', $goods_attr);
         $sql = "SELECT attr_value,attr_price FROM " . $GLOBALS['ecs']->table('goods_attr') . " WHERE goods_id='$goods_id' AND (goods_attr_id = $goods_attr)";

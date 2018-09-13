@@ -327,7 +327,7 @@ class VoteController extends InitController
     }
 
     /* 获取在线调查数据列表 */
-    public function get_votelist()
+    protected function get_votelist()
     {
         $filter = [];
 
@@ -352,7 +352,7 @@ class VoteController extends InitController
     }
 
     /* 获取调查选项列表 */
-    public function get_optionlist($id)
+    protected function get_optionlist($id)
     {
         $list = [];
         $sql = 'SELECT option_id, vote_id, option_name, option_count, option_order' .

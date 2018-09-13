@@ -269,7 +269,7 @@ class AdPositionController extends InitController
     }
 
     /* 获取广告位置列表 */
-    public function ad_position_list()
+    protected function ad_position_list()
     {
         $filter = [];
 

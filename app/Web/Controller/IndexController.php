@@ -99,7 +99,7 @@ class IndexController extends InitController
      * 调用发货单查询
      * @return mixed
      */
-    public function index_get_invoice_query()
+    protected function index_get_invoice_query()
     {
         $sql = 'SELECT o.order_sn, o.invoice_no, s.shipping_code FROM ' . $GLOBALS['ecs']->table('order_info') . ' AS o' .
             ' LEFT JOIN ' . $GLOBALS['ecs']->table('shipping') . ' AS s ON s.shipping_id = o.shipping_id' .
@@ -126,7 +126,7 @@ class IndexController extends InitController
      * @access  private
      * @return  array
      */
-    public function index_get_new_articles()
+    protected function index_get_new_articles()
     {
         $sql = 'SELECT a.article_id, a.title, ac.cat_name, a.add_time, a.file_url, a.open_type, ac.cat_id, ac.cat_name ' .
             ' FROM ' . $GLOBALS['ecs']->table('article') . ' AS a, ' .
@@ -157,7 +157,7 @@ class IndexController extends InitController
      * @access  private
      * @return  array
      */
-    public function index_get_group_buy()
+    protected function index_get_group_buy()
     {
         $time = gmtime();
         $limit = get_library_number('group_buy', 'index');
@@ -208,7 +208,7 @@ class IndexController extends InitController
      * 取得拍卖活动列表
      * @return  array
      */
-    public function index_get_auction()
+    protected function index_get_auction()
     {
         $now = gmtime();
         $limit = get_library_number('auction', 'index');
@@ -248,7 +248,7 @@ class IndexController extends InitController
      * @access  private
      * @return  array
      */
-    public function index_get_links()
+    protected function index_get_links()
     {
         $sql = 'SELECT link_logo, link_name, link_url FROM ' . $GLOBALS['ecs']->table('friend_link') . ' ORDER BY show_order';
         $res = $GLOBALS['db']->getAll($sql);

@@ -521,7 +521,7 @@ class CategoryController extends InitController
      *
      * @return  mix
      */
-    public function get_cat_info($cat_id)
+    protected function get_cat_info($cat_id)
     {
         $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('category') . " WHERE cat_id='$cat_id' LIMIT 1";
         return $GLOBALS['db']->getRow($sql);
@@ -535,7 +535,7 @@ class CategoryController extends InitController
      *
      * @return  mix
      */
-    public function cat_update($cat_id, $args)
+    protected function cat_update($cat_id, $args)
     {
         if (empty($args) || empty($cat_id)) {
             return false;
@@ -553,7 +553,7 @@ class CategoryController extends InitController
      *
      * @return void
      */
-    public function get_attr_list()
+    protected function get_attr_list()
     {
         $sql = "SELECT a.attr_id, a.cat_id, a.attr_name " .
             " FROM " . $GLOBALS['ecs']->table('attribute') . " AS a,  " .
@@ -581,7 +581,7 @@ class CategoryController extends InitController
      *
      * @return void
      */
-    public function insert_cat_recommend($recommend_type, $cat_id)
+    protected function insert_cat_recommend($recommend_type, $cat_id)
     {
         //检查分类是否为首页推荐
         if (!empty($recommend_type)) {

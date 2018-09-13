@@ -128,7 +128,7 @@ class AttentionListController extends InitController
         }
     }
 
-    public function get_attention()
+    protected function get_attention()
     {
         $result = get_filter();
 

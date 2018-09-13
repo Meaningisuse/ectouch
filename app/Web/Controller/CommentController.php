@@ -222,7 +222,7 @@ class CommentController extends InitController
      * @param   object $cmt
      * @return  void
      */
-    public function add_comment($cmt)
+    protected function add_comment($cmt)
     {
         /* 评论是否需要审核 */
         $status = 1 - $GLOBALS['_CFG']['comment_check'];

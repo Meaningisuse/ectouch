@@ -235,7 +235,7 @@ class TagManageController extends InitController
      * @param $id  鏍囩?id
      * @return bool
      */
-    public function tag_is_only($name, $tag_id, $goods_id = '')
+    protected function tag_is_only($name, $tag_id, $goods_id = '')
     {
         if (empty($goods_id)) {
             $db = $GLOBALS['db'];
@@ -261,7 +261,7 @@ class TagManageController extends InitController
      * @param  $id
      * @return void
      */
-    public function edit_tag($name, $id, $goods_id = '')
+    protected function edit_tag($name, $id, $goods_id = '')
     {
         $db = $GLOBALS['db'];
         $sql = 'UPDATE ' . $GLOBALS['ecs']->table('tag') . " SET tag_words = '$name'";
@@ -279,7 +279,7 @@ class TagManageController extends InitController
      * @access  public
      * @return  array
      */
-    public function get_tag_list()
+    protected function get_tag_list()
     {
         $filter['sort_by'] = empty($_REQUEST['sort_by']) ? 't.tag_id' : trim($_REQUEST['sort_by']);
         $filter['sort_order'] = empty($_REQUEST['sort_order']) ? 'DESC' : trim($_REQUEST['sort_order']);
@@ -309,7 +309,7 @@ class TagManageController extends InitController
      * return array
      */
 
-    public function get_tag_info($tag_id)
+    protected function get_tag_info($tag_id)
     {
         $sql = 'SELECT t.tag_id, t.tag_words, t.goods_id, g.goods_name FROM ' . $GLOBALS['ecs']->table('tag') . ' AS t' .
             ' LEFT JOIN ' . $GLOBALS['ecs']->table('goods') . ' AS g ON t.goods_id=g.goods_id' .

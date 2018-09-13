@@ -168,7 +168,7 @@ class AffiliateController extends InitController
         }
     }
 
-    public function get_affiliate()
+    protected function get_affiliate()
     {
         $config = unserialize($GLOBALS['_CFG']['affiliate']);
         empty($config) && $config = [];
@@ -176,7 +176,7 @@ class AffiliateController extends InitController
         return $config;
     }
 
-    public function put_affiliate($config)
+    protected function put_affiliate($config)
     {
         $temp = serialize($config);
         $sql = "UPDATE " . $GLOBALS['ecs']->table('shop_config') .

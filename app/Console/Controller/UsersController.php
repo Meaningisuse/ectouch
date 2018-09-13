@@ -592,7 +592,7 @@ class UsersController extends InitController
      *
      * @return void
      */
-    public function user_list()
+    protected function user_list()
     {
         $result = get_filter();
         if ($result === false) {

@@ -512,7 +512,7 @@ class SmsController extends InitController
         }
     }
 
-    public function shop_config_update($config_code, $config_value)
+    protected function shop_config_update($config_code, $config_value)
     {
         $sql = "SELECT `id` FROM " . $GLOBALS['ecs']->table(shop_config) . " WHERE `code`='$config_code'";
         $c_node_id = $GLOBALS['db']->getOne($sql);

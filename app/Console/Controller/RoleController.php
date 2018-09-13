@@ -243,7 +243,7 @@ class RoleController extends InitController
     }
 
     /* 获取角色列表 */
-    public function get_role_list()
+    protected function get_role_list()
     {
         $list = [];
         $sql = 'SELECT role_id, role_name, action_list, role_describe ' .

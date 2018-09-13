@@ -267,7 +267,7 @@ class ShopConfigController extends InitController
      *
      * @return  boolean
      */
-    public function update_configure($key, $val = '')
+    protected function update_configure($key, $val = '')
     {
         if (!empty($key)) {
             $sql = "UPDATE " . $GLOBALS['ecs']->table('shop_config') . " SET value='$val' WHERE code='$key'";
@@ -286,7 +286,7 @@ class ShopConfigController extends InitController
      *
      * @return  array
      */
-    public function get_settings($groups = null, $excludes = null)
+    protected function get_settings($groups = null, $excludes = null)
     {
         $config_groups = '';
         $excludes_groups = '';

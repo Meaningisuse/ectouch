@@ -220,7 +220,7 @@ class PictureBatchController extends InitController
      *
      * @return void
      */
-    public function process_image($page = 1, $page_size = 100, $type = 0, $thumb = true, $watermark = true, $change = false, $silent = true)
+    protected function process_image($page = 1, $page_size = 100, $type = 0, $thumb = true, $watermark = true, $change = false, $silent = true)
     {
         if ($type == 0) {
             $sql = "SELECT g.goods_id, g.original_img, g.goods_img, g.goods_thumb FROM " . $GLOBALS['ecs']->table('goods') . " AS g WHERE g.original_img > ''" . $GLOBALS['goods_where'];
@@ -413,7 +413,7 @@ class PictureBatchController extends InitController
      *
      * @return void
      */
-    public function process_image_ex($page = 1, $page_size = 100, $type = 0, $thumb = true, $watermark = true, $change = false, $silent = true)
+    protected function process_image_ex($page = 1, $page_size = 100, $type = 0, $thumb = true, $watermark = true, $change = false, $silent = true)
     {
         if ($type == 0) {
             $sql = "SELECT g.goods_id, g.original_img, g.goods_img, g.goods_thumb FROM " . $GLOBALS['ecs']->table('goods') . " AS g WHERE g.original_img > ''" . $goods_where;
@@ -453,7 +453,7 @@ class PictureBatchController extends InitController
      *
      * @return void
      */
-    public function replace_image($new_image, $old_image, $goods_id, $silent)
+    protected function replace_image($new_image, $old_image, $goods_id, $silent)
     {
         $error = false;
         if (file_exists(ROOT_PATH . $old_image)) {

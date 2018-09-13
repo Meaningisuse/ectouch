@@ -244,7 +244,7 @@ class NavigatorController extends InitController
     }
 
 
-    public function get_nav()
+    protected function get_nav()
     {
         $result = get_filter();
         if ($result === false) {
@@ -289,7 +289,7 @@ class NavigatorController extends InitController
     /*------------------------------------------------------ */
     //-- 排序相关
     /*------------------------------------------------------ */
-    public function sort_nav($a, $b)
+    protected function sort_nav($a, $b)
     {
         return $a['vieworder'] > $b['vieworder'] ? 1 : -1;
     }
@@ -297,7 +297,7 @@ class NavigatorController extends InitController
     /*------------------------------------------------------ */
     //-- 获得系统列表
     /*------------------------------------------------------ */
-    public function get_sysnav()
+    protected function get_sysnav()
     {
         $sysmain = [
             [$GLOBALS['_LANG']['view_cart'], 'flow.php'],
@@ -331,7 +331,7 @@ class NavigatorController extends InitController
     /*------------------------------------------------------ */
     //-- 列表项修改
     /*------------------------------------------------------ */
-    public function nav_update($id, $args)
+    protected function nav_update($id, $args)
     {
         if (empty($args) || empty($id)) {
             return false;
@@ -343,7 +343,7 @@ class NavigatorController extends InitController
     /*------------------------------------------------------ */
     //-- 根据URI对导航栏项目进行分析，确定其为商品分类还是文章分类
     /*------------------------------------------------------ */
-    public function analyse_uri($uri)
+    protected function analyse_uri($uri)
     {
         $uri = strtolower(str_replace('&amp;', '&', $uri));
         $arr = explode('-', $uri);
@@ -395,7 +395,7 @@ class NavigatorController extends InitController
     /*------------------------------------------------------ */
     //-- 是否显示
     /*------------------------------------------------------ */
-    public function is_show_in_nav($type, $id)
+    protected function is_show_in_nav($type, $id)
     {
         if ($type == 'c') {
             $tablename = $GLOBALS['ecs']->table('category');
@@ -408,7 +408,7 @@ class NavigatorController extends InitController
     /*------------------------------------------------------ */
     //-- 设置是否显示
     /*------------------------------------------------------ */
-    public function set_show_in_nav($type, $id, $val)
+    protected function set_show_in_nav($type, $id, $val)
     {
         if ($type == 'c') {
             $tablename = $GLOBALS['ecs']->table('category');

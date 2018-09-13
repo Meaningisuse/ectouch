@@ -277,7 +277,7 @@ class TopicController extends InitController
      * @access  public
      * @return void
      */
-    public function get_topic_list()
+    protected function get_topic_list()
     {
         $result = get_filter();
         if ($result === false) {
@@ -321,7 +321,7 @@ class TopicController extends InitController
      * @param   string $text 文字
      * @return  array('href' => $href, 'text' => $text)
      */
-    public function list_link($is_add = true, $text = '')
+    protected function list_link($is_add = true, $text = '')
     {
         $href = 'topic.php?act=list';
         if (!$is_add) {
@@ -334,7 +334,7 @@ class TopicController extends InitController
         return ['href' => $href, 'text' => $text];
     }
 
-    public function get_toppic_width_height()
+    protected function get_toppic_width_height()
     {
         $width_height = [];
 
@@ -371,7 +371,7 @@ class TopicController extends InitController
         return $width_height;
     }
 
-    public function get_url_image($url)
+    protected function get_url_image($url)
     {
         $ext = strtolower(end(explode('.', $url)));
         if ($ext != "gif" && $ext != "jpg" && $ext != "png" && $ext != "bmp" && $ext != "jpeg") {

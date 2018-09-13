@@ -364,7 +364,7 @@ class PackageController extends InitController
      *
      * @return void
      */
-    public function get_packagelist()
+    protected function get_packagelist()
     {
         $result = get_filter();
         if ($result === false) {
@@ -421,7 +421,7 @@ class PackageController extends InitController
      * @param   int $package_id
      * @return  void
      */
-    public function handle_packagep_goods($package_id)
+    protected function handle_packagep_goods($package_id)
     {
         $sql = "UPDATE " . $GLOBALS['ecs']->table('package_goods') . " SET " .
             " package_id = '$package_id' " .

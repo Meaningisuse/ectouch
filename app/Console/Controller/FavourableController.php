@@ -364,7 +364,7 @@ class FavourableController extends InitController
      * 取得优惠活动列表
      * @return   array
      */
-    public function favourable_list()
+    protected function favourable_list()
     {
         $result = get_filter();
         if ($result === false) {

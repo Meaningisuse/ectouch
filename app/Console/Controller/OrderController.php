@@ -3776,7 +3776,7 @@ class OrderController extends InitController
      * 取得状态列表
      * @param   string $type 类型：all | order | shipping | payment
      */
-    public function get_status_list($type = 'all')
+    protected function get_status_list($type = 'all')
     {
         $list = [];
 
@@ -3807,7 +3807,7 @@ class OrderController extends InitController
      * 退回余额、积分、红包（取消、无效、退货时），把订单使用余额、积分、红包设为0
      * @param   array $order 订单信息
      */
-    public function return_user_surplus_integral_bonus($order)
+    protected function return_user_surplus_integral_bonus($order)
     {
         /* 处理余额、积分、红包 */
         if ($order['user_id'] > 0 && $order['surplus'] > 0) {
@@ -3840,7 +3840,7 @@ class OrderController extends InitController
      * @param   int $order_id 订单id
      * @return  bool
      */
-    public function update_order_amount($order_id)
+    protected function update_order_amount($order_id)
     {
         load_helper('order');
         //更新订单总金额
@@ -3858,7 +3858,7 @@ class OrderController extends InitController
      * @return  array   可执行的操作  confirm, pay, unpay, prepare, ship, unship, receive, cancel, invalid, return, drop
      * 格式 array('confirm' => true, 'pay' => true)
      */
-    public function operable_list($order)
+    protected function operable_list($order)
     {
         /* 取得订单状态、发货状态、付款状态 */
         $os = $order['order_status'];
@@ -4044,7 +4044,7 @@ class OrderController extends InitController
      * @param   array $msgs 提示信息
      * @param   array $links 链接信息
      */
-    public function handle_order_money_change($order, &$msgs, &$links)
+    protected function handle_order_money_change($order, &$msgs, &$links)
     {
         $order_id = $order['order_id'];
         if ($order['pay_status'] == PS_PAYED || $order['pay_status'] == PS_PAYING) {
@@ -4072,7 +4072,7 @@ class OrderController extends InitController
      *
      * @return void
      */
-    public function order_list()
+    protected function order_list()
     {
         $result = get_filter();
         if ($result === false) {
@@ -4278,7 +4278,7 @@ class OrderController extends InitController
      * 如果未支付，修改支付金额；否则，生成新的支付log
      * @param   int $order_id 订单id
      */
-    public function update_pay_log($order_id)
+    protected function update_pay_log($order_id)
     {
         $order_id = intval($order_id);
         if ($order_id > 0) {
@@ -4311,7 +4311,7 @@ class OrderController extends InitController
      * 取得供货商列表
      * @return array    二维数组
      */
-    public function get_suppliers_list()
+    protected function get_suppliers_list()
     {
         $sql = 'SELECT *
             FROM ' . $GLOBALS['ecs']->table('suppliers') . '
@@ -4331,7 +4331,7 @@ class OrderController extends InitController
      * @param   array $order 订单数组
      * @return array
      */
-    public function get_order_goods($order)
+    protected function get_order_goods($order)
     {
         $goods_list = [];
         $goods_attr = [];
@@ -4389,7 +4389,7 @@ class OrderController extends InitController
      * @param   integer $package_id 订单商品表礼包类商品id
      * @return array
      */
-    public function get_package_goods_list($package_id)
+    protected function get_package_goods_list($package_id)
     {
         $sql = "SELECT pg.goods_id, g.goods_name, (CASE WHEN pg.product_id > 0 THEN p.product_number ELSE g.goods_number END) AS goods_number, p.goods_attr, p.product_id, pg.goods_number AS
             order_goods_number, g.goods_sn, g.is_real, p.product_sn
@@ -4482,7 +4482,7 @@ class OrderController extends InitController
      *
      * @return  int
      */
-    public function order_delivery_num($order_id, $goods_id, $product_id = 0)
+    protected function order_delivery_num($order_id, $goods_id, $product_id = 0)
     {
         $sql = 'SELECT SUM(G.send_number) AS sums
             FROM ' . $GLOBALS['ecs']->table('delivery_goods') . ' AS G, ' . $GLOBALS['ecs']->table('delivery_order') . ' AS O
@@ -4508,7 +4508,7 @@ class OrderController extends InitController
      * @param   int $order_id 订单 id
      * @return  int     1，已发货；0，未发货
      */
-    public function order_deliveryed($order_id)
+    protected function order_deliveryed($order_id)
     {
         $return_res = 0;
 
@@ -4536,7 +4536,7 @@ class OrderController extends InitController
      * @param   array $goods_list
      * @return  Bool
      */
-    public function update_order_goods($order_id, $_sended, $goods_list = [])
+    protected function update_order_goods($order_id, $_sended, $goods_list = [])
     {
         if (!is_array($_sended) || empty($order_id)) {
             return false;
@@ -4601,7 +4601,7 @@ class OrderController extends InitController
      * @param   array $virtual_goods 虚拟商品列表
      * @return  Bool
      */
-    public function update_order_virtual_goods($order_id, $_sended, $virtual_goods)
+    protected function update_order_virtual_goods($order_id, $_sended, $virtual_goods)
     {
         if (!is_array($_sended) || empty($order_id)) {
             return false;
@@ -4630,7 +4630,7 @@ class OrderController extends InitController
      * @param   int $order_id 订单 id
      * @return  int     1，全部发货；0，未全部发货
      */
-    public function get_order_finish($order_id)
+    protected function get_order_finish($order_id)
     {
         $return_res = 0;
 
@@ -4656,7 +4656,7 @@ class OrderController extends InitController
      * @param   int $order_id 订单 id
      * @return  int     1，全部发货；0，未全部发货；-1，部分发货；-2，完全没发货；
      */
-    public function get_all_delivery_finish($order_id)
+    protected function get_all_delivery_finish($order_id)
     {
         $return_res = 0;
 
@@ -4697,7 +4697,7 @@ class OrderController extends InitController
         return $return_res;
     }
 
-    public function trim_array_walk(&$array_value)
+    protected function trim_array_walk(&$array_value)
     {
         if (is_array($array_value)) {
             array_walk($array_value, 'trim_array_walk');
@@ -4706,7 +4706,7 @@ class OrderController extends InitController
         }
     }
 
-    public function intval_array_walk(&$array_value)
+    protected function intval_array_walk(&$array_value)
     {
         if (is_array($array_value)) {
             array_walk($array_value, 'intval_array_walk');
@@ -4720,7 +4720,7 @@ class OrderController extends InitController
      * @param   int $order_id 订单 id
      * @return  int     1，成功；0，失败
      */
-    public function del_order_delivery($order_id)
+    protected function del_order_delivery($order_id)
     {
         $return_res = 0;
 
@@ -4748,7 +4748,7 @@ class OrderController extends InitController
      * @param   int $action_array 操作列表 Array('delivery', 'back', ......)
      * @return  int     1，成功；0，失败
      */
-    public function del_delivery($order_id, $action_array)
+    protected function del_delivery($order_id, $action_array)
     {
         $return_res = 0;
 
@@ -4788,7 +4788,7 @@ class OrderController extends InitController
      *
      * @return void
      */
-    public function delivery_list()
+    protected function delivery_list()
     {
         $result = get_filter();
         if ($result === false) {
@@ -4899,7 +4899,7 @@ class OrderController extends InitController
      *
      * @return void
      */
-    public function back_list()
+    protected function back_list()
     {
         $result = get_filter();
         if ($result === false) {
@@ -4995,7 +4995,7 @@ class OrderController extends InitController
      * @param   string $delivery_sn 发货单号
      * @return  array   发货单信息（金额都有相应格式化的字段，前缀是formated_）
      */
-    public function delivery_order_info($delivery_id, $delivery_sn = '')
+    protected function delivery_order_info($delivery_id, $delivery_sn = '')
     {
         $return_order = [];
         if (empty($delivery_id) || !is_numeric($delivery_id)) {
@@ -5046,7 +5046,7 @@ class OrderController extends InitController
      * @param   int $back_id 退货单 id（如果 back_id > 0 就按 id 查，否则按 sn 查）
      * @return  array   退货单信息（金额都有相应格式化的字段，前缀是 formated_ ）
      */
-    public function back_order_info($back_id)
+    protected function back_order_info($back_id)
     {
         $return_order = [];
         if (empty($back_id) || !is_numeric($back_id)) {
@@ -5097,7 +5097,7 @@ class OrderController extends InitController
      * @param   int     礼包ID
      * @return  array   格式化结果
      */
-    public function package_goods(&$package_goods, $goods_number, $order_id, $extension_code, $package_id)
+    protected function package_goods(&$package_goods, $goods_number, $order_id, $extension_code, $package_id)
     {
         $return_array = [];
 
@@ -5139,7 +5139,7 @@ class OrderController extends InitController
      *
      * @return  int     数值
      */
-    public function package_sended($package_id, $goods_id, $order_id, $extension_code, $product_id = 0)
+    protected function package_sended($package_id, $goods_id, $order_id, $extension_code, $product_id = 0)
     {
         if (empty($package_id) || empty($goods_id) || empty($order_id) || empty($extension_code)) {
             return false;
@@ -5167,7 +5167,7 @@ class OrderController extends InitController
      * @param   array $goods_list
      * @return  Bool
      */
-    public function change_order_goods_storage_split($order_id, $_sended, $goods_list = [])
+    protected function change_order_goods_storage_split($order_id, $_sended, $goods_list = [])
     {
         /* 参数检查 */
         if (!is_array($_sended) || empty($order_id)) {
@@ -5225,7 +5225,7 @@ class OrderController extends InitController
      *
      * @return  boolen
      */
-    public function package_virtual_card_shipping($goods, $order_sn)
+    protected function package_virtual_card_shipping($goods, $order_sn)
     {
         if (!is_array($goods)) {
             return false;
@@ -5312,7 +5312,7 @@ class OrderController extends InitController
      *
      * @return  void
      */
-    public function delivery_return_goods($delivery_id, $delivery_order)
+    protected function delivery_return_goods($delivery_id, $delivery_order)
     {
         /* 查询：取得发货单商品 */
         $goods_sql = "SELECT *
@@ -5341,7 +5341,7 @@ class OrderController extends InitController
      *
      * @return  void
      */
-    public function del_order_invoice_no($order_id, $delivery_invoice_no)
+    protected function del_order_invoice_no($order_id, $delivery_invoice_no)
     {
         /* 查询：取得订单中的发货单号 */
         $sql = "SELECT invoice_no
@@ -5374,7 +5374,7 @@ class OrderController extends InitController
      * @access  private
      * @return  Bool
      */
-    public function get_site_root_url()
+    protected function get_site_root_url()
     {
         return 'http://' . $_SERVER['HTTP_HOST'] . str_replace('/' . ADMIN_PATH . '/order.php', '', PHP_SELF);
     }

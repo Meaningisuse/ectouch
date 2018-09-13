@@ -407,7 +407,7 @@ class SuppliersController extends InitController
      *
      * @return void
      */
-    public function suppliers_list()
+    protected function suppliers_list()
     {
         $result = get_filter();
         if ($result === false) {

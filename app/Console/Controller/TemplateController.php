@@ -649,7 +649,7 @@ class TemplateController extends InitController
         }
     }
 
-    public function array_sort($a, $b)
+    protected function array_sort($a, $b)
     {
         $cmp = strcmp($a['region'], $b['region']);
 
@@ -668,7 +668,7 @@ class TemplateController extends InitController
      * @param   string $lib_name 库项目名称
      * @return  array
      */
-    public function load_library($curr_template, $lib_name)
+    protected function load_library($curr_template, $lib_name)
     {
         $lib_name = str_replace("0xa", '', $lib_name); // 过滤 0xa 非法字符
 
@@ -687,7 +687,7 @@ class TemplateController extends InitController
      * @param   int $flag 1，AJAX数据；2，Array
      * @return
      */
-    public function read_tpl_style($tpl_name, $flag = 1)
+    protected function read_tpl_style($tpl_name, $flag = 1)
     {
         if (empty($tpl_name) && $flag == 1) {
             return 0;
@@ -748,7 +748,7 @@ class TemplateController extends InitController
      * @param   string $tpl_style 模版风格名
      * @return
      */
-    public function read_style_and_tpl($tpl_name, $tpl_style)
+    protected function read_style_and_tpl($tpl_name, $tpl_style)
     {
         $style_info = [];
         $style_info = get_template_info($tpl_name, $tpl_style);

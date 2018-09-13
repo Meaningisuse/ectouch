@@ -665,7 +665,7 @@ class GoodsExportController extends InitController
      *
      * @return void
      */
-    public function utf82u2($str)
+    protected function utf82u2($str)
     {
         $len = strlen($str);
         $start = 0;
@@ -734,7 +734,7 @@ class GoodsExportController extends InitController
      *
      * @return string
      */
-    public function image_path_format($content)
+    protected function image_path_format($content)
     {
         $prefix = 'http://' . $_SERVER['SERVER_NAME'];
         $pattern = '/(background|src)=[\'|\"]((?!http:\/\/).*?)[\'|\"]/i';
@@ -749,7 +749,7 @@ class GoodsExportController extends InitController
      *
      * @return array
      */
-    public function get_attributes($cat_id = 0)
+    protected function get_attributes($cat_id = 0)
     {
         $sql = "SELECT `attr_id`, `cat_id`, `attr_name` FROM " . $GLOBALS['ecs']->table('attribute') . " ";
         if (!empty($cat_id)) {
@@ -773,7 +773,7 @@ class GoodsExportController extends InitController
      *
      * @return array
      */
-    public function set_goods_field_name($array, $lang)
+    protected function set_goods_field_name($array, $lang)
     {
         $tmp_fields = $array;
         foreach ($array as $key => $value) {
@@ -794,7 +794,7 @@ class GoodsExportController extends InitController
      *
      * @return array
      */
-    public function my_array_merge($array1, $array2)
+    protected function my_array_merge($array1, $array2)
     {
         $new_array = $array1;
         foreach ($array2 as $key => $val) {
@@ -810,7 +810,7 @@ class GoodsExportController extends InitController
      *
      * @return string
      */
-    public function get_export_where_sql($filter)
+    protected function get_export_where_sql($filter)
     {
         $where = '';
         if (!empty($filter['goods_ids'])) {
@@ -837,7 +837,7 @@ class GoodsExportController extends InitController
      *
      * @param $str string 处理字符串
      */
-    public function replace_special_char($str, $replace = true)
+    protected function replace_special_char($str, $replace = true)
     {
         $str = str_replace("\r\n", "", $this->image_path_format($str));
         $str = str_replace("\t", "    ", $str);

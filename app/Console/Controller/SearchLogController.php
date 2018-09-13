@@ -38,7 +38,7 @@ class SearchLogController extends InitController
         }
     }
 
-    public function get_search_log()
+    protected function get_search_log()
     {
         $where = '';
         if (isset($_REQUEST['start_dateYear']) && isset($_REQUEST['end_dateYear'])) {

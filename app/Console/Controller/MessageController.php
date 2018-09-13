@@ -287,7 +287,7 @@ class MessageController extends InitController
      *
      * @return void
      */
-    public function get_message_list()
+    protected function get_message_list()
     {
         /* 查询条件 */
         $filter['sort_by'] = empty($_REQUEST['sort_by']) ? 'sent_time' : trim($_REQUEST['sort_by']);

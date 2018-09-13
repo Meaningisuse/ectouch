@@ -261,7 +261,7 @@ class PackController extends InitController
         }
     }
 
-    public function packs_list()
+    protected function packs_list()
     {
         $result = get_filter();
         if ($result === false) {

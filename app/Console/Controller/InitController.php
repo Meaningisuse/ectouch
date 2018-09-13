@@ -24,7 +24,7 @@ class InitController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|null
      * @throws \Exception
      */
-    protected function initialize()
+    protected function _initialize()
     {
         define('ECT_ADMIN', true);
         define('PHP_SELF', parse_name(request()->controller()) . '.php');

@@ -274,7 +274,7 @@ class UserMsgController extends InitController
      *
      * @return void
      */
-    public function msg_list()
+    protected function msg_list()
     {
         /* 过滤条件 */
         $filter['keywords'] = empty($_REQUEST['keywords']) ? '' : trim($_REQUEST['keywords']);
@@ -329,7 +329,7 @@ class UserMsgController extends InitController
      *
      * @return  array
      */
-    public function get_feedback_detail($id)
+    protected function get_feedback_detail($id)
     {
         $sql = "SELECT T1.*, T2.msg_id AS reply_id, T2.user_name  AS reply_name, u.email AS reply_email, " .
             "T2.msg_content AS reply_content , T2.msg_time AS reply_time, T2.user_name AS reply_name " .

@@ -20,7 +20,7 @@ class InitController extends Controller
     protected $user;
     protected $smarty;
 
-    protected function initialize()
+    protected function _initialize()
     {
         define('PHP_SELF', parse_name(request()->controller()) . '.php');
 

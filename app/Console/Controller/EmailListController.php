@@ -102,7 +102,7 @@ class EmailListController extends InitController
         }
     }
 
-    public function get_email_list()
+    protected function get_email_list()
     {
         $result = get_filter();
         if ($result === false) {

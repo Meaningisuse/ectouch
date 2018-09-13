@@ -124,7 +124,7 @@ class EditLanguagesController extends InitController
      * @param   string $keyword 搜索时指定的关键字
      * @return  array       正确返回语言项列表，错误返回false
      */
-    public function get_language_item_list($file_path, $keyword)
+    protected function get_language_item_list($file_path, $keyword)
     {
         if (empty($keyword)) {
             return [];
@@ -164,7 +164,7 @@ class EditLanguagesController extends InitController
      * @param   array $dst_items 替换后的语言项
      * @return  void        成功就把结果写入文件，失败返回false
      */
-    public function set_language_items($file_path, $src_items, $dst_items)
+    protected function set_language_items($file_path, $src_items, $dst_items)
     {
         /* 检查文件是否可写（修改） */
         if (file_mode_info($file_path) < 2) {

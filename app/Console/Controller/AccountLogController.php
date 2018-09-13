@@ -161,7 +161,7 @@ class AccountLogController extends InitController
      *                  frozen_money表示冻结资金，rank_points表示等级积分，pay_points表示消费积分
      * @return  array
      */
-    public function get_accountlist($user_id, $account_type = '')
+    protected function get_accountlist($user_id, $account_type = '')
     {
         /* 检查参数 */
         $where = " WHERE user_id = '$user_id' ";

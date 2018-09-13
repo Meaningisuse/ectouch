@@ -438,7 +438,7 @@ class SearchController extends InitController
      *
      * @return void
      */
-    public function is_not_null($value)
+    protected function is_not_null($value)
     {
         if (is_array($value)) {
             return (!empty($value['from'])) || (!empty($value['to']));
@@ -454,7 +454,7 @@ class SearchController extends InitController
      * @params  integer $cat_id
      * @return  void
      */
-    public function get_seachable_attributes($cat_id = 0)
+    protected function get_seachable_attributes($cat_id = 0)
     {
         $attributes = [
             'cate' => [],

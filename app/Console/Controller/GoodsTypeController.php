@@ -215,7 +215,7 @@ class GoodsTypeController extends InitController
      * @access  public
      * @return  array
      */
-    public function get_goodstype()
+    protected function get_goodstype()
     {
         $result = get_filter();
         if ($result === false) {
@@ -256,7 +256,7 @@ class GoodsTypeController extends InitController
      *
      * @return  array
      */
-    public function get_goodstype_info($cat_id)
+    protected function get_goodstype_info($cat_id)
     {
         $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('goods_type') . " WHERE cat_id='$cat_id'";
 
@@ -272,7 +272,7 @@ class GoodsTypeController extends InitController
      *
      * @return  void
      */
-    public function update_attribute_group($cat_id, $old_group, $new_group)
+    protected function update_attribute_group($cat_id, $old_group, $new_group)
     {
         $sql = "UPDATE " . $GLOBALS['ecs']->table('attribute') .
             " SET attr_group='$new_group' WHERE cat_id='$cat_id' AND attr_group='$old_group'";

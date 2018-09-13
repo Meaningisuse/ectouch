@@ -336,7 +336,7 @@ class CategoryController extends InitController
      *
      * @return  void
      */
-    public function get_cat_info($cat_id)
+    protected function get_cat_info($cat_id)
     {
         return $GLOBALS['db']->getRow('SELECT cat_name, keywords, cat_desc, style, grade, filter_attr, parent_id FROM ' . $GLOBALS['ecs']->table('category') .
             " WHERE cat_id = '$cat_id'");
@@ -349,7 +349,7 @@ class CategoryController extends InitController
      * @param   string $children
      * @return  array
      */
-    public function category_get_goods($children, $brand, $min, $max, $ext, $size, $page, $sort, $order, $display)
+    protected function category_get_goods($children, $brand, $min, $max, $ext, $size, $page, $sort, $order, $display)
     {
         $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND " .
             "g.is_delete = 0 AND ($children OR " . get_extension_goods($children) . ')';
@@ -429,7 +429,7 @@ class CategoryController extends InitController
      * @param   string $cat_id
      * @return  integer
      */
-    public function get_cagtegory_goods_count($children, $brand = 0, $min = 0, $max = 0, $ext = '')
+    protected function get_cagtegory_goods_count($children, $brand = 0, $min = 0, $max = 0, $ext = '')
     {
         $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 AND ($children OR " . get_extension_goods($children) . ')';
 
@@ -457,7 +457,7 @@ class CategoryController extends InitController
      *
      * @return int
      */
-    public function get_parent_grade($cat_id)
+    protected function get_parent_grade($cat_id)
     {
         static $res = null;
 

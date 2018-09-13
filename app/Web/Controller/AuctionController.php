@@ -383,7 +383,7 @@ class AuctionController extends InitController
      * 取得拍卖活动数量
      * @return  int
      */
-    public function auction_count()
+    protected function auction_count()
     {
         $now = gmtime();
         $sql = "SELECT COUNT(*) " .
@@ -400,7 +400,7 @@ class AuctionController extends InitController
      * @param   int $page 当前页
      * @return  array
      */
-    public function auction_list($size, $page)
+    protected function auction_list($size, $page)
     {
         $auction_list = [];
         $auction_list['finished'] = $auction_list['finished'] = [];

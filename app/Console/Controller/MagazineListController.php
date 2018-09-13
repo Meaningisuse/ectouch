@@ -176,7 +176,7 @@ class MagazineListController extends InitController
         }
     }
 
-    public function get_magazine()
+    protected function get_magazine()
     {
         $result = get_filter();
 

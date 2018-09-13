@@ -184,7 +184,7 @@ class AreaManageController extends InitController
         }
     }
 
-    public function new_region_id($region_id)
+    protected function new_region_id($region_id)
     {
         $regions_id = [];
         if (empty($region_id)) {

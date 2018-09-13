@@ -131,7 +131,7 @@ class CheckFilePrivController extends InitController
      *
      * @return int       $mark          文件权限掩码
      */
-    public function check_file_in_array($arr, &$err_msg)
+    protected function check_file_in_array($arr, &$err_msg)
     {
         $read = true;
         $writen = true;

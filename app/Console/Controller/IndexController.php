@@ -1055,7 +1055,7 @@ class IndexController extends InitController
      * license check
      * @return  bool
      */
-    public function license_check()
+    protected function license_check()
     {
         // return 杩斿洖鏁扮粍
         $return_array = [];

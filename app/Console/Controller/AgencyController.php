@@ -294,7 +294,7 @@ class AgencyController extends InitController
      * 取得办事处列表
      * @return  array
      */
-    public function get_agencylist()
+    protected function get_agencylist()
     {
         $result = get_filter();
         if ($result === false) {

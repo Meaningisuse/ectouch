@@ -787,7 +787,7 @@ class BonusController extends InitController
      * @access  public
      * @return void
      */
-    public function get_type_list()
+    protected function get_type_list()
     {
         /* 获得所有红包类型的发放数量 */
         $sql = "SELECT bonus_type_id, COUNT(*) AS sent_count" .
@@ -854,7 +854,7 @@ class BonusController extends InitController
      * @param   integer $type_id
      * @return  array
      */
-    public function get_bonus_goods($type_id)
+    protected function get_bonus_goods($type_id)
     {
         $sql = "SELECT goods_id, goods_name FROM " . $GLOBALS['ecs']->table('goods') .
             " WHERE bonus_type_id = '$type_id'";
@@ -869,7 +869,7 @@ class BonusController extends InitController
      * @param   $page_param
      * @return void
      */
-    public function get_bonus_list()
+    protected function get_bonus_list()
     {
         /* 查询条件 */
         $filter['sort_by'] = empty($_REQUEST['sort_by']) ? 'bonus_type_id' : trim($_REQUEST['sort_by']);
@@ -909,7 +909,7 @@ class BonusController extends InitController
      * @param   int $bonus_type_id 红包类型id
      * @return  array
      */
-    public function bonus_type_info($bonus_type_id)
+    protected function bonus_type_info($bonus_type_id)
     {
         $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('bonus_type') .
             " WHERE type_id = '$bonus_type_id'";
@@ -923,7 +923,7 @@ class BonusController extends InitController
      * @param   array $bonus_id_list 红包id数组
      * @return  int     成功发送数量
      */
-    public function send_bonus_mail($bonus_type_id, $bonus_id_list)
+    protected function send_bonus_mail($bonus_type_id, $bonus_id_list)
     {
         /* 取得红包类型信息 */
         $bonus_type = $this->bonus_type_info($bonus_type_id);
@@ -976,7 +976,7 @@ class BonusController extends InitController
         return $send_count;
     }
 
-    public function add_to_maillist($username, $email, $subject, $content, $is_html)
+    protected function add_to_maillist($username, $email, $subject, $content, $is_html)
     {
         $time = time();
         $content = addslashes($content);

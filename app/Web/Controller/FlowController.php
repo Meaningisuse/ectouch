@@ -1780,7 +1780,7 @@ class FlowController extends InitController
      * @access  private
      * @return  integral
      */
-    public function flow_available_points()
+    protected function flow_available_points()
     {
         $sql = "SELECT SUM(g.integral * c.goods_number) " .
             "FROM " . $GLOBALS['ecs']->table('cart') . " AS c, " . $GLOBALS['ecs']->table('goods') . " AS g " .
@@ -1799,7 +1799,7 @@ class FlowController extends InitController
      * @param   array $arr
      * @return  void
      */
-    public function flow_update_cart($arr)
+    protected function flow_update_cart($arr)
     {
         /* 处理 */
         foreach ($arr as $key => $val) {
@@ -1921,7 +1921,7 @@ class FlowController extends InitController
      *
      * @return  void
      */
-    public function flow_cart_stock($arr)
+    protected function flow_cart_stock($arr)
     {
         foreach ($arr as $key => $val) {
             $val = intval(make_semiangle($val));
@@ -1979,7 +1979,7 @@ class FlowController extends InitController
      * @param   integer $id
      * @return  void
      */
-    public function flow_drop_cart_goods($id)
+    protected function flow_drop_cart_goods($id)
     {
         /* 取得商品id */
         $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('cart') . " WHERE rec_id = '$id'";
@@ -2030,7 +2030,7 @@ class FlowController extends InitController
      * @access  public
      * @return  void
      */
-    public function flow_clear_cart_alone()
+    protected function flow_clear_cart_alone()
     {
         /* 查询：购物车中所有不可以单独销售的配件 */
         $sql = "SELECT c.rec_id, gg.parent_id
@@ -2096,7 +2096,7 @@ class FlowController extends InitController
      * @param   array $b 优惠活动b
      * @return  int     相等返回0，小于返回-1，大于返回1
      */
-    public function cmp_favourable($a, $b)
+    protected function cmp_favourable($a, $b)
     {
         if ($a['available'] == $b['available']) {
             if ($a['sort_order'] == $b['sort_order']) {
@@ -2114,7 +2114,7 @@ class FlowController extends InitController
      * @param   int $user_rank 用户等级id，0表示非会员
      * @return  array
      */
-    public function favourable_list($user_rank)
+    protected function favourable_list($user_rank)
     {
         /* 购物车中已有的优惠活动及数量 */
         $used_list = $this->cart_favourable();
@@ -2167,7 +2167,7 @@ class FlowController extends InitController
      * @param   array $favourable 优惠活动信息
      * @return  bool
      */
-    public function favourable_available($favourable)
+    protected function favourable_available($favourable)
     {
         /* 会员等级是否符合 */
         $user_rank = session('user_rank');
@@ -2188,7 +2188,7 @@ class FlowController extends InitController
      * @param   array $favourable 优惠活动
      * @return  string
      */
-    public function act_range_desc($favourable)
+    protected function act_range_desc($favourable)
     {
         if ($favourable['act_range'] == FAR_BRAND) {
             $sql = "SELECT brand_name FROM " . $GLOBALS['ecs']->table('brand') .
@@ -2211,7 +2211,7 @@ class FlowController extends InitController
      * 取得购物车中已有的优惠活动及数量
      * @return  array
      */
-    public function cart_favourable()
+    protected function cart_favourable()
     {
         $list = [];
         $sql = "SELECT is_gift, COUNT(*) AS num " .
@@ -2233,7 +2233,7 @@ class FlowController extends InitController
      * @param   array $favourable 优惠活动
      * @param   array $cart_favourable购物车中已有的优惠活动及数量
      */
-    public function favourable_used($favourable, $cart_favourable)
+    protected function favourable_used($favourable, $cart_favourable)
     {
         if ($favourable['act_type'] == FAT_GOODS) {
             return isset($cart_favourable[$favourable['act_id']]) &&
@@ -2250,7 +2250,7 @@ class FlowController extends InitController
      * @param   int $id 赠品id
      * @param   float $price 赠品价格
      */
-    public function add_gift_to_cart($act_id, $id, $price)
+    protected function add_gift_to_cart($act_id, $id, $price)
     {
         $sql = "INSERT INTO " . $GLOBALS['ecs']->table('cart') . " (" .
             "user_id, session_id, goods_id, goods_sn, goods_name, market_price, goods_price, " .
@@ -2268,7 +2268,7 @@ class FlowController extends InitController
      * @param   string $act_name 优惠活动name
      * @param   float $amount 优惠金额
      */
-    public function add_favourable_to_cart($act_id, $act_name, $amount)
+    protected function add_favourable_to_cart($act_id, $act_name, $amount)
     {
         $sql = "INSERT INTO " . $GLOBALS['ecs']->table('cart') . "(" .
             "user_id, session_id, goods_id, goods_sn, goods_name, market_price, goods_price, " .
@@ -2283,7 +2283,7 @@ class FlowController extends InitController
      * @param   array $favourable 优惠活动
      * @return  float
      */
-    public function cart_favourable_amount($favourable)
+    protected function cart_favourable_amount($favourable)
     {
         /* 查询优惠范围内商品总额的sql */
         $sql = "SELECT SUM(c.goods_price * c.goods_number) " .

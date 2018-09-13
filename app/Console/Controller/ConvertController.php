@@ -182,7 +182,7 @@ class ConvertController extends InitController
      * @param   string $dirname 目录名：以 / 结尾，以 / 分隔
      * @return  mix     如果所有文件可读，返回true；否则，返回第一个不可读的文件名
      */
-    public function check_files_readable($dirname)
+    protected function check_files_readable($dirname)
     {
         /* 遍历文件，检查文件是否可读 */
         if ($dh = opendir($dirname)) {
@@ -209,7 +209,7 @@ class ConvertController extends InitController
      * @param   string $file_prefix 文件名前缀
      * @return  mix     成功返回true，否则返回第一个失败的文件名
      */
-    public function copy_files($from_dir, $to_dir, $file_prefix = '')
+    protected function copy_files($from_dir, $to_dir, $file_prefix = '')
     {
         /* 遍历并复制文件 */
         if ($dh = opendir($from_dir)) {
@@ -236,7 +236,7 @@ class ConvertController extends InitController
      * @param   string $file_prefix 文件前缀
      * @return  mix     成功返回true，否则返回第一个失败的文件名
      */
-    public function copy_dirs($from_dir, $to_dir, $file_prefix = '')
+    protected function copy_dirs($from_dir, $to_dir, $file_prefix = '')
     {
         $result = true;
         if (!is_dir($from_dir)) {

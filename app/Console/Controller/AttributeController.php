@@ -290,7 +290,7 @@ class AttributeController extends InitController
      *
      * @return  array
      */
-    public function get_attrlist()
+    protected function get_attrlist()
     {
         /* 查询条件 */
         $filter = [];

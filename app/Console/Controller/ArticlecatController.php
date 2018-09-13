@@ -339,7 +339,7 @@ class ArticlecatController extends InitController
      *
      * @return  mix
      */
-    public function cat_update($cat_id, $args)
+    protected function cat_update($cat_id, $args)
     {
         if (empty($args) || empty($cat_id)) {
             return false;

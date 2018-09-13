@@ -284,7 +284,7 @@ class CommentManageController extends InitController
      * @access  public
      * @return  array
      */
-    public function get_comment_list()
+    protected function get_comment_list()
     {
         /* 查询条件 */
         $filter['keywords'] = empty($_REQUEST['keywords']) ? 0 : trim($_REQUEST['keywords']);

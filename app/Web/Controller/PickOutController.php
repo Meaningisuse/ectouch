@@ -252,7 +252,7 @@ class PickOutController extends InitController
      *
      * @return string
      */
-    public function search_url(&$attr_picks, $attr_id = 0)
+    protected function search_url(&$attr_picks, $attr_id = 0)
     {
         $str = '';
         foreach ($attr_picks as $pick_id) {

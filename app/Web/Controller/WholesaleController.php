@@ -374,7 +374,7 @@ class WholesaleController extends InitController
      * @param   string $where 查询条件
      * @return  array
      */
-    public function wholesale_list($size, $page, $where)
+    protected function wholesale_list($size, $page, $where)
     {
         $list = [];
         $sql = "SELECT w.*, g.goods_thumb, g.goods_name as goods_name " .
@@ -405,7 +405,7 @@ class WholesaleController extends InitController
      * @param   int $goods_id 商品ID
      * @return  array
      */
-    public function get_price_ladder($goods_id)
+    protected function get_price_ladder($goods_id)
     {
         /* 显示商品规格 */
         $goods_attr_list = array_values(get_goods_attr($goods_id));
@@ -457,7 +457,7 @@ class WholesaleController extends InitController
      * @param   array $reference 参照的商品属性
      * @return  bool
      */
-    public function is_attr_matching(&$goods_list, $reference)
+    protected function is_attr_matching(&$goods_list, $reference)
     {
         foreach ($goods_list as $key => $goods) {
             // 需要相同的元素个数

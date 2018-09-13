@@ -599,7 +599,7 @@ class PrivilegeController extends InitController
     }
 
     /* 获取管理员列表 */
-    public function get_admin_userlist()
+    protected function get_admin_userlist()
     {
         $list = [];
         $sql = 'SELECT user_id, user_name, email, add_time, last_login ' .
@@ -615,7 +615,7 @@ class PrivilegeController extends InitController
     }
 
     /* 清除购物车中过期的数据 */
-    public function clear_cart()
+    protected function clear_cart()
     {
         /* 取得有效的session */
         $valid_sess = [];
@@ -627,7 +627,7 @@ class PrivilegeController extends InitController
     }
 
     /* 获取角色列表 */
-    public function get_role_list()
+    protected function get_role_list()
     {
         $list = [];
         $sql = 'SELECT role_id, role_name, action_list ' .

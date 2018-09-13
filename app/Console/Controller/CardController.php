@@ -242,7 +242,7 @@ class CardController extends InitController
         }
     }
 
-    public function cards_list()
+    protected function cards_list()
     {
         $result = get_filter();
         if ($result === false) {

@@ -137,7 +137,7 @@ class AdminLogsController extends InitController
     }
 
     /* 获取管理员操作记录 */
-    public function get_admin_logs()
+    protected function get_admin_logs()
     {
         $user_id = !empty($_REQUEST['id']) ? intval($_REQUEST['id']) : 0;
         $admin_ip = !empty($_REQUEST['ip']) ? $_REQUEST['ip'] : '';

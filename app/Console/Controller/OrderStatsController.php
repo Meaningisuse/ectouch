@@ -329,7 +329,7 @@ class OrderStatsController extends InitController
      * @param       $end_date      查询的结束日期
      * @return      $order_info    订单概况数据
      */
-    public function get_orderinfo($start_date, $end_date)
+    protected function get_orderinfo($start_date, $end_date)
     {
         $order_info = [];
 

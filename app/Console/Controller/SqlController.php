@@ -55,7 +55,7 @@ class SqlController extends InitController
      *
      * @return void
      */
-    public function assign_sql($sql)
+    protected function assign_sql($sql)
     {
         $sql = stripslashes($sql);
         $this->smarty->assign('sql', $sql);

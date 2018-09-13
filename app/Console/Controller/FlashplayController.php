@@ -613,7 +613,7 @@ class FlashplayController extends InitController
         }
     }
 
-    public function get_flash_xml()
+    protected function get_flash_xml()
     {
         $flashdb = [];
         if (file_exists(ROOT_PATH . DATA_DIR . '/flash_data.xml')) {
@@ -633,7 +633,7 @@ class FlashplayController extends InitController
         return $flashdb;
     }
 
-    public function put_flash_xml($flashdb)
+    protected function put_flash_xml($flashdb)
     {
         if (!empty($flashdb)) {
             $xml = '<?xml version="1.0" encoding="' . CHARSET . '"?><bcaster>';
@@ -647,7 +647,7 @@ class FlashplayController extends InitController
         }
     }
 
-    public function get_url_image($url)
+    protected function get_url_image($url)
     {
         $ext = strtolower(end(explode('.', $url)));
         if ($ext != "gif" && $ext != "jpg" && $ext != "png" && $ext != "bmp" && $ext != "jpeg") {
@@ -673,7 +673,7 @@ class FlashplayController extends InitController
         return $tmp_file;
     }
 
-    public function get_width_height()
+    protected function get_width_height()
     {
         $curr_template = $GLOBALS['_CFG']['template'];
         $path = ROOT_PATH . 'themes/' . $curr_template . '/library/';
@@ -700,7 +700,7 @@ class FlashplayController extends InitController
         return $width_height;
     }
 
-    public function get_flash_templates($dir)
+    protected function get_flash_templates($dir)
     {
         $flashtpls = [];
         $template_dir = @opendir($dir);
@@ -713,7 +713,7 @@ class FlashplayController extends InitController
         return $flashtpls;
     }
 
-    public function get_flash_tpl_info($dir, $file)
+    protected function get_flash_tpl_info($dir, $file)
     {
         $info = [];
         if (is_file($dir . $file . '/preview.jpg')) {
@@ -728,7 +728,7 @@ class FlashplayController extends InitController
         return $info;
     }
 
-    public function set_flash_data($tplname, &$msg)
+    protected function set_flash_data($tplname, &$msg)
     {
         $flashdata = $this->get_flash_xml();
         if (empty($flashdata)) {
@@ -765,7 +765,7 @@ class FlashplayController extends InitController
         return $msg !== true;
     }
 
-    public function set_flash_uproll($tplname, $flashdata)
+    protected function set_flash_uproll($tplname, $flashdata)
     {
         $data_file = ROOT_PATH . DATA_DIR . '/flashdata/' . $tplname . '/data.xml';
         $xmldata = '<?xml version="1.0" encoding="' . CHARSET . '"?><myMenu>';
@@ -777,7 +777,7 @@ class FlashplayController extends InitController
         return true;
     }
 
-    public function set_flash_focus($tplname, $flashdata)
+    protected function set_flash_focus($tplname, $flashdata)
     {
         $data_file = ROOT_PATH . DATA_DIR . '/flashdata/' . $tplname . '/data.js';
         $jsdata = '';
@@ -800,7 +800,7 @@ class FlashplayController extends InitController
         return true;
     }
 
-    public function set_flash_default($tplname, $flashdata)
+    protected function set_flash_default($tplname, $flashdata)
     {
         $data_file = ROOT_PATH . DATA_DIR . '/flashdata/' . $tplname . '/data.xml';
         $xmldata = '<?xml version="1.0" encoding="' . CHARSET . '"?><bcaster>';
@@ -820,7 +820,7 @@ class FlashplayController extends InitController
      *
      * @return void
      */
-    public function ad_list()
+    protected function ad_list()
     {
         $result = get_filter();
         if ($result === false) {
@@ -868,7 +868,7 @@ class FlashplayController extends InitController
      * @access  private
      * @return  Bool
      */
-    public function modfiy_ad_status($ad_id, $ad_status = 0)
+    protected function modfiy_ad_status($ad_id, $ad_status = 0)
     {
         $return = false;
 

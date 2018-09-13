@@ -378,7 +378,7 @@ class ShippingAreaController extends InitController
      * 取得配送区域列表
      * @param   int $shipping_id 配送id
      */
-    public function get_shipping_area_list($shipping_id)
+    protected function get_shipping_area_list($shipping_id)
     {
         $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('shipping_area');
         if ($shipping_id > 0) {

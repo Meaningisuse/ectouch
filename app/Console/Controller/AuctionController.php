@@ -387,7 +387,7 @@ class AuctionController extends InitController
      * 取得拍卖活动列表
      * @return   array
      */
-    public function auction_list()
+    protected function auction_list()
     {
         $result = get_filter();
         if ($result === false) {
@@ -452,7 +452,7 @@ class AuctionController extends InitController
      * @param   string $text 文字
      * @return  array('href' => $href, 'text' => $text)
      */
-    public function list_link($is_add = true, $text = '')
+    protected function list_link($is_add = true, $text = '')
     {
         $href = 'auction.php?act=list';
         if (!$is_add) {

@@ -453,7 +453,7 @@ class AdsController extends InitController
     }
 
     /* 获取广告数据列表 */
-    public function get_adslist()
+    protected function get_adslist()
     {
         /* 过滤查询 */
         $pid = !empty($_REQUEST['pid']) ? intval($_REQUEST['pid']) : 0;

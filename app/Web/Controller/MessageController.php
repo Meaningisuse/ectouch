@@ -115,7 +115,7 @@ class MessageController extends InitController
      *
      * @return  array
      */
-    public function get_msg_list($num, $start)
+    protected function get_msg_list($num, $start)
     {
         /* 获取留言数据 */
         $msg = [];
