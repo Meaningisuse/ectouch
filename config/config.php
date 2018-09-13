@@ -15,7 +15,7 @@ return [
     'DB_PREFIX'              => 'ecs_', // 数据库表前缀
     'DB_CHARSET'             => 'utf8', // 数据库编码默认采用utf8
 
-    'TMPL_EXCEPTION_FILE'    => THINK_PATH . 'Tpl/think_exception.tpl', // 异常页面的模板文件
+    'TMPL_EXCEPTION_FILE'    => resource_path('views/errors/exception.html'), // 异常页面的模板文件
     'TAGLIB_BEGIN'           => '{', // 标签库标签开始标记
     'TAGLIB_END'             => '}', // 标签库标签结束标记
 
