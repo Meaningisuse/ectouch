@@ -50,9 +50,28 @@ if (!in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
 
 /*
 |--------------------------------------------------------------------------
+| Setting Application Path
+|--------------------------------------------------------------------------
+|
+*/
+
+define('ROOT_PATH', __DIR__ . '/../');
+define('APP_PATH', ROOT_PATH . 'app/');
+define('STORAGE_PATH', ROOT_PATH . 'storage/');
+define('RESOURCE_PATH', ROOT_PATH . 'resources/');
+define('RUNTIME_PATH', STORAGE_PATH . 'framework/');
+define('COMMON_PATH', APP_PATH . 'Common/');
+define('CONF_PATH', ROOT_PATH . 'config/');
+define('LANG_PATH', RESOURCE_PATH . 'lang/');
+define('HTML_PATH', RUNTIME_PATH . 'Html/');
+define('LOG_PATH', STORAGE_PATH . 'logs/');
+define('ADDON_PATH', APP_PATH . 'Addon');
+
+/*
+|--------------------------------------------------------------------------
 | Loading Kernel
 |--------------------------------------------------------------------------
 |
 */
 
-return think\Container::get('app')->path(dirname(__DIR__) . '/app/');
+require ROOT_PATH . 'vendor/topthink/thinkphp/ThinkPHP/ThinkPHP.php';
