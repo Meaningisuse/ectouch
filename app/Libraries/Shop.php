@@ -15,8 +15,8 @@ class Shop
      */
     public function __construct()
     {
-        $this->db_name = config('database.database');
-        $this->prefix = config('database.prefix');
+        $this->db_name = config('DB_NAME');
+        $this->prefix = config('DB_PREFIX');
     }
 
     /**

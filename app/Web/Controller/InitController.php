@@ -22,7 +22,7 @@ class InitController extends Controller
 
     protected function _initialize()
     {
-        define('PHP_SELF', parse_name(request()->controller()) . '.php');
+        define('PHP_SELF', parse_name(CONTROLLER_NAME) . '.php');
 
         load_helper(['time', 'base', 'common', 'main', 'insert', 'goods', 'article']);
 

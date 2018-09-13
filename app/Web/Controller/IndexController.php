@@ -108,7 +108,7 @@ class IndexController extends InitController
         $all = $GLOBALS['db']->getAll($sql);
 
         foreach ($all as $key => $row) {
-            $shipping_code = 'app\\modules\\shipping\\' . $row['shipping_code'];
+            $shipping_code = 'App\\Modules\\Shipping\\' . $row['shipping_code'];
             if (class_exists($shipping_code)) {
                 $shipping = new $shipping_code;
                 $all[$key]['invoice_no'] = $shipping->query((string)$row['invoice_no']);

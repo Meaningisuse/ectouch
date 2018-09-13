@@ -2,7 +2,7 @@
 
 namespace App\Libraries;
 
-use think\Model;
+use Think\Model;
 
 /**
  * MYSQL 公用类库

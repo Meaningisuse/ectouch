@@ -523,7 +523,7 @@ function get_order_detail($order_id, $user_id = 0)
     /* 对发货号处理 */
     if (!empty($order['invoice_no'])) {
         $shipping_code = $GLOBALS['db']->getOne("SELECT shipping_code FROM " . $GLOBALS['ecs']->table('shipping') . " WHERE shipping_id = '$order[shipping_id]'");
-        $plugin = 'app\\modules\\shipping\\' . $shipping_code;
+        $plugin = 'App\\Modules\\Shipping\\' . $shipping_code;
         if (class_exists($plugin)) {
             $shipping = new $shipping_code;
             $order['invoice_no'] = $shipping->query($order['invoice_no']);
@@ -564,7 +564,7 @@ function get_order_detail($order_id, $user_id = 0)
             $order['pay_desc'] = $payment_info['pay_desc'];
 
             /* 调用相应的支付方式文件 */
-            $pay_code = 'app\\modules\\payment\\' . $payment_info['pay_code'];
+            $pay_code = 'App\\Modules\\Payment\\' . $payment_info['pay_code'];
 
             /* 取得在线支付方式的支付按钮 */
             $pay_obj = new $pay_code;

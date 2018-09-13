@@ -143,7 +143,7 @@ function &init_users()
         return $cls;
     }
 
-    $integrate_code = 'app\\modules\\integrate\\' . ucfirst($GLOBALS['_CFG']['integrate_code']);
+    $integrate_code = 'App\\Modules\\Integrate\\' . ucfirst($GLOBALS['_CFG']['integrate_code']);
     $cfg = unserialize($GLOBALS['_CFG']['integrate_config']);
     $cls = new $integrate_code($cfg);
 

@@ -703,7 +703,7 @@ class IntegrateController extends InitController
                 }
                 die(json_encode($result));
             } elseif ($task_sync['start'] < $task_sync['total']) {
-                $code = 'app\\modules\\integrate\\' . session('code');
+                $code = 'App\\Modules\\Integrate\\' . session('code');
                 $cls_user = new $code(session('cfg'));
                 $cls_user->need_sync = false;
 
