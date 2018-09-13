@@ -1,23 +1,26 @@
 <?php
 
 return [
-    'DEFAULT_MODULE'         => 'Web', // 默认模块
-    'URL_MODEL'              => 3, // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
-    'VAR_PATHINFO'           => 'r', // 兼容模式PATHINFO获取变量例如 ?r=/module/action/id/1 后面的参数取决于URL_PATHINFO_DEPR
+    'default_module'         => 'Web', // 默认模块
+
+    'url_model'              => 3, // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
+    'url_router_on'          => true,
+    'url_map_rules'          => require base_path('routes/web.php'),
+    'url_module_map'         => [ADMIN_PATH => 'console'],
+    'var_pathinfo'           => 'r', // 兼容模式PATHINFO获取变量例如 ?r=/module/action/id/1 后面的参数取决于URL_PATHINFO_DEPR
 
     /* 数据库设置 */
-    'DB_TYPE'                => 'mysql', // 数据库类型
-    'DB_HOST'                => '127.0.0.1', // 服务器地址
-    'DB_NAME'                => 'ectouch', // 数据库名
-    'DB_USER'                => 'root', // 用户名
-    'DB_PWD'                 => '', // 密码
-    'DB_PORT'                => '3306', // 端口
-    'DB_PREFIX'              => 'ecs_', // 数据库表前缀
-    'DB_CHARSET'             => 'utf8', // 数据库编码默认采用utf8
+    'db_type'                => 'mysql', // 数据库类型
+    'db_host'                => '127.0.0.1', // 服务器地址
+    'db_name'                => 'ectouch', // 数据库名
+    'db_user'                => 'root', // 用户名
+    'db_pwd'                 => '', // 密码
+    'db_port'                => '3306', // 端口
+    'db_prefix'              => 'ecs_', // 数据库表前缀
+    'db_charset'             => 'utf8', // 数据库编码默认采用utf8
 
-    'TMPL_EXCEPTION_FILE'    => resource_path('views/errors/exception.html'), // 异常页面的模板文件
-    'TAGLIB_BEGIN'           => '{', // 标签库标签开始标记
-    'TAGLIB_END'             => '}', // 标签库标签结束标记
-
+    'tmpl_exception_file'    => resource_path('views/errors/exception.html'), // 异常页面的模板文件
+    'taglib_begin'           => '{', // 标签库标签开始标记
+    'taglib_end'             => '}', // 标签库标签结束标记
 
 ];

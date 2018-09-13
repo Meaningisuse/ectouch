@@ -7,7 +7,7 @@ class BuildRoutesBehavior
     public function run()
     {
         if (APP_DEBUG) {
-            // $this->build(['web', 'console']);
+            $this->build(['web', 'console']);
         }
     }
 
