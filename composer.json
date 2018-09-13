@@ -34,6 +34,7 @@
             "App\\": "app/"
         },
         "files": [
+            "config/constant.php",
             "app/Support/helpers.php"
         ]
     },
