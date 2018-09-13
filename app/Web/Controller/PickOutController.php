@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 选购中心
  * Class PickOutController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class PickOutController extends InitController
 {

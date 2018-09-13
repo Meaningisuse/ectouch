@@ -1,6 +1,6 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
 /**
  *  会员排行统计程序

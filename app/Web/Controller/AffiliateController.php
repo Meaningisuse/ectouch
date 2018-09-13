@@ -1,10 +1,10 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * Class AffiliateController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class AffiliateController extends InitController
 {

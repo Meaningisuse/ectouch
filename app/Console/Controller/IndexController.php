@@ -1,9 +1,9 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
-use app\libraries\Image;
-use app\libraries\Transport;
+use App\Libraries\Image;
+use App\Libraries\Transport;
 
 class IndexController extends InitController
 {

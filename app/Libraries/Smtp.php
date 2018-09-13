@@ -1,6 +1,6 @@
 <?php
 
-namespace app\libraries;
+namespace App\Libraries;
 
 /**
  *  SMTP 邮件类

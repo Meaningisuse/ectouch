@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 列出所有分类及品牌
  * Class CatalogController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class CatalogController extends InitController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\libraries;
+namespace App\Libraries;
 
 /**
  *  后台对上传文件的处理类(实现图片上传，图片缩小， 增加水印)

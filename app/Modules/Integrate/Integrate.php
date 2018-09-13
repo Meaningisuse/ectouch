@@ -1,8 +1,8 @@
 <?php
 
-namespace app\modules\integrate;
+namespace App\Modules\Integrate;
 
-use app\libraries\Mysql;
+use App\Libraries\Mysql;
 
 /**
  *  整合插件类的基类

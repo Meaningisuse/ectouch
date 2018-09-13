@@ -1,6 +1,6 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
 /**
  *  站外JS投放的统计程序

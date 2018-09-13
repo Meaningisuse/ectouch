@@ -1,6 +1,6 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
 /**
  *  虚拟卡商品管理程序

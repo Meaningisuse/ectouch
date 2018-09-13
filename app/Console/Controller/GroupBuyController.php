@@ -1,6 +1,6 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
 /**
  *  管理中心团购商品管理

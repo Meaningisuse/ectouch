@@ -1,8 +1,8 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  *  会员等级管理程序

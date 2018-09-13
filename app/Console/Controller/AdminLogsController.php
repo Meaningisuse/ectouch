@@ -1,6 +1,6 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
 /**
  *  记录管理员操作日志

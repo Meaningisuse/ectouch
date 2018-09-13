@@ -1,17 +1,17 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
-use app\libraries\Shop;
-use app\libraries\Error;
-use app\libraries\Mysql;
-use app\libraries\Template;
-use app\http\controllers\Controller;
+use App\Libraries\Shop;
+use App\Libraries\Error;
+use App\Libraries\Mysql;
+use App\Libraries\Template;
+use App\Http\Controllers\Controller;
 
 /**
  * 管理中心公用文件
  * Class InitController
- * @package app\console\controller
+ * @package App\Console\Controller
  */
 class InitController extends Controller
 {

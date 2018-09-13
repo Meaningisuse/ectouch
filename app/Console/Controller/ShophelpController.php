@@ -1,8 +1,8 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  *  帮助信息管理程序

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 广告处理
  * Class AfficheController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class AfficheController extends InitController
 {

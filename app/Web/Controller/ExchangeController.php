@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 积分商城
  * Class ExchangeController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class ExchangeController extends InitController
 {

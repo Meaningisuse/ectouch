@@ -1,9 +1,9 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
-use app\libraries\GoogleSitemap;
-use app\libraries\GoogleSitemapItem;
+use App\Libraries\GoogleSitemap;
+use App\Libraries\GoogleSitemapItem;
 
 /**
  * 站点地图生成程序

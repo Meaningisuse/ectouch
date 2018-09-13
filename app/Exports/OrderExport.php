@@ -1,7 +1,8 @@
 <?php
 
-namespace app\exports;
+namespace App\Exports;
 
 class OrderExport
 {
+
 }

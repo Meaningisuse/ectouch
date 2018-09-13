@@ -1,13 +1,13 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
-use app\libraries\Captcha;
+use App\Libraries\Captcha;
 
 /**
  * 会员中心
  * Class UserController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class UserController extends InitController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\convert;
+namespace App\Modules\Convert;
 
 class Ecshop
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 商品分类
  * Class CategoryController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class CategoryController extends InitController
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 首页文件
  * Class IndexController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class IndexController extends InitController
 {

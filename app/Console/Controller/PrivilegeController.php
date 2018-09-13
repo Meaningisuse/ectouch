@@ -1,15 +1,15 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
-use app\libraries\Captcha;
-use app\libraries\Exchange;
+use App\Libraries\Captcha;
+use App\Libraries\Exchange;
 use Illuminate\Support\Facades\Validator;
 
 /**
  * 管理员信息以及权限管理程序
  * Class PrivilegeController
- * @package app\console\controller
+ * @package App\Console\Controller
  */
 class PrivilegeController extends InitController
 {

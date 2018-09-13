@@ -1,8 +1,8 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  *  角色管理信息以及权限管理程序

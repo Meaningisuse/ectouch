@@ -1,12 +1,12 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 
 /**
  * 夺宝奇兵前台页面
  * Class SnatchController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class SnatchController extends InitController
 {

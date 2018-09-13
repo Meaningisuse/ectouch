@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 超值礼包列表
  * Class PackageController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class PackageController extends InitController
 {

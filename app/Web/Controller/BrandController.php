@@ -5,7 +5,7 @@ namespace app\webontroller;
 /**
  * 品牌列表
  * Class BrandController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class BrandController extends InitController
 {

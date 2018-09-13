@@ -1,6 +1,6 @@
 <?php
 
-namespace app\libraries;
+namespace App\Libraries;
 
 /**
  * 服务器之间数据传输器。采集到的信息包括HTTP头和HTTP体，

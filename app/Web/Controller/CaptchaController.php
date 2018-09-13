@@ -1,13 +1,13 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 use App\Kernel\Verify;
 
 /**
  * 生成验证码
  * Class CaptchaController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class CaptchaController extends InitController
 {

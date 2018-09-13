@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 处理收回确认的页面
  * Class ReceiveController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class ReceiveController extends InitController
 {

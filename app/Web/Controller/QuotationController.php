@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 报价单
  * Class QuotationController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class QuotationController extends InitController
 {

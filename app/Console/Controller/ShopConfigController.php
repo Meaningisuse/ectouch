@@ -1,11 +1,11 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
 /**
  * 管理中心商店设置
  * Class ShopConfigController
- * @package app\console\controller
+ * @package App\Console\Controller
  */
 class ShopConfigController extends InitController
 {

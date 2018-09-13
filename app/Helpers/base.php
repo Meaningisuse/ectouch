@@ -1,6 +1,6 @@
 <?php
 
-use app\libraries\Image;
+use App\Libraries\Image;
 
 /**
  * 截取UTF-8编码下字符串的函数

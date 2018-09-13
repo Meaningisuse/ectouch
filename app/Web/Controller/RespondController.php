@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 支付响应页面
  * Class RespondController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class RespondController extends InitController
 {

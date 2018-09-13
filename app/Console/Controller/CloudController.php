@@ -1,8 +1,8 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
-use app\libraries\Transport;
+use App\Libraries\Transport;
 
 /**
  * 云服务接口

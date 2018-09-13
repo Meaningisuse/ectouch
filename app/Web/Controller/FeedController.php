@@ -1,13 +1,13 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
-use app\libraries\RSSBuilder;
+use App\Libraries\RSSBuilder;
 
 /**
  * RSS Feed 生成程序
  * Class FeedController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class FeedController extends InitController
 {

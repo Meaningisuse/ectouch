@@ -1,9 +1,9 @@
 <?php
 
-namespace app\console\controller;
+namespace App\Console\Controller;
 
-use app\libraries\Mysql;
-use app\libraries\Transport;
+use App\Libraries\Mysql;
+use App\Libraries\Transport;
 
 /**
  *  第三方程序会员数据整合插件管理程序

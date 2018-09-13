@@ -1,16 +1,16 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
-use app\libraries\Shop;
-use app\libraries\Error;
-use app\libraries\Mysql;
-use app\libraries\Template;
-use app\http\controllers\Controller;
+use App\Libraries\Shop;
+use App\Libraries\Error;
+use App\Libraries\Mysql;
+use App\Libraries\Template;
+use App\Http\Controllers\Controller;
 
 /**
  * Class InitController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class InitController extends Controller
 {

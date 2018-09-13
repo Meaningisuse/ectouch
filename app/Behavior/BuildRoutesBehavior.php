@@ -1,6 +1,6 @@
 <?php
 
-namespace app\behavior;
+namespace App\Behavior;
 
 class BuildRoutesBehavior
 {

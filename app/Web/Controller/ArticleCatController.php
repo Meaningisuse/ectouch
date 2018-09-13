@@ -1,11 +1,11 @@
 <?php
 
-namespace app\web\controller;
+namespace App\Web\Controller;
 
 /**
  * 文章分类
  * Class ArticleCatController
- * @package app\web\controller
+ * @package App\Web\Controller
  */
 class ArticleCatController extends InitController
 {
