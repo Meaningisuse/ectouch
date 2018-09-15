@@ -2,7 +2,7 @@
 
 namespace App\Web\Controller;
 
-use App\Kernel\Verify;
+use Think\Verify;
 
 /**
  * 生成验证码
@@ -17,6 +17,7 @@ class CaptchaController extends InitController
         $verify->length = 4;
         $verify->fontSize = 14;
         $verify->useCurve = false;
+        $verify->useNoise = false;
 
         $verify->entry();
     }
