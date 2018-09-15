@@ -160,7 +160,6 @@ class MessageController extends InitController
 
             $msg[$rows['msg_time']]['tablename'] = $rows['tablename'];
             $id = $rows['ID'];
-            $reply = [];
             if (isset($msg[$rows['msg_time']]['tablename'])) {
                 $table_name = $msg[$rows['msg_time']]['tablename'];
 
@@ -169,9 +168,9 @@ class MessageController extends InitController
                         " FROM " . $GLOBALS['ecs']->table('feedback') .
                         " WHERE parent_id = '" . $id . "'";
                 } else {
-                    $sql = 'SELECT user_name AS re_name, email AS re_email, add_time AS re_time, content AS re_content ,parent_id
-                FROM ' . $GLOBALS['ecs']->table('comment') .
-                        " WHERE parent_id = $id ";
+                    $sql = "SELECT user_name AS re_name, email AS re_email, add_time AS re_time, content AS re_content ,parent_id" .
+                        " FROM " . $GLOBALS['ecs']->table('comment') .
+                        " WHERE parent_id = '" . $id . "'";
                 }
                 $reply = $GLOBALS['db']->getRow($sql);
                 if ($reply) {
