@@ -2,8 +2,8 @@
 
 namespace App\Proxy;
 
+use Carbon\Carbon;
 use GuzzleHttp\Client;
-use Illuminate\Support\Carbon;
 
 /**
  * Class ShippingProxy
