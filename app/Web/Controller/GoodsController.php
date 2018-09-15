@@ -423,9 +423,9 @@ class GoodsController extends InitController
                 "AND o.shipping_status " . db_create_in([SS_SHIPPED, SS_RECEIVED]) .
                 " AND o.pay_status " . db_create_in([PS_PAYED, PS_PAYING]) . $ext .
                 " GROUP BY g.goods_id HAVING num > $sales_count";
-            $res = $GLOBALS['db']->query($sql);
+            $res = $GLOBALS['db']->getOne($sql);
 
-            $rank = $GLOBALS['db']->num_rows($res) + 1;
+            $rank = $res + 1;
 
             if ($rank > 10) {
                 $rank = 0;
