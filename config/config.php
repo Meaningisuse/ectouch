@@ -2,6 +2,7 @@
 
 return [
     'default_module'         => 'Web', // 默认模块
+    'default_theme'          => 'default',
 
     'url_model'              => 3, // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
     'url_router_on'          => true,

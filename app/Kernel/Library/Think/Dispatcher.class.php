@@ -142,9 +142,13 @@ class Dispatcher
         define('MODULE_NAME', defined('BIND_MODULE') ? BIND_MODULE : self::getModule($varModule));
 
         // 检测模块是否存在
-        if (MODULE_NAME && !in_array_case(MODULE_NAME, C('MODULE_DENY_LIST')) && is_dir(APP_PATH . MODULE_NAME)) {
+        if (MODULE_NAME && !in_array_case(MODULE_NAME, C('MODULE_DENY_LIST')) && (is_dir(APP_PATH . MODULE_NAME) || is_dir(CUSTOM_PATH . MODULE_NAME))) {
             // 定义当前模块路径
-            define('MODULE_PATH', APP_PATH . MODULE_NAME . '/');
+            if (is_dir(CUSTOM_PATH . MODULE_NAME)) {
+                define('MODULE_PATH', CUSTOM_PATH . MODULE_NAME . '/');
+            } else {
+                define('MODULE_PATH', APP_PATH . MODULE_NAME . '/');
+            }
             // 定义当前模块的模版缓存路径
             C('CACHE_PATH', CACHE_PATH . MODULE_NAME . '/');
             // 定义当前模块的日志目录

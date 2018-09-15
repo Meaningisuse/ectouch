@@ -63,9 +63,11 @@ define('RUNTIME_PATH', STORAGE_PATH . 'framework/');
 define('COMMON_PATH', APP_PATH . 'Common/');
 define('CONF_PATH', ROOT_PATH . 'config/');
 define('LANG_PATH', RESOURCE_PATH . 'lang/');
+define('TMPL_PATH', RESOURCE_PATH . 'views/');
 define('HTML_PATH', RUNTIME_PATH . 'Html/');
 define('LOG_PATH', STORAGE_PATH . 'logs/');
 define('ADDON_PATH', APP_PATH . 'Addon');
+define('CUSTOM_PATH', APP_PATH . 'Custom/');
 
 /*
 |--------------------------------------------------------------------------

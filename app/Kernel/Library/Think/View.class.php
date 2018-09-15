@@ -94,7 +94,7 @@ class View
         // 网页字符编码
         header('Content-Type:' . $contentType . '; charset=' . $charset);
         header('Cache-control: ' . C('HTTP_CACHE_CONTROL')); // 页面缓存控制
-        header('X-Powered-By:ThinkPHP');
+        header('X-Powered-By: ECTouch');
         // 输出模板文件
         echo $content;
     }
@@ -172,6 +172,11 @@ class View
         } elseif (false === strpos($template, $depr)) {
             $template = CONTROLLER_NAME . $depr . $template;
         }
+        $template = parse_name($template);
+        $custom = CUSTOM_PATH . '/' . $module . '/' . C('DEFAULT_V_LAYER') . '/' . $template . C('TMPL_TEMPLATE_SUFFIX');
+        if (is_file($custom)) {
+            return $custom;
+        }
         $file = THEME_PATH . $template . C('TMPL_TEMPLATE_SUFFIX');
         if (C('TMPL_LOAD_DEFAULTTHEME') && THEME_NAME != C('DEFAULT_THEME') && !is_file($file)) {
             // 找不到当前主题模板的时候定位默认主题中的模板
@@ -194,9 +199,9 @@ class View
         $tmplPath = C('VIEW_PATH'); // 模块设置独立的视图目录
         if (!$tmplPath) {
             // 定义TMPL_PATH 则改变全局的视图目录到模块之外
-            $tmplPath = defined('TMPL_PATH') ? TMPL_PATH . $module . '/' : APP_PATH . $module . '/' . C('DEFAULT_V_LAYER') . '/';
+            $tmplPath = defined('TMPL_PATH') ? TMPL_PATH . $theme . parse_name($module) . '/' : APP_PATH . $module . '/' . C('DEFAULT_V_LAYER') . '/' . $theme;
         }
-        return $tmplPath . $theme;
+        return $tmplPath;
     }
 
     /**
