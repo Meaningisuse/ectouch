@@ -74,4 +74,4 @@ define('ADDON_PATH', APP_PATH . 'Addon');
 |
 */
 
-require ROOT_PATH . 'vendor/topthink/thinkphp/ThinkPHP/ThinkPHP.php';
+require APP_PATH . 'Kernel/Kernel.php';
