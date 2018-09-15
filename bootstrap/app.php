@@ -55,7 +55,7 @@ if (!in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
 |
 */
 
-define('ROOT_PATH', __DIR__ . '/../');
+define('ROOT_PATH', str_replace('\\', '/', dirname(__DIR__)) . '/');
 define('APP_PATH', ROOT_PATH . 'app/');
 define('STORAGE_PATH', ROOT_PATH . 'storage/');
 define('RESOURCE_PATH', ROOT_PATH . 'resources/');

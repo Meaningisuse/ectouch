@@ -1,9 +1,7 @@
 <?php
 
-
-
 /**
- * ThinkPHP 普通模式定义
+ * 普通模式定义
  */
 return array(
     // 配置文件
