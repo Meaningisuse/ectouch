@@ -7,3 +7,17 @@
  * @package  ECTouch
  * @homepage https://ectouch.cn
  */
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+
+$app = new Application();
+
+// register commands
+foreach (glob(app_path('Command/*Command.php')) as $command) {
+    $command = '\\App\\Command\\' . basename($command, '.php');
+    $app->add(new $command());
+}
+
+$app->run();
