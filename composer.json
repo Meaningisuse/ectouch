@@ -20,6 +20,7 @@
         "overtrue/pinyin": "^3.0",
         "overtrue/wechat": "^4.1",
         "phpoffice/phpspreadsheet": "^1.4",
+        "robmorgan/phinx": "^0.10.6",
         "sentry/sentry": "^1.9",
         "symfony/console": "^4.1",
         "symfony/filesystem": "^4.1",

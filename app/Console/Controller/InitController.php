@@ -27,7 +27,7 @@ class InitController extends Controller
     protected function _initialize()
     {
         define('ECT_ADMIN', true);
-        define('PHP_SELF', parse_name(request()->controller()) . '.php');
+        define('PHP_SELF', parse_name(CONTROLLER_NAME) . '.php');
 
         $_REQUEST['act'] = isset($_REQUEST['act']) ? $_REQUEST['act'] : '';
 

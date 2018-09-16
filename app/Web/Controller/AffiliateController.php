@@ -14,7 +14,7 @@ class AffiliateController extends InitController
 
         if ($display_mode == 'javascript') {
             $charset_array = ['UTF8', 'GBK', 'gbk', 'utf8', 'GB2312', 'gb2312'];
-            if (!in_array($charset, $charset_array)) {
+            if (!in_array(CHARSET, $charset_array)) {
                 $charset = 'UTF8';
             }
             header('content-type: application/x-javascript; charset=' . ($charset == 'UTF8' ? 'utf-8' : $charset));
@@ -28,20 +28,11 @@ class AffiliateController extends InitController
 
         $tpl = ROOT_PATH . DATA_DIR . '/affiliate.html';
         if (!$this->smarty->is_cached($tpl, $cache_id)) {
-            $time = gmtime();
-            /* 鏍规嵁鍙傛暟鐢熸垚鏌ヨ?璇?彞 */
-
             $goods_url = $GLOBALS['ecs']->url() . "goods.php?u=$userid&id=";
             $goods = get_goods_info($goodsid);
             $goods['goods_thumb'] = (strpos($goods['goods_thumb'], 'http://') === false && strpos($goods['goods_thumb'], 'https://') === false) ? $GLOBALS['ecs']->url() . $goods['goods_thumb'] : $goods['goods_thumb'];
             $goods['goods_img'] = (strpos($goods['goods_img'], 'http://') === false && strpos($goods['goods_img'], 'https://') === false) ? $GLOBALS['ecs']->url() . $goods['goods_img'] : $goods['goods_img'];
             $goods['shop_price'] = price_format($goods['shop_price']);
-
-            /*if ($charset != 'UTF8')
-            {
-                $goods['goods_name']  = ecs_iconv('UTF8', $charset, htmlentities($goods['goods_name'], ENT_QUOTES, 'UTF-8'));
-                $goods['shop_price'] = ecs_iconv('UTF8', $charset, $goods['shop_price']);
-            }*/
 
             $this->smarty->assign('goods', $goods);
             $this->smarty->assign('userid', $userid);

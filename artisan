@@ -20,4 +20,16 @@ foreach (glob(app_path('Command/*Command.php')) as $command) {
     $app->add(new $command());
 }
 
+$app->addCommands([
+    new \Phinx\Console\Command\Init(),
+    new \Phinx\Console\Command\Create(),
+    new \Phinx\Console\Command\Migrate(),
+    new \Phinx\Console\Command\Rollback(),
+    new \Phinx\Console\Command\Status(),
+    new \Phinx\Console\Command\Breakpoint(),
+    new \Phinx\Console\Command\Test(),
+    new \Phinx\Console\Command\SeedCreate(),
+    new \Phinx\Console\Command\SeedRun()
+]);
+
 $app->run();
