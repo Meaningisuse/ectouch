@@ -1,6 +1,6 @@
 <?php
 
-namespace app\webontroller;
+namespace App\Web\Controller;
 
 /**
  * 品牌列表
