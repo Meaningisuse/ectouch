@@ -12,7 +12,7 @@ class SuppliersGoodsController extends InitController
 {
     public function index()
     {
-        load_helper('admin_goods');
+        load_helper('goods', true);
         $image = new Image($GLOBALS['_CFG']['bgcolor']);
         $exc = new Exchange($GLOBALS['ecs']->table('goods'), $this->db, 'goods_id', 'goods_name');
 

@@ -15,8 +15,8 @@ class IndexController extends InitController
         //-- 妗嗘灦
         /*------------------------------------------------------ */
         if ($_REQUEST['act'] == '') {
-            $modules = require MODULE_PATH . 'Config/menu.php';
-            $purview = require MODULE_PATH . 'Config/priv.php';
+            $modules = require MODULE_PATH . 'Conf/menu.php';
+            $purview = require MODULE_PATH . 'Conf/priv.php';
 
             foreach ($modules as $key => $value) {
                 ksort($modules[$key]);
@@ -733,7 +733,7 @@ class IndexController extends InitController
                 $cat_id = $GLOBALS['db']->insert_Id();
 
                 //璐у彿
-                load_helper('admin_goods');
+                load_helper('goods', true);
                 $max_id = $GLOBALS['db']->getOne("SELECT MAX(goods_id) + 1 FROM " . $GLOBALS['ecs']->table('goods'));
                 $goods_sn = generate_goods_sn($max_id);
 

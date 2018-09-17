@@ -11,7 +11,7 @@ class GoodsBatchController extends InitController
 {
     public function index()
     {
-        load_helper('admin_goods');
+        load_helper('goods', true);
 
         /*------------------------------------------------------ */
 //-- 批量上传
