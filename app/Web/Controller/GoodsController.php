@@ -223,9 +223,9 @@ class GoodsController extends InitController
                 array_pop($history);
             }
 
-            setcookie('ECT[history]', implode(',', $history), gmtime() + 3600 * 24 * 30);
+            cookie('ECT[history]', implode(',', $history), gmtime() + 3600 * 24 * 30);
         } else {
-            setcookie('ECT[history]', $goods_id, gmtime() + 3600 * 24 * 30);
+            cookie('ECT[history]', $goods_id, gmtime() + 3600 * 24 * 30);
         }
 
 

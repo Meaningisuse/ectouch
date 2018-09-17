@@ -2189,7 +2189,7 @@ class UserController extends InitController
             }
         } /* 清除商品浏览历史 */
         elseif ($action == 'clear_history') {
-            setcookie('ECT[history]', '', 1);
+            cookie('ECT[history]', '', 1);
         }
     }
 }

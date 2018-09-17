@@ -92,8 +92,8 @@ class InitController extends Controller
 
                 if (!$row) {
                     // 没有找到这个记录
-                    setcookie($_COOKIE['ECTCP']['admin_id'], '', 1);
-                    setcookie($_COOKIE['ECTCP']['admin_pass'], '', 1);
+                    cookie($_COOKIE['ECTCP']['admin_id'], '', 1);
+                    cookie($_COOKIE['ECTCP']['admin_pass'], '', 1);
 
                     if (!empty($_REQUEST['is_ajax'])) {
                         return make_json_error($GLOBALS['_LANG']['priv_error']);
@@ -111,8 +111,8 @@ class InitController extends Controller
                             " SET last_login = '" . gmtime() . "', last_ip = '" . real_ip() . "'" .
                             " WHERE user_id = '" . session('admin_id') . "'");
                     } else {
-                        setcookie($_COOKIE['ECTCP']['admin_id'], '', 1);
-                        setcookie($_COOKIE['ECTCP']['admin_pass'], '', 1);
+                        cookie($_COOKIE['ECTCP']['admin_id'], '', 1);
+                        cookie($_COOKIE['ECTCP']['admin_pass'], '', 1);
 
                         if (!empty($_REQUEST['is_ajax'])) {
                             return make_json_error($GLOBALS['_LANG']['priv_error']);

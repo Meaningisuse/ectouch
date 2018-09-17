@@ -637,9 +637,9 @@ function set_filter($filter, $sql, $param_str = '')
     if ($param_str) {
         $filterfile .= $param_str;
     }
-    setcookie('ECTCP[lastfilterfile]', sprintf('%X', crc32($filterfile)), time() + 600);
-    setcookie('ECTCP[lastfilter]', urlencode(serialize($filter)), time() + 600);
-    setcookie('ECTCP[lastfiltersql]', base64_encode($sql), time() + 600);
+    cookie('ECTCP[lastfilterfile]', sprintf('%X', crc32($filterfile)), time() + 600);
+    cookie('ECTCP[lastfilter]', urlencode(serialize($filter)), time() + 600);
+    cookie('ECTCP[lastfiltersql]', base64_encode($sql), time() + 600);
 }
 
 /**

@@ -58,7 +58,7 @@ class WholesaleController extends InitController
                 $default_display_type = $GLOBALS['_CFG']['show_order_type'] == '0' ? 'list' : 'text';
                 $display = (isset($_REQUEST['display']) && in_array(trim(strtolower($_REQUEST['display'])), ['list', 'text'])) ? trim($_REQUEST['display']) : (isset($_COOKIE['ECT']['display']) ? $_COOKIE['ECT']['display'] : $default_display_type);
                 $display = in_array($display, ['list', 'text']) ? $display : 'text';
-                setcookie('ECT[display]', $display, gmtime() + 86400 * 7);
+                cookie('ECT[display]', $display, gmtime() + 86400 * 7);
 
                 /* 取得每页记录数 */
                 $size = isset($GLOBALS['_CFG']['page_size']) && intval($GLOBALS['_CFG']['page_size']) > 0 ? intval($GLOBALS['_CFG']['page_size']) : 10;

@@ -955,7 +955,7 @@ class GoodsController extends InitController
             }
 
             /* 记录上一次选择的分类和品牌 */
-            setcookie('ECTCP[last_choose]', $catgory_id . '|' . $brand_id, gmtime() + 86400);
+            cookie('ECTCP[last_choose]', $catgory_id . '|' . $brand_id, gmtime() + 86400);
             /* 清空缓存 */
             clear_cache_files();
 

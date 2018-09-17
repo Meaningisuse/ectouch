@@ -910,7 +910,7 @@ function visit_stats()
     $time = gmtime();
     /* 检查客户端是否存在访问统计的cookie */
     $visit_times = (!empty($_COOKIE['ECT']['visit_times'])) ? intval($_COOKIE['ECT']['visit_times']) + 1 : 1;
-    setcookie('ECT[visit_times]', $visit_times, $time + 86400 * 365, '/');
+    cookie('ECT[visit_times]', $visit_times, $time + 86400 * 365);
 
     $browser = get_user_browser();
     $os = get_os();
@@ -1447,9 +1447,9 @@ function set_affiliate()
             } else {
                 $c = 1;
             }
-            setcookie('affiliate_uid', intval($_GET['u']), gmtime() + 3600 * $config['config']['expire'] * $c);
+            cookie('affiliate_uid', intval($_GET['u']), gmtime() + 3600 * $config['config']['expire'] * $c);
         } else {
-            setcookie('affiliate_uid', intval($_GET['u']), gmtime() + 3600 * 24); // 过期时间为 1 天
+            cookie('affiliate_uid', intval($_GET['u']), gmtime() + 3600 * 24); // 过期时间为 1 天
         }
     }
 }
@@ -1470,7 +1470,7 @@ function get_affiliate()
         if ($GLOBALS['db']->getOne('SELECT user_id FROM ' . $GLOBALS['ecs']->table('users') . "WHERE user_id = '$uid'")) {
             return $uid;
         } else {
-            setcookie('affiliate_uid', '', 1);
+            cookie('affiliate_uid', '', 1);
         }
     }
 

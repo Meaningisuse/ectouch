@@ -30,8 +30,8 @@ class PrivilegeController extends InitController
         /*------------------------------------------------------ */
         if ($_REQUEST['act'] == 'logout') {
             /* 清除cookie */
-            setcookie('ECTCP[admin_id]', '', 1);
-            setcookie('ECTCP[admin_pass]', '', 1);
+            cookie('ECTCP[admin_id]', '', 1);
+            cookie('ECTCP[admin_pass]', '', 1);
 
             session(null);
 
@@ -113,8 +113,8 @@ class PrivilegeController extends InitController
 
                 if (isset($_POST['remember'])) {
                     $time = gmtime() + 3600 * 24 * 365;
-                    setcookie('ECTCP[admin_id]', $row['user_id'], $time);
-                    setcookie('ECTCP[admin_pass]', md5($row['password'] . $GLOBALS['_CFG']['hash_code']), $time);
+                    cookie('ECTCP[admin_id]', $row['user_id'], $time);
+                    cookie('ECTCP[admin_pass]', md5($row['password'] . $GLOBALS['_CFG']['hash_code']), $time);
                 }
 
                 // 清除购物车中过期的数据

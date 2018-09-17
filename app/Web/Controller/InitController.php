@@ -157,8 +157,8 @@ class InitController extends Controller
                 if (!$row) {
                     // 没有找到这个记录
                     $time = time() - 3600;
-                    setcookie("ECT[user_id]", '', $time, '/');
-                    setcookie("ECT[password]", '', $time, '/');
+                    cookie("ECT[user_id]", '', $time);
+                    cookie("ECT[password]", '', $time);
                 } else {
                     session('user_id', $row['user_id']);
                     session('user_name', $row['user_name']);

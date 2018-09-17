@@ -26,8 +26,8 @@ class RoleController extends InitController
         /*------------------------------------------------------ */
         if ($_REQUEST['act'] == 'logout') {
             /* 清除cookie */
-            setcookie('ECTCP[admin_id]', '', 1);
-            setcookie('ECTCP[admin_pass]', '', 1);
+            cookie('ECTCP[admin_id]', '', 1);
+            cookie('ECTCP[admin_pass]', '', 1);
 
             session(null);
 
