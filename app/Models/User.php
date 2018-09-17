@@ -6,5 +6,6 @@ use Think\Model;
 
 class User extends Model
 {
+    protected $tableName = 'users';
 
 }

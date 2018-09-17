@@ -3,6 +3,7 @@
 namespace App\Web\Controller;
 
 use App\Libraries\Captcha;
+use App\Services\UserService;
 
 /**
  * 会员中心
@@ -11,6 +12,14 @@ use App\Libraries\Captcha;
  */
 class UserController extends InitController
 {
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        parent::__construct();
+        $this->userService = $userService;
+    }
+
     public function index()
     {
         load_lang('user');

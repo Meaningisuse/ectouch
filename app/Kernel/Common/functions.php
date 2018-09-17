@@ -744,10 +744,18 @@ function controller($name, $path = '')
     $custom = 'App\\Custom\\' . $class;
     $class = 'App\\' . $class;
 
+    /**
+     * Setup a new app instance container
+     *
+     * @var Illuminate\Container\Container
+     */
+    $app = new \Illuminate\Container\Container();
+    $app->singleton('app', 'Illuminate\Container\Container');
+
     if (class_exists($custom)) {
-        return new $custom();
+        return $app->build($custom);
     } else if (class_exists($class)) {
-        return new $class();
+        return $app->build($class);
     } else {
         return false;
     }
