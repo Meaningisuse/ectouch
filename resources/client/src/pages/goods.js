@@ -6,7 +6,7 @@ export default function() {
     <div className={styles.normal}>
       <div className={styles.welcome} />
       <ul className={styles.list}>
-        <li><Link to="/catalog">Go to catalog page</Link></li>
+        <li><a href="https://umijs.org/guide/getting-started.html">Getting Started</a></li>
       </ul>
     </div>
   );

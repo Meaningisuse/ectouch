@@ -6,7 +6,7 @@ export default function() {
     <div className={styles.normal}>
       <div className={styles.welcome} />
       <ul className={styles.list}>
-        <li><Link to="/catalog">Go to catalog page</Link></li>
+        <li><Link to="/category">Go to category page</Link></li>
       </ul>
     </div>
   );

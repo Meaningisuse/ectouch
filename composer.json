@@ -16,6 +16,7 @@
         "endroid/qr-code": "^3.4",
         "firebase/php-jwt": "^5.0",
         "illuminate/container": "^5.7",
+        "mobiledetect/mobiledetectlib": "^2.8",
         "nesbot/carbon": "^2.1",
         "overtrue/easy-sms": "^1.1",
         "overtrue/pinyin": "^3.0",

@@ -1,6 +1,9 @@
 
 // ref: https://umijs.org/config/
 export default {
+  history: 'hash',
+  outputPath: '../../public/static/mobile',
+  publicPath: '/static/mobile/',
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {

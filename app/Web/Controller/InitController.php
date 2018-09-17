@@ -22,6 +22,16 @@ class InitController extends Controller
 
     protected function _initialize()
     {
+        /**
+         * 优先显示移动端页面
+         */
+        if ($this->isMobile()) {
+            if (CONTROLLER_NAME != 'Index') {
+                $this->redirect('/');
+            }
+            exit($this->fetch('drivers/mobile'));
+        }
+
         define('PHP_SELF', parse_name(CONTROLLER_NAME) . '.php');
 
         load_helper(['time', 'base', 'common', 'main', 'insert', 'goods', 'article']);
@@ -166,5 +176,17 @@ class InitController extends Controller
                 }
             }
         }
+    }
+
+    /**
+     * 判断是否为移动设备
+     * @return bool
+     */
+    protected function isMobile()
+    {
+        $detect = new \Mobile_Detect();
+
+        // Any mobile device (phones or tablets).
+        return $detect->isMobile();
     }
 }
