@@ -271,7 +271,7 @@ function create_html_editor($input_name, $input_value = '')
     $editor .= '<script type="text/javascript">';
     $editor .= 'var ue' . $input_name . ' = UE.getEditor(\'' . $input_name . '\');';
     $editor .= 'ue.ready(function() {';
-    $editor .= 'ue.execCommand(\'serverparam\', \'_token\', \'' . csrf_token() . '\');';
+    // $editor .= 'ue.execCommand(\'serverparam\', \'_token\', \'' . csrf_token() . '\');';
     $editor .= 'ue.setContent(\'' . $input_value . '\');';
     $editor .= '});';
     $editor .= '</script>';
