@@ -63,7 +63,7 @@ class Shop
      */
     public function url()
     {
-        $root = request()->rootDomain();
+        $root = __ROOT__;
 
         if (substr($root, -1) != '/') {
             $root .= '/';
