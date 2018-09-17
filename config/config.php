@@ -8,6 +8,7 @@ return array_merge([
     'url_router_on'          => true,
     'url_map_rules'          => require base_path('routes/web.php'),
     'url_module_map'         => [ADMIN_PATH => 'console'],
+    'url_html_suffix'        => 'html|php',
     'var_pathinfo'           => 'r', // 兼容模式PATHINFO获取变量例如 ?r=/module/action/id/1 后面的参数取决于URL_PATHINFO_DEPR
 
     'tmpl_exception_file'    => resource_path('views/errors/exception.html'), // 异常页面的模板文件
