@@ -1,23 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'antd-mobile-rn';
+import {createStackNavigator} from 'react-navigation';
+import Home from './src/pages/Home'
+import Profile from './src/pages/Profile'
+
+const RootStack = createStackNavigator({
+    Home: Home,
+    Profile: Profile,
+});
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>dscmall app!</Text>
-        <Button>antd-mobile-rn button</Button>
-      </View>
-    );
-  }
+    render() {
+        return <RootStack/>;
+    }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
